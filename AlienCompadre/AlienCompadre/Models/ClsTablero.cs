@@ -37,17 +37,19 @@ namespace AlienCompadre_Entities
         private void tableroAleatorio()
         {
             Random random = new Random();
-            for (int i = 1; i < (_tablero.Count - (2 + _numbersOfChest + _numbersOfDoors)); i++)//Generamos las casillas vacías del tablero
+            int numeroCasillasVacias = 62 - (_numbersOfChest + _numbersOfDoors);
+            for (int i = 0; i < numeroCasillasVacias; i++)//Generamos las casillas vacías del tablero
                 _tablero.Add(new ClsCasilla("DireccionImagenVacíaTipo"+ random.Next(1, 4), 0));//0 significa que la casilla esta vacía
             
             for (int i = 0; i < _numbersOfChest; i++)//Agregamos los cofres
                 _tablero.Add(new ClsCasilla("DireccionImagenCofre", 3));              
             
-            _tablero.Add(new ClsCasilla("DireccionImagenCofre", 2));//2 significa que la casilla contiene una puerta
-            _tablero.Insert(0, new ClsCasilla("DireccionImagenPersonaje", 1));//1 significa que la casilla contiene un personaje
-            _tablero.Add(new ClsCasilla("DireccionImagenAlien", 4));//1 significa que la casilla contiene un alien
+            _tablero.Add(new ClsCasilla("DireccionImagenPuerta", 2));//2 significa que la casilla contiene una puerta
 
-            ListUtility.ShuffleList(ref _tablero);
+            ListUtility.ShuffleList(ref _tablero);//Nos permite mezclar las casillas del tablero
+
+            _tablero.Insert(0, new ClsCasilla("DireccionImagenPersonaje", 1));//1 significa que la casilla contiene un personaje
+            _tablero.Add(new ClsCasilla("DireccionImagenAlien", 4));//4 significa que la casilla contiene un alien 
         }
         #endregion
     }
