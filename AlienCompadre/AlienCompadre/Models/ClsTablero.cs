@@ -44,7 +44,7 @@ namespace AlienCompadre_Entities
             for (int i = 0; i < _numbersOfChest; i++)//Agregamos los cofres
                 _tablero.Add(new ClsCasilla("DireccionImagenCofre", 3));              
             
-            _tablero.Add(new ClsCasilla("DireccionImagenPuerta", 2));//2 significa que la casilla contiene una puerta
+            _tablero.Add(new ClsCasilla("/Assets/trapdoor.png", 2));//2 significa que la casilla contiene una puerta
 
             ListUtility.ShuffleList(ref _tablero);//Nos permite mezclar las casillas del tablero
 
