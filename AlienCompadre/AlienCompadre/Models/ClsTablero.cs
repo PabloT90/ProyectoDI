@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AlienCompadre_Entities
+namespace AlienCompadre_Entities 
 {
     public class ClsTablero
     {
@@ -18,7 +18,7 @@ namespace AlienCompadre_Entities
         {
             _tablero = new List<ClsCasilla>();
             tableroAleatorio();
-        }
+        } 
         #endregion
         #region Propiedades Públicas
         public List<ClsCasilla> Tablero
