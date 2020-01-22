@@ -33,10 +33,11 @@
             </StackPanel>
             
         </Grid>
+
         <GridView x:Name="gridView01" ItemsSource="{Binding Mazmorra.Tablero}" HorizontalAlignment="Center" VerticalAlignment="Center">
             <GridView.ItemTemplate>
                 <DataTemplate>
-                    <Image Source="{Binding Image, Mode=TwoWay}" Width="100" Height="100">
+                    <Image Source="{Binding Image, Mode=TwoWay}" Width="70" Height="70">
                     </Image>
                 </DataTemplate>
             </GridView.ItemTemplate>
@@ -46,5 +47,6 @@
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
         </GridView>
+        
     </StackPanel>
 </Page>
