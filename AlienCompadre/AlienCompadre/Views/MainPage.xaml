@@ -21,15 +21,15 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <Image x:Name="playerImage" Grid.Column="0" Margin="10" Source="{Binding PlayerSrcImage, Mode=OneWay}" Width="50" Height="50"></Image>
+            <Image x:Name="playerImage" Grid.Column="0" Margin="10" Source="{Binding Player.SrcImage, Mode=OneWay}" Width="50" Height="50"></Image>
             <StackPanel Grid.Column="0" Orientation="Horizontal" Height="Auto">
                 <TextBlock Text="Ammo: " Margin="10" FontSize="20"/>
-                <TextBlock Name="ammo" FontSize="20" Margin="0, 10, 10, 10" Text="{Binding FuturaMunicionJugador}"/>
+                <TextBlock Name="ammo" FontSize="20" Margin="0, 10, 10, 10" Text="{Binding Player.Ammo}"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1" Orientation="Horizontal" Height="Auto">
                 <TextBlock Text="Dungeons completed: " Margin="10" FontSize="20"/>
-                <TextBlock Name="dungeonsCompleted" FontSize="20" Margin="0, 10, 10, 10" Text="{Binding FutureNumbersOfDungeonsCompleted}"/>
+                <TextBlock Name="dungeonsCompleted" FontSize="20" Margin="0, 10, 10, 10" Text="{Binding CompletedDungeons}"/>
             </StackPanel>
             
         </Grid>

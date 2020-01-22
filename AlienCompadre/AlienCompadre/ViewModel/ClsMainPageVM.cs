@@ -1,4 +1,5 @@
-﻿using AlienCompadre_Entities;
+﻿using AlienCompadre.Models;
+using AlienCompadre_Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,13 +13,14 @@ namespace AlienCompadre.ViewModel
     public class ClsMainPageVM : INotifyPropertyChanged
     {
         private ClsTablero _mazmorra;
-        private String _playerSrcImage;
+        private ClsPlayer _player;
+        private int _completedDungeons;
 
         #region Constructores
         public ClsMainPageVM()
         {
             _mazmorra = new ClsTablero();
-            _playerSrcImage = "direccionImagen";
+            _player = new ClsPlayer();
         }
         #endregion
 
@@ -36,16 +38,29 @@ namespace AlienCompadre.ViewModel
             }
         }
 
-        public String PlayerSrcImage
+        public ClsPlayer Player
         {
             get
             {
-                return _playerSrcImage;
+                return _player;
             }
             set
             {
-                _playerSrcImage = value;
-                NotifyPropertyChanged("PlayerSrcImage");
+                _player = value;
+                NotifyPropertyChanged("Player");
+            }
+        }
+
+        public int CompletedDungeons
+        {
+            get
+            {
+                return _completedDungeons;
+            }
+            set
+            {
+                _completedDungeons = value;
+                NotifyPropertyChanged("CompletedDungeons");
             }
         }
         #endregion
