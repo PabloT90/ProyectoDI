@@ -134,6 +134,8 @@
     <None Include="AlienCompadre_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\chestclosed.PNG" />
+    <Content Include="Assets\chestOpen.PNG" />
     <Content Include="Assets\dark1.png" />
     <Content Include="Assets\dark10.png" />
     <Content Include="Assets\dark11.png" />

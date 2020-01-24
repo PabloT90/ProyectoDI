@@ -42,7 +42,7 @@ namespace AlienCompadre_Entities
                 _tablero.Add(new ClsCasilla("/Assets/floor" + random.Next(1, 4)+".png", 0));//0 significa que la casilla esta vacía
 
             for (int i = 0; i < _numbersOfChest; i++)//Agregamos los cofres
-                _tablero.Add(new ClsCasilla("DireccionImagenCofre", 3));
+                _tablero.Add(new ClsCasilla("/Assets/chestclosed.png", 3));
 
             _tablero.Add(new ClsCasilla("/Assets/trapdoor.png", 2));//2 significa que la casilla contiene una puerta
 
