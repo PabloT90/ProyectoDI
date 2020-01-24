@@ -39,7 +39,7 @@ namespace AlienCompadre_Entities
             Random random = new Random();
             int numeroCasillasVacias = 62 - (_numbersOfChest + _numbersOfDoors);
             for (int i = 0; i < numeroCasillasVacias; i++)//Generamos las casillas vacías del tablero
-                _tablero.Add(new ClsCasilla("/Assets/floor" + random.Next(1, 4)+".png", 0));//0 significa que la casilla esta vacía
+                _tablero.Add(new ClsCasilla("/Assets/floor" + random.Next(1, 16)+".png", 0));//0 significa que la casilla esta vacía
 
             for (int i = 0; i < _numbersOfChest; i++)//Agregamos los cofres
                 _tablero.Add(new ClsCasilla("/Assets/chestclosed.png", 3));
