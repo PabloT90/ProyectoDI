@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AlienCompadre_Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -12,12 +13,14 @@ namespace AlienCompadre.Models
     {
         private String _srcImage;
         private int _ammo;
+        private ClsPunto _position;
 
         #region Constructores
         public ClsPlayer()
         {
             _srcImage = "DireccionImagen";
             _ammo = 0;
+            _position = new ClsPunto();
         }
         #endregion
 
@@ -45,6 +48,19 @@ namespace AlienCompadre.Models
             {
                 _ammo = value;
                 NotifyPropertyChanged("Ammo");
+            }
+        }
+
+        public ClsPunto Position
+        {
+            get
+            {
+                return _position;
+            }
+            set
+            {
+                _position = value;
+                NotifyPropertyChanged("Position");
             }
         }
         #endregion

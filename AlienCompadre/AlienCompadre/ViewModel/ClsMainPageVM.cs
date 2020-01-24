@@ -72,5 +72,45 @@ namespace AlienCompadre.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+
+        #region Métodos Mazmorra
+        /*
+         Interfaz
+         Nombre: focoPersonaje
+         Comentario: Este método nos permite mostrar y ocultar las casillas adyacentes y verticales del jugador
+         cuando este se mueva, cambiando al personaje de casilla.
+         Cabecera: private void focoPersonaje(char movimiento)
+         Entrada:
+            -int movimiento
+         Precondiciones:
+            -movimiento debe ser igual a 'u'(up), 'b'(below), 'l'(left) o 'r'(right)
+         Postcondiciones: El método modifica el estado del tablero.
+         */
+        private void focoPersonaje(char movimiento)
+        {
+            int x = _player.Position.X;
+            int y = _player.Position.Y;
+
+            switch (movimiento)
+            {
+                case 'u':
+                    if(y > 0)//Si existen casillas superiores
+                    {
+                        _mazmorra.Tablero.ElementAt(8 * (y + 1) - x).Image = "//Assets/dark"+_mazmorra.Tablero.ElementAt(8 * (y + 1) - x).Image.Substring(5, 1)+".png";//Esto va a doler
+                    }
+                    break;
+                case 'b':
+
+                    break;
+                case 'l':
+
+                    break;
+                case 'r':
+
+                    break;
+            }
+        }
+
+        #endregion
     }
 }
