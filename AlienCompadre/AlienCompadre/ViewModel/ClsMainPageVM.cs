@@ -118,5 +118,55 @@ namespace AlienCompadre.ViewModel
             
         }
         #endregion
+
+        #region Métodos Personaje
+        /// <summary>
+        /// Comentario: Este método intentará mover a un personaje por el tablero, si el movimiento
+        /// es válido, el método modificará la posición del personaje y su foco en el mapa.
+        /// </summary>
+        /// <param name="movement"></param>
+        public void tryMoveCharacter(char movement)
+        {
+            switch (movement)
+            {
+                case 'u'://Up
+                    if (_player.Position.Y > 0)
+                    {
+                        _player.Position.Y = _player.Position.Y - 1;//Subimos al personaje
+                        ChangeImageToDark();//Oscurecemos el tablero.
+                        //Necesitamos mostrar al personaje por pantalla (A ver si lo hacemos con id o no)
+                        focoPersonaje();
+                    }
+                    break;
+                case 'd'://Down
+                    if (_player.Position.Y < 7)
+                    {
+                        _player.Position.Y = _player.Position.Y + 1;//Bajamos al personaje
+                        ChangeImageToDark();//Oscurecemos el tablero.
+                        //Necesitamos mostrar al personaje por pantalla (A ver si lo hacemos con id o no)
+                        focoPersonaje();
+                    }
+                    break;
+                case 'r'://Right
+                    if (_player.Position.X < 7)
+                    {
+                        _player.Position.X = _player.Position.X + 1;//Movemos el personaje a la Derecha (_player.Position.X++)
+                        ChangeImageToDark();//Oscurecemos el tablero.
+                        //Necesitamos mostrar al personaje por pantalla (A ver si lo hacemos con id o no)
+                        focoPersonaje();
+                    }
+                    break;
+                case 'l'://Left
+                    if (_player.Position.X > 0)
+                    {
+                        _player.Position.X = _player.Position.X - 1;//Movemos el personaje a la izquierda (_player.Position.X--)
+                        ChangeImageToDark();//Oscurecemos el tablero.
+                        //Necesitamos mostrar al personaje por pantalla (A ver si lo hacemos con id o no)
+                        focoPersonaje();
+                    }
+                    break;
+            }
+        }
+        #endregion
     }
 }
