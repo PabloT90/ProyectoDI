@@ -77,38 +77,37 @@ namespace AlienCompadre.ViewModel
         /*
          Interfaz
          Nombre: focoPersonaje
-         Comentario: Este método nos permite mostrar y ocultar las casillas adyacentes y verticales del jugador
-         cuando este se mueva, cambiando al personaje de casilla.
-         Cabecera: private void focoPersonaje(char movimiento)
+         Comentario: Este método nos permite mostrar y ocultar las casillas adyacentes del jugador
+         cuando este se mueva.
+         Cabecera: private void focoPersonaje()
          Entrada:
             -int movimiento
-         Precondiciones:
-            -movimiento debe ser igual a 'u'(up), 'b'(below), 'l'(left) o 'r'(right)
          Postcondiciones: El método modifica el estado del tablero.
          */
-        private void focoPersonaje(char movimiento)
+        private void focoPersonaje()
         {
             int x = _player.Position.X;
             int y = _player.Position.Y;
 
-            switch (movimiento)
+            if (y+1 <= 7)
             {
-                case 'u':
-                    if(y > 0)//Si existen casillas superiores
-                    {
-                        _mazmorra.Tablero.ElementAt(8 * (y + 1) - x).Image = "//Assets/dark"+_mazmorra.Tablero.ElementAt(8 * (y + 1) - x).Image.Substring(5, 1)+".png";//Esto va a doler
-                    }
-                    break;
-                case 'b':
-
-                    break;
-                case 'l':
-
-                    break;
-                case 'r':
-
-                    break;
+                _mazmorra.Tablero.ElementAt(8 * (y+2) + (x)).ShownImage = _mazmorra.Tablero.ElementAt(8 * (y+2) + (x)).HideImage;
             }
+
+            if (y-1 >= 0)
+            {
+                _mazmorra.Tablero.ElementAt(8 * (y) + (x)).ShownImage = _mazmorra.Tablero.ElementAt(8 * (y) + (x)).HideImage;
+            }
+
+            if (x + 1 <= 7)
+            {
+                _mazmorra.Tablero.ElementAt(8 * (y + 1) + (x+1)).ShownImage = _mazmorra.Tablero.ElementAt(8 * (y + 1) + (x+1)).HideImage;
+            }
+
+            if (x - 1 >= 0)
+            {
+                _mazmorra.Tablero.ElementAt(8 * (y + 1) + (x-1)).ShownImage = _mazmorra.Tablero.ElementAt(8 * (y + 1) + (x - 1)).HideImage;
+            }     
         }
 
         #endregion
