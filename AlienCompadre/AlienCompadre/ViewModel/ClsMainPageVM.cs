@@ -89,22 +89,22 @@ namespace AlienCompadre.ViewModel
             int x = _player.Position.X;
             int y = _player.Position.Y;
 
-            if (y+1 <= 7)
+            if (y+1 <= 7)//Foco debajo del personaje
             {
                 _mazmorra.Tablero.ElementAt(8 * (y+2) + (x)).ShownImage = _mazmorra.Tablero.ElementAt(8 * (y+2) + (x)).HideImage;
             }
 
-            if (y-1 >= 0)
+            if (y-1 >= 0)//Foco arriba del personaje
             {
                 _mazmorra.Tablero.ElementAt(8 * (y) + (x)).ShownImage = _mazmorra.Tablero.ElementAt(8 * (y) + (x)).HideImage;
             }
 
-            if (x + 1 <= 7)
+            if (x + 1 <= 7)//Foco derecha del personaje 
             {
                 _mazmorra.Tablero.ElementAt(8 * (y + 1) + (x+1)).ShownImage = _mazmorra.Tablero.ElementAt(8 * (y + 1) + (x+1)).HideImage;
             }
 
-            if (x - 1 >= 0)
+            if (x - 1 >= 0)//Foco izquierda del personaje
             {
                 _mazmorra.Tablero.ElementAt(8 * (y + 1) + (x-1)).ShownImage = _mazmorra.Tablero.ElementAt(8 * (y + 1) + (x - 1)).HideImage;
             }     
