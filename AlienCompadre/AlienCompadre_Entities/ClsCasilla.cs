@@ -10,53 +10,53 @@ namespace AlienCompadre_Entities
 {
     public class ClsCasilla : INotifyPropertyChanged
     {
-        private String _hideImage;
-        private String _shownImage;
+        private String _lightImage;
+        private String _darkImage;
         private String _characterImage;
         private int _rowObject;
 
         #region Constructores
         public ClsCasilla()
         {
-            _hideImage = "DEFAULT";
-            _shownImage = "DEFAULT";
+            _lightImage = "DEFAULT";
+            _darkImage = "DEFAULT";
             _characterImage = "DEFAULT";
             _rowObject = 0;
         }
 
         public ClsCasilla(String srcFrontImage, String srcBackImage01, String srcBackImage02, int rowObject)
         {
-            _hideImage = srcFrontImage;
-            _shownImage = srcBackImage01;
+            _lightImage = srcFrontImage;
+            _darkImage = srcBackImage01;
             _characterImage = srcBackImage02;
             _rowObject = rowObject;
         }
         #endregion
 
         #region Propiedades Públicas
-        public String HideImage
+        public String LightImage
         {
             get
             {
-                return _hideImage;
+                return _lightImage;
             }
             set
             {
-                _hideImage = value;
-                NotifyPropertyChanged("HideImage");
+                _lightImage = value;
+                NotifyPropertyChanged("LightImage");
             }
         }
 
-        public String ShownImage
+        public String DarkImage
         {
             get
             {
-                return _shownImage;
+                return _darkImage;
             }
             set
             {
-                _shownImage = value;
-                NotifyPropertyChanged("ShownImage");
+                _darkImage = value;
+                NotifyPropertyChanged("DarkImage");
             }
         }
 
