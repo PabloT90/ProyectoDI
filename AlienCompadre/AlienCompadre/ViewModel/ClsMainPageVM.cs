@@ -110,10 +110,9 @@ namespace AlienCompadre.ViewModel
             }     
         }
         
-
         public void ChangeImageToDark() {
             for (int i = 0; i < _mazmorra.Tablero.Count; i++) {
-                //TODO renombrar el nombre de las imagenes Dark.
+                //TODO conseguir quitar el .png de la URL de las fotos.
                 _mazmorra.Tablero.ElementAt(i).DarkImage = ""; //Cambiarla por la misma imagen pero oscurecida
             }
             

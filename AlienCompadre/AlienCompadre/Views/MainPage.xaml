@@ -37,9 +37,9 @@
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <Canvas Width="70" Height="70">
-                        <Image Source="{Binding Image, Mode=TwoWay}" Width="70" Height="70"/>
-
-                       
+                        <Image Source="{Binding LightImage, Mode=TwoWay}" Width="70" Height="70"/>
+                        <Image Source="{Binding DarkImage, Mode=TwoWay}" Width="70" Height="70"/>
+                        <Image Source="{Binding CharacterImage, Mode=TwoWay}" Width="70" Height="70"/>
                     </Canvas>
                     
                 </DataTemplate>

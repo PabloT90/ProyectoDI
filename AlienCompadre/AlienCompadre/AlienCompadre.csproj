@@ -11,7 +11,7 @@
     <AssemblyName>AlienCompadre</AssemblyName>
     <DefaultLanguage>es-ES</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.17763.0</TargetPlatformVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.18362.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.17134.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -135,41 +135,43 @@
     <None Include="AlienCompadre_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\alien1.png" />
     <Content Include="Assets\boton.png" />
     <Content Include="Assets\chestclosed.PNG" />
     <Content Include="Assets\chestOpen.PNG" />
-    <Content Include="Assets\dark1.png" />
-    <Content Include="Assets\dark10.png" />
-    <Content Include="Assets\dark11.png" />
-    <Content Include="Assets\dark12.png" />
-    <Content Include="Assets\dark13.png" />
-    <Content Include="Assets\dark14.png" />
-    <Content Include="Assets\dark15.png" />
-    <Content Include="Assets\dark16.png" />
-    <Content Include="Assets\dark2.png" />
-    <Content Include="Assets\dark3.png" />
-    <Content Include="Assets\dark4.png" />
-    <Content Include="Assets\dark5.png" />
-    <Content Include="Assets\dark6.png" />
-    <Content Include="Assets\dark7.png" />
-    <Content Include="Assets\dark8.png" />
-    <Content Include="Assets\dark9.png" />
     <Content Include="Assets\floor1.png" />
     <Content Include="Assets\floor10.png" />
+    <Content Include="Assets\floor10dark.png" />
     <Content Include="Assets\floor11.png" />
+    <Content Include="Assets\floor11dark.png" />
     <Content Include="Assets\floor12.png" />
+    <Content Include="Assets\floor12dark.png" />
     <Content Include="Assets\floor13.png" />
+    <Content Include="Assets\floor13dark.png" />
     <Content Include="Assets\floor14.png" />
+    <Content Include="Assets\floor14dark.png" />
     <Content Include="Assets\floor15.png" />
+    <Content Include="Assets\floor15dark.png" />
     <Content Include="Assets\floor16.png" />
+    <Content Include="Assets\floor16dark.png" />
+    <Content Include="Assets\floor1dark.png" />
     <Content Include="Assets\floor2.png" />
+    <Content Include="Assets\floor2dark.png" />
     <Content Include="Assets\floor3.png" />
+    <Content Include="Assets\floor3dark.png" />
     <Content Include="Assets\floor4.png" />
+    <Content Include="Assets\floor4dark.png" />
     <Content Include="Assets\floor5.png" />
+    <Content Include="Assets\floor5dark.png" />
     <Content Include="Assets\floor6.png" />
+    <Content Include="Assets\floor6dark.png" />
     <Content Include="Assets\floor7.png" />
+    <Content Include="Assets\floor7dark.png" />
     <Content Include="Assets\floor8.png" />
+    <Content Include="Assets\floor8dark.png" />
     <Content Include="Assets\floor9.png" />
+    <Content Include="Assets\floor9dark.png" />
+    <Content Include="Assets\player.png" />
     <Content Include="Assets\trapdoor.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
