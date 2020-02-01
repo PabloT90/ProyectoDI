@@ -8,51 +8,43 @@ using System.Threading.Tasks;
 
 namespace AlienCompadre_Entities
 {
-    public class ClsStats : INotifyPropertyChanged
+    public class ClsAlien : INotifyPropertyChanged
     {
-        #region Propiedades privadas
-        private String _name;
-        private int _score;
-        #endregion
+        private String _srcImage;
+        private ClsPunto _position;
 
         #region Constructores
-        public ClsStats()
+        public ClsAlien()
         {
-            this._name = "Vacio";
-            this._score = 0;
-        }
-
-        public ClsStats(string name, int score)
-        {
-            this._name = name;
-            this._score = score;
+            _srcImage = "/Assets/alien1.png";
+            _position = new ClsPunto(7, 7);
         }
         #endregion
 
-        #region Propiedades publicas
-        public String Name
+        #region Propiedades Públicas
+        public String SrcImage
         {
             get
             {
-                return _name;
+                return _srcImage;
             }
             set
             {
-                _name = value;
-                NotifyPropertyChanged("Name");
+                _srcImage = value;
+                NotifyPropertyChanged("SrcImage");
             }
         }
 
-        public int Score
+        public ClsPunto Position
         {
             get
             {
-                return _score;
+                return _position;
             }
             set
             {
-                _score = value;
-                NotifyPropertyChanged("Score");
+                _position = value;
+                NotifyPropertyChanged("Position");
             }
         }
         #endregion
@@ -66,4 +58,3 @@ namespace AlienCompadre_Entities
         #endregion
     }
 }
-

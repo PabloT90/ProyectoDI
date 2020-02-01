@@ -120,6 +120,7 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ClsAlien.cs" />
     <Compile Include="ClsCasilla.cs" />
     <Compile Include="ClsPlayer.cs" />
     <Compile Include="ClsPunto.cs" />
