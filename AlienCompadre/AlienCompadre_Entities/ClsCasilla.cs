@@ -14,6 +14,7 @@ namespace AlienCompadre_Entities
         private String _darkImage;
         private String _characterImage;
         private int _rowObject;
+        private int _chestReward;
 
         #region Constructores
         public ClsCasilla()
@@ -22,6 +23,7 @@ namespace AlienCompadre_Entities
             _darkImage = "DEFAULT";
             _characterImage = "DEFAULT";
             _rowObject = 0;
+            _chestReward = 0;
         }
 
         public ClsCasilla(String srcFrontImage, String srcBackImage01, String srcBackImage02, int rowObject)
@@ -31,6 +33,16 @@ namespace AlienCompadre_Entities
             _characterImage = srcBackImage02;
             _rowObject = rowObject;
         }
+
+        public ClsCasilla(String srcFrontImage, String srcBackImage01, String srcBackImage02, int rowObject, int chestReward)
+        {
+            _lightImage = srcFrontImage;
+            _darkImage = srcBackImage01;
+            _characterImage = srcBackImage02;
+            _rowObject = rowObject;
+            _chestReward = chestReward;
+        }
+
         #endregion
 
         #region Propiedades Públicas
@@ -83,6 +95,19 @@ namespace AlienCompadre_Entities
             {
                 _rowObject = value;
                 NotifyPropertyChanged("RowObject");
+            }
+        }
+
+        public int ChestReward
+        {
+            get
+            {
+                return _chestReward;
+            }
+            set
+            {
+                _chestReward = value;
+                NotifyPropertyChanged("ChestReward");
             }
         }
         #endregion

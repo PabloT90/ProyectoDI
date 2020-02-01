@@ -44,8 +44,10 @@ namespace AlienCompadre_Entities
                 _tablero.Add(new ClsCasilla("/Assets/floor" + numRandom + ".png", "/Assets/floor" + numRandom + "dark.png", "", 0));//0 significa que la casilla esta vacía
             }
 
-            for (int i = 0; i < _numbersOfChest; i++)//Agregamos los cofres
-                _tablero.Add(new ClsCasilla("/Assets/chestclosed.png" ,"","", 3));
+            //for (int i = 0; i < _numbersOfChest; i++)//Agregamos los cofres
+            _tablero.Add(new ClsCasilla("/Assets/chestclosed.png" ,"","", 3, 1));//Contiene la llave
+            _tablero.Add(new ClsCasilla("/Assets/chestclosed.png", "", "", 3, 2));//Contiene munición
+            _tablero.Add(new ClsCasilla("/Assets/chestclosed.png", "", "", 3, 3));//Contiene cristales de los que le gusta a Pablo
 
             _tablero.Add(new ClsCasilla("/Assets/trapdoor.png", "", "", 2));//2 significa que la casilla contiene una puerta
 

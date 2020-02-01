@@ -19,6 +19,7 @@ namespace AlienCompadre.ViewModel
         private int _completedDungeons;
         private List<ClsStats> _stats;
         private ClsListadosStatsBL list = new ClsListadosStatsBL();
+        private bool _keyFound;
 
         #region Constructores
         public ClsMainPageVM()
@@ -27,7 +28,8 @@ namespace AlienCompadre.ViewModel
             _player = new ClsPlayer();
             _alien = new ClsAlien();
             _stats = new List<ClsStats>();
-            _stats = new List<ClsStats>(list.listadoStats()); 
+            _stats = new List<ClsStats>(list.listadoStats());
+            _keyFound = false;
         }
         #endregion
 
@@ -231,6 +233,27 @@ namespace AlienCompadre.ViewModel
             ChangeImageToDark();
             focoPersonaje();
             _mazmorra.Tablero.ElementAt(8 * (_player.Position.Y) + (_player.Position.X)).DarkImage = "/Assets/player.png";
+            if (_mazmorra.Tablero.ElementAt(8 * (_player.Position.Y) + (_player.Position.X)).RowObject == 3)   //Comprobamos si la casilla contiene un cofre
+            {
+                switch(_mazmorra.Tablero.ElementAt(8 * (_player.Position.Y) + (_player.Position.X)).ChestReward)
+                {
+                    case 1://Contiene una llave
+                        this._keyFound = true;
+                        break;
+                    case 2://Contiene munición
+                        this._player.Ammo++;
+                        break;
+                    case 3://Contiene cristales
+                        //Mover al alien cerca
+                        break;
+                }
+            }
+
+            if (_mazmorra.Tablero.ElementAt(8 * (_player.Position.Y) + (_player.Position.X)).RowObject == 2 && _keyFound)//Si la casilla es la trampilla y el personaje tiene la llave
+            {
+                //Ganas la partida
+            }
+
             moveAlien();
         }
         #endregion
