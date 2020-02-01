@@ -7,6 +7,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.System;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -31,28 +32,50 @@ namespace AlienCompadre
             viewModel = (ClsMainPageVM)this.DataContext;
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            // Set the input focus to ensure that keyboard events are raised.
+            this.Loaded += delegate { this.Focus(FocusState.Programmatic); };
+        }
+
+
+        private void allowfocus_Loaded(object sender, RoutedEventArgs e)
+        {
+            Window.Current.Content.KeyDown += Grid_KeyDown;
+        }
+
+        private static bool IsCtrlKeyPressed()
+        {
+            var ctrlState = CoreWindow.GetForCurrentThread().GetKeyState(VirtualKey.Control);
+            return (ctrlState & CoreVirtualKeyStates.Down) == CoreVirtualKeyStates.Down;
+        }
+
         /// <summary>
         /// Evento que se da al pulsar una tecla, en este caso, W y S para mover la barra
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void Grid_KeyDown(object sender, KeyRoutedEventArgs e)
+        private void Grid_KeyDown(object sender, KeyRoutedEventArgs e)
         {
-            switch (e.Key)
+            if (IsCtrlKeyPressed())
             {
-                case VirtualKey.Up:
-                    viewModel.tryMoveCharacter('u');//Intentamos mover al personaje hacía arriba
-                    break;
-                case VirtualKey.Down:
-                    viewModel.tryMoveCharacter('d');//Intentamos mover al personaje hacía abajo
-                    break;
-                case VirtualKey.Right:
-                    viewModel.tryMoveCharacter('r');//Intentamos mover al personaje hacía la derecha
-                    break;
-                case VirtualKey.Left:
-                    viewModel.tryMoveCharacter('l');//Intentamos mover al personaje hacía la izquierda
-                    break;
+                switch (e.Key)
+                {
+                    case VirtualKey.Up:
+                        viewModel.tryMoveCharacter('u');//Intentamos mover al personaje hacía arriba
+                        break;
+                    case VirtualKey.Down:
+                        viewModel.tryMoveCharacter('d');//Intentamos mover al personaje hacía abajo
+                        break;
+                    case VirtualKey.Right:
+                        viewModel.tryMoveCharacter('r');//Intentamos mover al personaje hacía la derecha
+                        break;
+                    case VirtualKey.Left:
+                        viewModel.tryMoveCharacter('l');//Intentamos mover al personaje hacía la izquierda
+                        break;
+                }
             }
+            
         }
     }
 }
