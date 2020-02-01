@@ -22,10 +22,12 @@ namespace AlienCompadre_DAL.Connection
 
             //Mi conexion
             //TODO MODIFICAR PARA MI CONEXION
-            this.server = "107-05\\MSSQLSERVER2017";
-            this.dataBase = "Avengers";
-            this.user = "pr";
-            this.pass = "123";
+            this.server = "rafamanzano.database.windows.net";
+            //this.server = "ramanzano.database.windows.net";
+            this.dataBase = "Personas";
+            this.user = "rmanzano";
+            this.pass = "MiTesoro.";
+
 
             /* TODO Fernando aqui tienes preparado la conexion, solo descomentar y probar
              * this.server = "107-05\\MSSQLSERVER2017";

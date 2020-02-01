@@ -6,17 +6,22 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:vm="using:AlienCompadre.ViewModel"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    
+    <Page.DataContext>
+        <vm:ClsMainPageVM></vm:ClsMainPageVM>
+    </Page.DataContext>
 
     <RelativePanel>
         <Image Name="imagen" Stretch="Fill" Source="ms-appx:///Assets/estadisticas.jpg"/>
-        <TextBlock x:Name="mejoresJugadores" Foreground="Red" Style="{StaticResource letra}" FontSize="100" Margin="10, 5, 5, 0">MEJORES JUGADORES:</TextBlock>
+        <TextBlock x:Name="mejoresJugadores" Foreground="Red" Style="{StaticResource letra}" FontSize="100" Margin="20, 5, 5, 0">MEJORES JUGADORES:</TextBlock>
         <ListView RelativePanel.Below="mejoresJugadores" ItemsSource="{Binding Stats, Mode=TwoWay}" Name="listView">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Path=Name}"></TextBlock>
-                        <TextBlock Text="{Binding Path=Score}"></TextBlock>
+                    <StackPanel Margin="10" Orientation="Horizontal" Height="60">
+                        <TextBlock FontSize="75"  Foreground="Red" Style="{StaticResource letra}" Text="{Binding Path=Name}"></TextBlock>
+                        <TextBlock Margin="20,15,0,0" FontSize="30" Foreground="Red" Style="{StaticResource letra}" Text="{Binding Path=Score}"></TextBlock>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

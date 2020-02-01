@@ -1,4 +1,5 @@
 ﻿using AlienCompadre.Models;
+using AlienCompadre_BL.Lists;
 using AlienCompadre_Entities;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace AlienCompadre.ViewModel
         private ClsAlien _alien;
         private int _completedDungeons;
         private List<ClsStats> _stats;
+        private ClsListadosStatsBL list = new ClsListadosStatsBL();
 
         #region Constructores
         public ClsMainPageVM()
@@ -25,6 +27,7 @@ namespace AlienCompadre.ViewModel
             _player = new ClsPlayer();
             _alien = new ClsAlien();
             _stats = new List<ClsStats>();
+            _stats = new List<ClsStats>(list.listadoStats()); 
         }
         #endregion
 
