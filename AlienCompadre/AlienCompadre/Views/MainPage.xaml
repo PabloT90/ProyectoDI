@@ -21,7 +21,7 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <Image x:Name="playerImage" Grid.Column="0" Margin="10" Source="{Binding Player.SrcImage, Mode=OneWay}" Width="50" Height="50"></Image>
+            <!--<Image x:Name="playerImage" Grid.Column="0" Margin="10" Source="{Binding Player.SrcImage, Mode=OneWay}" Width="50" Height="50"></Image>-->
             <StackPanel Grid.Column="0" Orientation="Horizontal" Height="Auto">
                 <TextBlock Text="Ammo: " Margin="10" FontSize="70" Style="{StaticResource letra}" Foreground="Red"/>
                 <TextBlock Name="ammo" FontSize="30" Margin="0, 25, 10, 0" Text="{Binding Player.Ammo}" Style="{StaticResource letra}" Foreground="Red"/>

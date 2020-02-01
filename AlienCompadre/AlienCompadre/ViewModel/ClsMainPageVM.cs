@@ -353,10 +353,14 @@ namespace AlienCompadre.ViewModel
                         _player.Ammo = _player.Ammo - 1;
                         alienEscape();//El alien escapa
                         //Inserta sonido disparo
+                        //playSounds(1);
                     }
                     else
                     {
                         //Inserta sonido muerte personaje
+                        //playSounds(2);
+                        Frame fr = new Frame();
+                        fr.Navigate(typeof(PantallaFinal)); //No funciona
                     }
                 }
             }
@@ -374,6 +378,28 @@ namespace AlienCompadre.ViewModel
                 _alien.Position.X = 0;
                 _alien.Position.Y = 0;
             }
+        }
+        #endregion
+
+        #region Para el sonido
+        private async void playSounds(int numero)
+        {
+            MediaElement mysong = new MediaElement();
+            Windows.Storage.StorageFolder folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Sounds");
+            String archivoMusica = "";
+            switch (numero)
+            {
+                case 1:
+                    archivoMusica = "4gun1.wav";
+                    break;
+                case 2:
+                    archivoMusica = "grito.mp3";
+                    break;
+            }
+            Windows.Storage.StorageFile file = await folder.GetFileAsync(archivoMusica);
+            var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
+            mysong.SetSource(stream, file.ContentType);
+            mysong.Play();
         }
         #endregion
     }
