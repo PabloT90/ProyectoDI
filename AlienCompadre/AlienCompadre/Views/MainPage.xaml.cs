@@ -30,52 +30,72 @@ namespace AlienCompadre
         {
             this.InitializeComponent();
             viewModel = (ClsMainPageVM)this.DataContext;
+           Window.Current.CoreWindow.CharacterReceived += CoreWindow_CharacterReceived;
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            // Set the input focus to ensure that keyboard events are raised.
-            this.Loaded += delegate { this.Focus(FocusState.Programmatic); };
-        }
-
-
-        private void allowfocus_Loaded(object sender, RoutedEventArgs e)
-        {
-            Window.Current.Content.KeyDown += Grid_KeyDown;
-        }
-
-        private static bool IsCtrlKeyPressed()
-        {
-            var ctrlState = CoreWindow.GetForCurrentThread().GetKeyState(VirtualKey.Control);
-            return (ctrlState & CoreVirtualKeyStates.Down) == CoreVirtualKeyStates.Down;
-        }
-
-        /// <summary>
-        /// Evento que se da al pulsar una tecla, en este caso, W y S para mover la barra
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Grid_KeyDown(object sender, KeyRoutedEventArgs e)
-        {
-            if (IsCtrlKeyPressed())
-            {
-                switch (e.Key)
-                {
-                    case VirtualKey.Up:
-                        viewModel.tryMoveCharacter('u');//Intentamos mover al personaje hacía arriba
-                        break;
-                    case VirtualKey.Down:
-                        viewModel.tryMoveCharacter('d');//Intentamos mover al personaje hacía abajo
-                        break;
-                    case VirtualKey.Right:
-                        viewModel.tryMoveCharacter('r');//Intentamos mover al personaje hacía la derecha
-                        break;
-                    case VirtualKey.Left:
-                        viewModel.tryMoveCharacter('l');//Intentamos mover al personaje hacía la izquierda
-                        break;
-                }
-            }
+        private void CoreWindow_CharacterReceived(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.CharacterReceivedEventArgs args) {
             
+            if (args.KeyCode == 119) //Arriba
+            {
+                viewModel.tryMoveCharacter('u');
+            }
+            if (args.KeyCode == 115) //Abajo
+            {
+                viewModel.tryMoveCharacter('d');
+            }
+            if (args.KeyCode == 97) { //Izquierda
+                viewModel.tryMoveCharacter('l');
+            }
+
+            if (args.KeyCode == 100) { //Derecha
+                viewModel.tryMoveCharacter('r');
+            }
         }
+
+        //protected override void OnNavigatedTo(NavigationEventArgs e)
+        //{
+        //    // Set the input focus to ensure that keyboard events are raised.
+        //    this.Loaded += delegate { this.Focus(FocusState.Programmatic); };
+        //}
+
+
+        //private void allowfocus_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    Window.Current.Content.KeyDown += Grid_KeyDown;
+        //}
+
+        //private static bool IsCtrlKeyPressed()
+        //{
+        //    var ctrlState = CoreWindow.GetForCurrentThread().GetKeyState(VirtualKey.Control);
+        //    return (ctrlState & CoreVirtualKeyStates.Down) == CoreVirtualKeyStates.Down;
+        //}
+
+        ///// <summary>
+        ///// Evento que se da al pulsar una tecla, en este caso, W y S para mover la barra
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void Grid_KeyDown(object sender, KeyRoutedEventArgs e)
+        //{
+        //    if (IsCtrlKeyPressed())
+        //    {
+        //        switch (e.Key)
+        //        {
+        //            case VirtualKey.Up:
+        //                viewModel.tryMoveCharacter('u');//Intentamos mover al personaje hacía arriba
+        //                break;
+        //            case VirtualKey.Down:
+        //                viewModel.tryMoveCharacter('d');//Intentamos mover al personaje hacía abajo
+        //                break;
+        //            case VirtualKey.Right:
+        //                viewModel.tryMoveCharacter('r');//Intentamos mover al personaje hacía la derecha
+        //                break;
+        //            case VirtualKey.Left:
+        //                viewModel.tryMoveCharacter('l');//Intentamos mover al personaje hacía la izquierda
+        //                break;
+        //        }
+        //    }
+            
+        //}
     }
 }

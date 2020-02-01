@@ -91,29 +91,37 @@ namespace AlienCompadre.ViewModel
 
             if (y+1 <= 7)//Foco debajo del personaje
             {
-                _mazmorra.Tablero.ElementAt(8 * (y+2) + (x)).LightImage = _mazmorra.Tablero.ElementAt(8 * (y+2) + (x)).DarkImage;
+                //_mazmorra.Tablero.ElementAt(8 * (y+2) + (x)).LightImage = _mazmorra.Tablero.ElementAt(8 * (y+2) + (x)).DarkImage;
+                _mazmorra.Tablero.ElementAt(8 * (y + 1) + (x)).DarkImage = "";
             }
 
             if (y-1 >= 0)//Foco arriba del personaje
             {
-                _mazmorra.Tablero.ElementAt(8 * (y) + (x)).LightImage = _mazmorra.Tablero.ElementAt(8 * (y) + (x)).DarkImage;
+                //_mazmorra.Tablero.ElementAt(8 * (y) + (x)).LightImage = _mazmorra.Tablero.ElementAt(8 * (y) + (x)).DarkImage;
+                _mazmorra.Tablero.ElementAt(8 * (y-1) + (x)).DarkImage = "";
             }
 
             if (x + 1 <= 7)//Foco derecha del personaje 
             {
-                _mazmorra.Tablero.ElementAt(8 * (y + 1) + (x+1)).LightImage = _mazmorra.Tablero.ElementAt(8 * (y + 1) + (x+1)).DarkImage;
+                //_mazmorra.Tablero.ElementAt(8 * (y + 1) + (x+1)).LightImage = _mazmorra.Tablero.ElementAt(8 * (y + 1) + (x+1)).DarkImage;
+                _mazmorra.Tablero.ElementAt(8 * (y ) + (x + 1)).DarkImage = "";
             }
 
             if (x - 1 >= 0)//Foco izquierda del personaje
             {
-                _mazmorra.Tablero.ElementAt(8 * (y + 1) + (x-1)).LightImage = _mazmorra.Tablero.ElementAt(8 * (y + 1) + (x - 1)).DarkImage;
+                //_mazmorra.Tablero.ElementAt(8 * (y + 1) + (x-1)).LightImage = _mazmorra.Tablero.ElementAt(8 * (y + 1) + (x - 1)).DarkImage;
+                _mazmorra.Tablero.ElementAt(8 * (y ) + (x - 1)).DarkImage = "";
             }     
         }
         
         public void ChangeImageToDark() {
             for (int i = 0; i < _mazmorra.Tablero.Count; i++) {
-                //TODO conseguir quitar el .png de la URL de las fotos.
-                _mazmorra.Tablero.ElementAt(i).DarkImage = ""; //Cambiarla por la misma imagen pero oscurecida
+                if (_mazmorra.Tablero.ElementAt(i).DarkImage == "") {
+                    String ruta = _mazmorra.Tablero.ElementAt(i).LightImage;
+                    ruta = ruta.Substring(0, ruta.Length - 4);
+                    _mazmorra.Tablero.ElementAt(i).DarkImage = ruta + "dark.png";
+                }
+                
             }
             
         }
@@ -127,12 +135,17 @@ namespace AlienCompadre.ViewModel
         /// <param name="movement"></param>
         public void tryMoveCharacter(char movement)
         {
+            int x = _player.Position.X;
+            int y = _player.Position.Y;
             switch (movement)
             {
                 case 'u'://Up
                     if (_player.Position.Y > 0)
                     {
+
+                        _mazmorra.Tablero.ElementAt(8 * (y) + (x)).DarkImage = "";
                         _player.Position.Y = _player.Position.Y - 1;//Subimos al personaje
+                        _mazmorra.Tablero.ElementAt(8 * (y) + (x)).DarkImage = "";
                         ChangeImageToDark();//Oscurecemos el tablero.
                         //Necesitamos mostrar al personaje por pantalla (A ver si lo hacemos con id o no)
                         focoPersonaje();
@@ -166,6 +179,11 @@ namespace AlienCompadre.ViewModel
                     }
                     break;
             }
+
+        }
+        private void handlerPlayer() {
+            ChangeImageToDark();
+            focoPersonaje();
         }
         #endregion
     }
