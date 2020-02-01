@@ -143,39 +143,46 @@ namespace AlienCompadre.ViewModel
                     if (_player.Position.Y > 0)
                     {
 
-                        _mazmorra.Tablero.ElementAt(8 * (y) + (x)).DarkImage = "";
+                        _mazmorra.Tablero.ElementAt(8 * (y) + (x)).CharacterImage = "";
                         _player.Position.Y = _player.Position.Y - 1;//Subimos al personaje
-                        _mazmorra.Tablero.ElementAt(8 * (y) + (x)).DarkImage = "";
-                        ChangeImageToDark();//Oscurecemos el tablero.
+                        handlerPlayer();
+                        //_mazmorra.Tablero.ElementAt(8 * (y) + (x)).DarkImage = "";
+                        //ChangeImageToDark();//Oscurecemos el tablero.
                         //Necesitamos mostrar al personaje por pantalla (A ver si lo hacemos con id o no)
-                        focoPersonaje();
+                        //focoPersonaje();
                     }
                     break;
                 case 'd'://Down
                     if (_player.Position.Y < 7)
                     {
+                        _mazmorra.Tablero.ElementAt(8 * (y) + (x)).CharacterImage = "";
                         _player.Position.Y = _player.Position.Y + 1;//Bajamos al personaje
-                        ChangeImageToDark();//Oscurecemos el tablero.
+                        handlerPlayer();
+                        //ChangeImageToDark();//Oscurecemos el tablero.
                         //Necesitamos mostrar al personaje por pantalla (A ver si lo hacemos con id o no)
-                        focoPersonaje();
+                        //focoPersonaje();
                     }
                     break;
                 case 'r'://Right
                     if (_player.Position.X < 7)
                     {
+                        _mazmorra.Tablero.ElementAt(8 * (y) + (x)).CharacterImage = "";
                         _player.Position.X = _player.Position.X + 1;//Movemos el personaje a la Derecha (_player.Position.X++)
-                        ChangeImageToDark();//Oscurecemos el tablero.
+                        handlerPlayer();
+                        //ChangeImageToDark();//Oscurecemos el tablero.
                         //Necesitamos mostrar al personaje por pantalla (A ver si lo hacemos con id o no)
-                        focoPersonaje();
+                        //focoPersonaje();
                     }
                     break;
                 case 'l'://Left
                     if (_player.Position.X > 0)
                     {
+                        _mazmorra.Tablero.ElementAt(8 * (y) + (x)).CharacterImage = "";
                         _player.Position.X = _player.Position.X - 1;//Movemos el personaje a la izquierda (_player.Position.X--)
-                        ChangeImageToDark();//Oscurecemos el tablero.
+                        handlerPlayer();
+                        //ChangeImageToDark();//Oscurecemos el tablero.
                         //Necesitamos mostrar al personaje por pantalla (A ver si lo hacemos con id o no)
-                        focoPersonaje();
+                        //focoPersonaje();
                     }
                     break;
             }
@@ -184,6 +191,7 @@ namespace AlienCompadre.ViewModel
         private void handlerPlayer() {
             ChangeImageToDark();
             focoPersonaje();
+            _mazmorra.Tablero.ElementAt(8 * (_player.Position.Y) + (_player.Position.X)).DarkImage = "/Assets/player.png";
         }
         #endregion
     }
