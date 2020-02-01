@@ -144,7 +144,27 @@ namespace AlienCompadre.ViewModel
             {
                 //_mazmorra.Tablero.ElementAt(8 * (y + 1) + (x-1)).LightImage = _mazmorra.Tablero.ElementAt(8 * (y + 1) + (x - 1)).DarkImage;
                 _mazmorra.Tablero.ElementAt(8 * (y ) + (x - 1)).DarkImage = "";
-            }     
+            }
+
+            if (x + 1 <= 7 && y - 1 >= 0)//Foco derecha superior del personaje 
+            {
+                _mazmorra.Tablero.ElementAt(8 * (y-1) + (x + 1)).DarkImage = "";
+            }
+
+            if (x - 1 >= 0 && y - 1 >= 0)//Foco izquierda superior del personaje
+            {
+                _mazmorra.Tablero.ElementAt(8 * (y-1) + (x - 1)).DarkImage = "";
+            }
+
+            if (x + 1 <= 7 && y + 1 <= 7)//Foco derecha inferior del personaje 
+            {
+                _mazmorra.Tablero.ElementAt(8 * (y + 1) + (x + 1)).DarkImage = "";
+            }
+
+            if (x - 1 >= 0 && y + 1 <= 7)//Foco izquierda inferior del personaje
+            {
+                _mazmorra.Tablero.ElementAt(8 * (y + 1) + (x - 1)).DarkImage = "";
+            }
         }
         
         public void ChangeImageToDark() {
@@ -302,6 +322,34 @@ namespace AlienCompadre.ViewModel
                 if (_mazmorra.Tablero.ElementAt(8 * (_alien.Position.Y) + (_alien.Position.X)).DarkImage.Equals(""))
                     _mazmorra.Tablero.ElementAt(8 * (_alien.Position.Y) + (_alien.Position.X)).CharacterImage = _alien.SrcImage;
                 moved = true;
+
+                if (_alien.Position.X == _player.Position.X && _alien.Position.Y == _player.Position.Y)//Sería un equals en el futuro
+                {
+                    if (_player.Ammo > 0)
+                    {
+                        _player.Ammo = _player.Ammo - 1;
+                        alienEscape();//El alien escapa
+                        //Inserta sonido disparo
+                    }
+                    else
+                    {
+                        //Inserta sonido muerte personaje
+                    }
+                }
+            }
+        }
+
+        public void alienEscape()
+        {
+            if (_mazmorra.Tablero.ElementAt(63).CharacterImage.Equals(""))
+            {
+                _alien.Position.X = 7;
+                _alien.Position.Y = 7;
+            }
+            else
+            {
+                _alien.Position.X = 0;
+                _alien.Position.Y = 0;
             }
         }
         #endregion
