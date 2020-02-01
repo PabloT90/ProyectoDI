@@ -15,12 +15,14 @@ namespace AlienCompadre.ViewModel
         private ClsTablero _mazmorra;
         private ClsPlayer _player;
         private int _completedDungeons;
+        private List<ClsStats> _stats;
 
         #region Constructores
         public ClsMainPageVM()
         {
             _mazmorra = new ClsTablero();
             _player = new ClsPlayer();
+            _stats = new List<ClsStats>();
         }
         #endregion
 
@@ -61,6 +63,19 @@ namespace AlienCompadre.ViewModel
             {
                 _completedDungeons = value;
                 NotifyPropertyChanged("CompletedDungeons");
+            }
+        }
+
+        public List<ClsStats> Stats
+        {
+            get
+            {
+                return _stats;
+            }
+            set
+            {
+                _stats = value;
+                NotifyPropertyChanged("Stats");
             }
         }
         #endregion

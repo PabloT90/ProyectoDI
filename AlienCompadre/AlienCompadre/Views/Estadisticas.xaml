@@ -1,0 +1,26 @@
+﻿<Page
+    x:Class="AlienCompadre.Views.Estadisticas"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AlienCompadre.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <RelativePanel>
+        <Image Name="imagen" Stretch="Fill" Source="ms-appx:///Assets/estadisticas.jpg"/>
+        <TextBlock x:Name="mejoresJugadores" Foreground="Red" Style="{StaticResource letra}" FontSize="100" Margin="10, 5, 5, 0">MEJORES JUGADORES:</TextBlock>
+        <ListView RelativePanel.Below="mejoresJugadores" ItemsSource="{Binding Stats, Mode=TwoWay}" Name="listView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Path=Name}"></TextBlock>
+                        <TextBlock Text="{Binding Path=Score}"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </RelativePanel>
+</Page>

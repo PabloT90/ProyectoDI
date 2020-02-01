@@ -121,24 +121,39 @@
     </Compile>
     <Compile Include="ViewModel\ClsMainPageVM.cs" />
     <Compile Include="ViewModel\Utilidades\ClsUtilidades.cs" />
+    <Compile Include="Views\Estadisticas.xaml.cs">
+      <DependentUpon>Estadisticas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\ClsTablero.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\Lists\ListUtility.cs" />
+    <Compile Include="Views\MenuPrincipal.xaml.cs">
+      <DependentUpon>MenuPrincipal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PantallaFinal.xaml.cs">
+      <DependentUpon>PantallaFinal.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="Sounds\4gun1.wav" />
+    <Content Include="Sounds\7door.wav" />
+    <Content Include="Sounds\animal, criatura, gruñido %28mp3cut.net%29.mp3" />
+    <Content Include="Sounds\Mujer Grito de Terror %28Efecto de Sonido%29 Female Scream Horror Sound Effect %28musicaq %28mp3cut.net%29.mp3" />
     <None Include="AlienCompadre_TemporaryKey.pfx" />
+    <Content Include="Assets\Mars Attacks.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\alien1.png" />
     <Content Include="Assets\boton.png" />
     <Content Include="Assets\chestclosed.PNG" />
     <Content Include="Assets\chestOpen.PNG" />
+    <Content Include="Assets\estadisticas.jpg" />
     <Content Include="Assets\floor1.png" />
     <Content Include="Assets\floor10.png" />
     <Content Include="Assets\floor10dark.png" />
@@ -171,8 +186,11 @@
     <Content Include="Assets\floor8dark.png" />
     <Content Include="Assets\floor9.png" />
     <Content Include="Assets\floor9dark.png" />
+    <Content Include="Assets\fondo.jpg" />
+    <Content Include="Assets\muerto.jpg" />
     <Content Include="Assets\player.png" />
     <Content Include="Assets\trapdoor.png" />
+    <Content Include="estadisticas.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -187,9 +205,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="tipoLetra.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Estadisticas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MenuPrincipal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PantallaFinal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +235,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AlienCompadre_BL\AlienCompadre_BL.csproj">
+      <Project>{c45aba0c-6ebc-4f76-a386-67867681b9e4}</Project>
+      <Name>AlienCompadre_BL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AlienCompadre_Entities\AlienCompadre_Entities.csproj">
       <Project>{8a3f7e0f-d3fa-45ed-94f0-3f176d78cc5c}</Project>
       <Name>AlienCompadre_Entities</Name>

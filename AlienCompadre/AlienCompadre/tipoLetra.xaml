@@ -1,0 +1,14 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MenuPrincipalAlienCompadre">
+
+    <Style x:Key="letra" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="/Assets/Mars Attacks.ttf#Mars Attacks"/>
+    </Style>
+
+    <Style x:Key="letraTextBox" TargetType="TextBox">
+        <Setter Property="FontFamily" Value="/Assets/Mars Attacks.ttf#Mars Attacks"/>
+    </Style>
+
+</ResourceDictionary>
