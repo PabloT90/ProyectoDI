@@ -18,8 +18,8 @@ namespace AlienCompadre.Models
         #region Constructores
         public ClsPlayer()
         {
-            _srcImage = "DireccionImagen";
-            _ammo = 0;
+            _srcImage = "/Assets/player.png";
+            _ammo = 1;
             _position = new ClsPunto();
         }
         #endregion
