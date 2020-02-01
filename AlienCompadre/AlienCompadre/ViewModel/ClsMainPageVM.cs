@@ -172,14 +172,9 @@ namespace AlienCompadre.ViewModel
                 case 'u'://Up
                     if (_player.Position.Y > 0)
                     {
-
                         _mazmorra.Tablero.ElementAt(8 * (y) + (x)).CharacterImage = "";
                         _player.Position.Y = _player.Position.Y - 1;//Subimos al personaje
                         handlerPlayer();
-                        //_mazmorra.Tablero.ElementAt(8 * (y) + (x)).DarkImage = "";
-                        //ChangeImageToDark();//Oscurecemos el tablero.
-                        //Necesitamos mostrar al personaje por pantalla (A ver si lo hacemos con id o no)
-                        //focoPersonaje();
                     }
                     break;
                 case 'd'://Down
@@ -188,9 +183,6 @@ namespace AlienCompadre.ViewModel
                         _mazmorra.Tablero.ElementAt(8 * (y) + (x)).CharacterImage = "";
                         _player.Position.Y = _player.Position.Y + 1;//Bajamos al personaje
                         handlerPlayer();
-                        //ChangeImageToDark();//Oscurecemos el tablero.
-                        //Necesitamos mostrar al personaje por pantalla (A ver si lo hacemos con id o no)
-                        //focoPersonaje();
                     }
                     break;
                 case 'r'://Right
@@ -199,9 +191,6 @@ namespace AlienCompadre.ViewModel
                         _mazmorra.Tablero.ElementAt(8 * (y) + (x)).CharacterImage = "";
                         _player.Position.X = _player.Position.X + 1;//Movemos el personaje a la Derecha (_player.Position.X++)
                         handlerPlayer();
-                        //ChangeImageToDark();//Oscurecemos el tablero.
-                        //Necesitamos mostrar al personaje por pantalla (A ver si lo hacemos con id o no)
-                        //focoPersonaje();
                     }
                     break;
                 case 'l'://Left
@@ -210,9 +199,6 @@ namespace AlienCompadre.ViewModel
                         _mazmorra.Tablero.ElementAt(8 * (y) + (x)).CharacterImage = "";
                         _player.Position.X = _player.Position.X - 1;//Movemos el personaje a la izquierda (_player.Position.X--)
                         handlerPlayer();
-                        //ChangeImageToDark();//Oscurecemos el tablero.
-                        //Necesitamos mostrar al personaje por pantalla (A ver si lo hacemos con id o no)
-                        //focoPersonaje();
                     }
                     break;
             }
