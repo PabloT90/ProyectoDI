@@ -359,12 +359,12 @@ namespace AlienCompadre.ViewModel
                         _player.Ammo = --_player.Ammo;
                         alienEscape();//El alien escapa
                         //Inserta sonido disparo
-                        //playSounds(1);
+                        playSounds(1);
                     }
                     else
                     {
                         //Inserta sonido muerte personaje
-                        //playSounds(2);
+                        playSounds(2);
                         Frame fr = new Frame();
                         fr.Navigate(typeof(PantallaFinal)); //No funciona
                     }
@@ -404,7 +404,7 @@ namespace AlienCompadre.ViewModel
                     archivoMusica = "4gun1.wav";
                     break;
                 case 2:
-                    archivoMusica = "grito.mp3";
+                    //archivoMusica = "grito.mp3";
                     break;
             }
             Windows.Storage.StorageFile file = await folder.GetFileAsync(archivoMusica);

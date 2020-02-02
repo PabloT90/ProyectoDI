@@ -143,8 +143,8 @@
     </AppxManifest>
     <Content Include="Sounds\4gun1.wav" />
     <Content Include="Sounds\7door.wav" />
-    <Content Include="Sounds\animal, criatura, gruñido %28mp3cut.net%29.mp3" />
-    <Content Include="Sounds\Mujer Grito de Terror %28Efecto de Sonido%29 Female Scream Horror Sound Effect %28musicaq %28mp3cut.net%29.mp3" />
+    <Content Include="Sounds\gritobicho.mp3" />
+    <Content Include="Sounds\grito.mp3" />
     <None Include="AlienCompadre_TemporaryKey.pfx" />
     <Content Include="Assets\Mars Attacks.ttf" />
   </ItemGroup>
