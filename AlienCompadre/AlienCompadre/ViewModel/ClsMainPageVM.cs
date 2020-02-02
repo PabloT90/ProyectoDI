@@ -347,8 +347,9 @@ namespace AlienCompadre.ViewModel
 
             void hadlerAlien()
             {
-                if (_mazmorra.Tablero.ElementAt(actualPosition).DarkImage.Equals(""))//Si el alien se encuentra en un foco del personaje
-                    _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = _alien.SrcImage;
+                int postPosition = 8 * (_alien.Position.Y) + (_alien.Position.X);
+                if (_mazmorra.Tablero.ElementAt(postPosition).DarkImage.Equals(""))//Si el alien se encuentra en un foco del personaje
+                    _mazmorra.Tablero.ElementAt(postPosition).CharacterImage = _alien.SrcImage;
                 moved = true;
 
                 if (_alien.Position.X == _player.Position.X && _alien.Position.Y == _player.Position.Y)//Sería un equals en el futuro
@@ -373,6 +374,7 @@ namespace AlienCompadre.ViewModel
 
         public void alienEscape()
         {
+            //_mazmorra.Tablero.ElementAt(8 * (_alien.Position.Y) + (_alien.Position.X)).CharacterImage = "";
             if (_mazmorra.Tablero.ElementAt(63).CharacterImage.Equals(""))
             {
                 //_alien.Position.X = 7;
@@ -385,6 +387,8 @@ namespace AlienCompadre.ViewModel
                 //_alien.Position.Y = 0;
                 _alien.Position = new ClsPunto(0, 0);
             }
+            //if (_mazmorra.Tablero.ElementAt(8 * (_alien.Position.Y) + (_alien.Position.X)).DarkImage.Equals(""))//Si el alien se encuentra en un foco del personaje
+                //_mazmorra.Tablero.ElementAt(8 * (_alien.Position.Y) + (_alien.Position.X)).CharacterImage = _alien.SrcImage;
         }
         #endregion
 
