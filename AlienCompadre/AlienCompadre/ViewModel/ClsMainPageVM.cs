@@ -10,6 +10,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml;
 
 namespace AlienCompadre.ViewModel
 {
@@ -365,8 +366,8 @@ namespace AlienCompadre.ViewModel
                     {
                         //Inserta sonido muerte personaje
                         playSounds(2);
-                        Frame fr = new Frame();
-                        fr.Navigate(typeof(PantallaFinal)); //No funciona
+                        var frame = (Frame)Window.Current.Content;
+                        frame.Navigate(typeof(PantallaFinal));
                     }
                 }
             }
