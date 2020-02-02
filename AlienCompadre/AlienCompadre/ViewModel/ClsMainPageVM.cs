@@ -1,4 +1,5 @@
 ﻿using AlienCompadre.Models;
+using AlienCompadre.Views;
 using AlienCompadre_BL.Lists;
 using AlienCompadre_Entities;
 using System;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Controls;
 
 namespace AlienCompadre.ViewModel
 {
@@ -190,14 +192,13 @@ namespace AlienCompadre.ViewModel
         /// <param name="movement"></param>
         public void tryMoveCharacter(char movement)
         {
-            int x = _player.Position.X;
-            int y = _player.Position.Y;
+            int actualPosition = 8 * (_player.Position.Y) + (_player.Position.X); ;
             switch (movement)
             {
                 case 'u'://Up
                     if (_player.Position.Y > 0)
                     {
-                        _mazmorra.Tablero.ElementAt(8 * (y) + (x)).CharacterImage = "";
+                        _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
                         _player.Position.Y = _player.Position.Y - 1;//Subimos al personaje
                         handlerPlayer();
                     }
@@ -205,7 +206,7 @@ namespace AlienCompadre.ViewModel
                 case 'd'://Down
                     if (_player.Position.Y < 7)
                     {
-                        _mazmorra.Tablero.ElementAt(8 * (y) + (x)).CharacterImage = "";
+                        _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
                         _player.Position.Y = _player.Position.Y + 1;//Bajamos al personaje
                         handlerPlayer();
                     }
@@ -213,7 +214,7 @@ namespace AlienCompadre.ViewModel
                 case 'r'://Right
                     if (_player.Position.X < 7)
                     {
-                        _mazmorra.Tablero.ElementAt(8 * (y) + (x)).CharacterImage = "";
+                        _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
                         _player.Position.X = _player.Position.X + 1;//Movemos el personaje a la Derecha (_player.Position.X++)
                         handlerPlayer();
                     }
@@ -221,7 +222,7 @@ namespace AlienCompadre.ViewModel
                 case 'l'://Left
                     if (_player.Position.X > 0)
                     {
-                        _mazmorra.Tablero.ElementAt(8 * (y) + (x)).CharacterImage = "";
+                        _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
                         _player.Position.X = _player.Position.X - 1;//Movemos el personaje a la izquierda (_player.Position.X--)
                         handlerPlayer();
                     }
@@ -230,12 +231,13 @@ namespace AlienCompadre.ViewModel
 
         }
         private void handlerPlayer() {
-            ChangeImageToDark();
-            focoPersonaje();
-            _mazmorra.Tablero.ElementAt(8 * (_player.Position.Y) + (_player.Position.X)).DarkImage = "/Assets/player.png";
-            if (_mazmorra.Tablero.ElementAt(8 * (_player.Position.Y) + (_player.Position.X)).RowObject == 3)   //Comprobamos si la casilla contiene un cofre
+            ChangeImageToDark();//Oscurecemos el tableor
+            focoPersonaje();//Mostramos el foco del personaje
+            int actualPosition = 8 * (_player.Position.Y) + (_player.Position.X);
+            _mazmorra.Tablero.ElementAt(actualPosition).DarkImage = "/Assets/player.png";//Mostramos al personaje
+            if (_mazmorra.Tablero.ElementAt(actualPosition).RowObject == 3)   //Comprobamos si el personaje se ha parado en un cofre
             {
-                switch(_mazmorra.Tablero.ElementAt(8 * (_player.Position.Y) + (_player.Position.X)).ChestReward)
+                switch(_mazmorra.Tablero.ElementAt(actualPosition).ChestReward)
                 {
                     case 1://Contiene una llave
                         this._keyFound = true;
@@ -253,8 +255,7 @@ namespace AlienCompadre.ViewModel
             {
                 //Ganas la partida
             }
-
-            moveAlien();
+            moveAlien();//Movemos al alien
         }
         #endregion
 
@@ -262,8 +263,8 @@ namespace AlienCompadre.ViewModel
         public void moveAlien()
         {
             Random random = new Random();
+            int actualPosition = 8 * (_alien.Position.Y) + (_alien.Position.X);
             bool moved = false;
-
             do
             {
                 switch (random.Next(1, 9))
@@ -271,7 +272,7 @@ namespace AlienCompadre.ViewModel
                     case 1://El alien se intenta mover hacia arriba
                         if (_alien.Position.Y > 0)
                         {
-                            _mazmorra.Tablero.ElementAt(8 * (_alien.Position.Y) + (_alien.Position.X)).CharacterImage = "";
+                            _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
                             _alien.Position.Y = _alien.Position.Y - 1;
                             hadlerAlien();
                         }
@@ -279,7 +280,7 @@ namespace AlienCompadre.ViewModel
                     case 2://El alien se intenta mover hacia abajo
                         if (_alien.Position.Y < 7)
                         {
-                            _mazmorra.Tablero.ElementAt(8 * (_alien.Position.Y) + (_alien.Position.X)).CharacterImage = "";
+                            _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
                             _alien.Position.Y = _alien.Position.Y + 1;
                             hadlerAlien();
                         }
@@ -287,7 +288,7 @@ namespace AlienCompadre.ViewModel
                     case 3://El alien se intenta mover a la izquierda
                         if (_alien.Position.X > 0)
                         {
-                            _mazmorra.Tablero.ElementAt(8 * (_alien.Position.Y) + (_alien.Position.X)).CharacterImage = "";
+                            _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
                             _alien.Position.X = _alien.Position.X - 1;
                             hadlerAlien();
                         }
@@ -295,7 +296,7 @@ namespace AlienCompadre.ViewModel
                     case 4://El alien se intenta mover a la derecha
                         if (_alien.Position.X < 7)
                         {
-                            _mazmorra.Tablero.ElementAt(8 * (_alien.Position.Y) + (_alien.Position.X)).CharacterImage = "";
+                            _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
                             _alien.Position.X = _alien.Position.X + 1;
                             hadlerAlien();
                         }
@@ -303,54 +304,58 @@ namespace AlienCompadre.ViewModel
                     case 5://El alien se intenta mover a la derecha superior
                         if (_alien.Position.X < 7 && _alien.Position.Y > 0)
                         {
-                            _mazmorra.Tablero.ElementAt(8 * (_alien.Position.Y) + (_alien.Position.X)).CharacterImage = "";
-                            _alien.Position.X = _alien.Position.X + 1;
-                            _alien.Position.Y = _alien.Position.Y - 1;
+                            _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
+                            //_alien.Position.X = _alien.Position.X + 1;
+                            //_alien.Position.Y = _alien.Position.Y - 1;
+                            _alien.Position = new ClsPunto(_alien.Position.X + 1, _alien.Position.Y - 1);
                             hadlerAlien();
                         }
                         break;
                     case 6://El alien se intenta mover a la izquierda superior
                         if (_alien.Position.X > 0 && _alien.Position.Y > 0)
                         {
-                            _mazmorra.Tablero.ElementAt(8 * (_alien.Position.Y) + (_alien.Position.X)).CharacterImage = "";
-                            _alien.Position.X = _alien.Position.X - 1;
-                            _alien.Position.Y = _alien.Position.Y - 1;
+                            _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
+                            //_alien.Position.X = _alien.Position.X - 1;
+                            //_alien.Position.Y = _alien.Position.Y - 1;
+                            _alien.Position = new ClsPunto(_alien.Position.X - 1, _alien.Position.Y - 1);
                             hadlerAlien();
                         }
                         break;
                     case 7://El alien se intenta mover a la derecha inferior
                         if (_alien.Position.X < 7 && _alien.Position.Y < 7)
                         {
-                            _mazmorra.Tablero.ElementAt(8 * (_alien.Position.Y) + (_alien.Position.X)).CharacterImage = "";
-                            _alien.Position.X = _alien.Position.X + 1;
-                            _alien.Position.Y = _alien.Position.Y + 1;
+                            _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
+                            //_alien.Position.X = _alien.Position.X + 1;
+                            //_alien.Position.Y = _alien.Position.Y + 1;
+                            _alien.Position = new ClsPunto(_alien.Position.X + 1, _alien.Position.Y + 1);
                             hadlerAlien();
                         }
                         break;
                     case 8://El alien se intenta mover a la derecha inferior
                         if (_alien.Position.X > 0 && _alien.Position.Y < 7)
                         {
-                            _mazmorra.Tablero.ElementAt(8 * (_alien.Position.Y) + (_alien.Position.X)).CharacterImage = "";
-                            _alien.Position.X = _alien.Position.X - 1;
-                            _alien.Position.Y = _alien.Position.Y + 1;
+                            _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
+                            //_alien.Position.X = _alien.Position.X - 1;
+                            //_alien.Position.Y = _alien.Position.Y + 1;
+                            _alien.Position = new ClsPunto(_alien.Position.X - 1, _alien.Position.Y + 1);
                             hadlerAlien();
                         }
                         break;
                 }
 
-            } while (!moved);
+            } while (!moved);//Mientras no se haya movido
 
             void hadlerAlien()
             {
-                if (_mazmorra.Tablero.ElementAt(8 * (_alien.Position.Y) + (_alien.Position.X)).DarkImage.Equals(""))
-                    _mazmorra.Tablero.ElementAt(8 * (_alien.Position.Y) + (_alien.Position.X)).CharacterImage = _alien.SrcImage;
+                if (_mazmorra.Tablero.ElementAt(actualPosition).DarkImage.Equals(""))//Si el alien se encuentra en un foco del personaje
+                    _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = _alien.SrcImage;
                 moved = true;
 
                 if (_alien.Position.X == _player.Position.X && _alien.Position.Y == _player.Position.Y)//Sería un equals en el futuro
                 {
                     if (_player.Ammo > 0)
                     {
-                        _player.Ammo = _player.Ammo - 1;
+                        _player.Ammo = --_player.Ammo;
                         alienEscape();//El alien escapa
                         //Inserta sonido disparo
                         //playSounds(1);
@@ -370,13 +375,15 @@ namespace AlienCompadre.ViewModel
         {
             if (_mazmorra.Tablero.ElementAt(63).CharacterImage.Equals(""))
             {
-                _alien.Position.X = 7;
-                _alien.Position.Y = 7;
+                //_alien.Position.X = 7;
+                //_alien.Position.Y = 7;
+                _alien.Position = new ClsPunto(7, 7);
             }
             else
             {
-                _alien.Position.X = 0;
-                _alien.Position.Y = 0;
+                //_alien.Position.X = 0;
+                //_alien.Position.Y = 0;
+                _alien.Position = new ClsPunto(0, 0);
             }
         }
         #endregion
