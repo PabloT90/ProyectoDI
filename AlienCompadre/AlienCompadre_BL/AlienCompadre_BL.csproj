@@ -120,6 +120,7 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="HandlerBL\ClsHandlerBL.cs" />
     <Compile Include="Lists\ClsListadosStatsBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\AlienCompadre_BL.rd.xml" />

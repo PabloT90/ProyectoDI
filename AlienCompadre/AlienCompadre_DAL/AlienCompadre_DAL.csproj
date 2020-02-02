@@ -121,6 +121,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Connection\ClsMyConnection.cs" />
+    <Compile Include="Handler\ClsHandlerDAL.cs" />
     <Compile Include="Lists\ClsListadoStats.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\AlienCompadre_DAL.rd.xml" />
