@@ -200,7 +200,7 @@ namespace AlienCompadre.ViewModel
                     if (_player.Position.Y > 0)
                     {
                         _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
-                        _player.Position.Y = _player.Position.Y - 1;//Subimos al personaje
+                        _player.Position.Y--;//Subimos al personaje
                         handlerPlayer();
                     }
                     break;
@@ -208,7 +208,7 @@ namespace AlienCompadre.ViewModel
                     if (_player.Position.Y < 7)
                     {
                         _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
-                        _player.Position.Y = _player.Position.Y + 1;//Bajamos al personaje
+                        _player.Position.Y++;//Bajamos al personaje
                         handlerPlayer();
                     }
                     break;
@@ -216,7 +216,7 @@ namespace AlienCompadre.ViewModel
                     if (_player.Position.X < 7)
                     {
                         _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
-                        _player.Position.X = _player.Position.X + 1;//Movemos el personaje a la Derecha (_player.Position.X++)
+                        _player.Position.X++; //Movemos el personaje a la Derecha
                         handlerPlayer();
                     }
                     break;
@@ -224,7 +224,7 @@ namespace AlienCompadre.ViewModel
                     if (_player.Position.X > 0)
                     {
                         _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
-                        _player.Position.X = _player.Position.X - 1;//Movemos el personaje a la izquierda (_player.Position.X--)
+                        _player.Position.X--;//Movemos el personaje a la izquierda
                         handlerPlayer();
                     }
                     break;
@@ -252,7 +252,7 @@ namespace AlienCompadre.ViewModel
                 }
             }
 
-            if (_mazmorra.Tablero.ElementAt(8 * (_player.Position.Y) + (_player.Position.X)).RowObject == 2 && _keyFound)//Si la casilla es la trampilla y el personaje tiene la llave
+            if (_mazmorra.Tablero.ElementAt(actualPosition).RowObject == 2 && _keyFound)//Si la casilla es la trampilla y el personaje tiene la llave
             {
                 //Ganas la partida
             }
@@ -274,7 +274,7 @@ namespace AlienCompadre.ViewModel
                         if (_alien.Position.Y > 0)
                         {
                             _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
-                            _alien.Position.Y = _alien.Position.Y - 1;
+                            _alien.Position.Y--;
                             hadlerAlien();
                         }
                         break;
@@ -282,7 +282,7 @@ namespace AlienCompadre.ViewModel
                         if (_alien.Position.Y < 7)
                         {
                             _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
-                            _alien.Position.Y = _alien.Position.Y + 1;
+                            _alien.Position.Y++;
                             hadlerAlien();
                         }
                         break;
@@ -290,7 +290,7 @@ namespace AlienCompadre.ViewModel
                         if (_alien.Position.X > 0)
                         {
                             _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
-                            _alien.Position.X = _alien.Position.X - 1;
+                            _alien.Position.X--;
                             hadlerAlien();
                         }
                         break;
@@ -298,7 +298,7 @@ namespace AlienCompadre.ViewModel
                         if (_alien.Position.X < 7)
                         {
                             _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
-                            _alien.Position.X = _alien.Position.X + 1;
+                            _alien.Position.X++;
                             hadlerAlien();
                         }
                         break;
@@ -306,9 +306,7 @@ namespace AlienCompadre.ViewModel
                         if (_alien.Position.X < 7 && _alien.Position.Y > 0)
                         {
                             _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
-                            //_alien.Position.X = _alien.Position.X + 1;
-                            //_alien.Position.Y = _alien.Position.Y - 1;
-                            _alien.Position = new ClsPunto(_alien.Position.X + 1, _alien.Position.Y - 1);
+                            _alien.Position = new ClsPunto(++_alien.Position.X, --_alien.Position.Y);
                             hadlerAlien();
                         }
                         break;
@@ -316,9 +314,7 @@ namespace AlienCompadre.ViewModel
                         if (_alien.Position.X > 0 && _alien.Position.Y > 0)
                         {
                             _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
-                            //_alien.Position.X = _alien.Position.X - 1;
-                            //_alien.Position.Y = _alien.Position.Y - 1;
-                            _alien.Position = new ClsPunto(_alien.Position.X - 1, _alien.Position.Y - 1);
+                            _alien.Position = new ClsPunto(--_alien.Position.X, --_alien.Position.Y);
                             hadlerAlien();
                         }
                         break;
@@ -326,9 +322,7 @@ namespace AlienCompadre.ViewModel
                         if (_alien.Position.X < 7 && _alien.Position.Y < 7)
                         {
                             _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
-                            //_alien.Position.X = _alien.Position.X + 1;
-                            //_alien.Position.Y = _alien.Position.Y + 1;
-                            _alien.Position = new ClsPunto(_alien.Position.X + 1, _alien.Position.Y + 1);
+                            _alien.Position = new ClsPunto(++_alien.Position.X, ++_alien.Position.Y);
                             hadlerAlien();
                         }
                         break;
@@ -336,9 +330,7 @@ namespace AlienCompadre.ViewModel
                         if (_alien.Position.X > 0 && _alien.Position.Y < 7)
                         {
                             _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
-                            //_alien.Position.X = _alien.Position.X - 1;
-                            //_alien.Position.Y = _alien.Position.Y + 1;
-                            _alien.Position = new ClsPunto(_alien.Position.X - 1, _alien.Position.Y + 1);
+                            _alien.Position = new ClsPunto(--_alien.Position.X, ++_alien.Position.Y);
                             hadlerAlien();
                         }
                         break;
@@ -353,19 +345,20 @@ namespace AlienCompadre.ViewModel
                     _mazmorra.Tablero.ElementAt(postPosition).CharacterImage = _alien.SrcImage;
                 moved = true;
 
-                if (_alien.Position.X == _player.Position.X && _alien.Position.Y == _player.Position.Y)//Sería un equals en el futuro
+                //if (_alien.Position.X == _player.Position.X && _alien.Position.Y == _player.Position.Y)//Sería un equals en el futuro
+                if (_alien.Position.Equals(_player.Position))
                 {
                     if (_player.Ammo > 0)
                     {
-                        _player.Ammo = --_player.Ammo;
+                        _player.Ammo--;
                         alienEscape();//El alien escapa
                         //Inserta sonido disparo
-                        playSounds(1);
+                        //playSounds(1);
                     }
                     else
                     {
                         //Inserta sonido muerte personaje
-                        playSounds(2);
+                        //playSounds(2);
                         var frame = (Frame)Window.Current.Content;
                         frame.Navigate(typeof(PantallaFinal));
                     }
@@ -375,21 +368,14 @@ namespace AlienCompadre.ViewModel
 
         public void alienEscape()
         {
-            //_mazmorra.Tablero.ElementAt(8 * (_alien.Position.Y) + (_alien.Position.X)).CharacterImage = "";
             if (_mazmorra.Tablero.ElementAt(63).CharacterImage.Equals(""))
             {
-                //_alien.Position.X = 7;
-                //_alien.Position.Y = 7;
                 _alien.Position = new ClsPunto(7, 7);
             }
             else
             {
-                //_alien.Position.X = 0;
-                //_alien.Position.Y = 0;
                 _alien.Position = new ClsPunto(0, 0);
             }
-            //if (_mazmorra.Tablero.ElementAt(8 * (_alien.Position.Y) + (_alien.Position.X)).DarkImage.Equals(""))//Si el alien se encuentra en un foco del personaje
-                //_mazmorra.Tablero.ElementAt(8 * (_alien.Position.Y) + (_alien.Position.X)).CharacterImage = _alien.SrcImage;
         }
         #endregion
 
@@ -405,7 +391,7 @@ namespace AlienCompadre.ViewModel
                     archivoMusica = "4gun1.wav";
                     break;
                 case 2:
-                    //archivoMusica = "grito.mp3";
+                    archivoMusica = "grito.mp3";
                     break;
             }
             Windows.Storage.StorageFile file = await folder.GetFileAsync(archivoMusica);

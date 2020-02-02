@@ -53,6 +53,31 @@ namespace AlienCompadre_Entities
         }
         #endregion
 
+        #region Métodos Sobreescritos
+        public override bool Equals(Object obj)
+        {
+            bool ret = false;
+            if (this == obj)
+            {
+                ret = true;
+            }
+            else
+            {
+                if (obj != null && typeof(ClsPunto).IsInstanceOfType(obj))
+                {
+                    ClsPunto punto = (ClsPunto)obj;
+                    if (this.X == punto.X &&
+                        this.Y == punto.Y)
+                    {
+                        ret = true;
+                    }
+                }
+            }
+            return ret;
+        }
+
+        #endregion
+
         #region PropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
