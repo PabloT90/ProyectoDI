@@ -425,6 +425,7 @@ namespace AlienCompadre.ViewModel
                     //playSounds(2);
                     var frame = (Frame)Window.Current.Content;
                     frame.Navigate(typeof(PantallaFinal));
+                    frame.BackStack.Clear();
                 }
             }
         }

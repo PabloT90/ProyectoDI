@@ -6,7 +6,5 @@
 
 Opcional:
 - Animacion de movimiento del personaje cuando esta quieto.
-- Mejorar IA del personaje.
 - Transicion al pasar de mazmorra.
-- Switch entre modo coña y modo serio.
 
