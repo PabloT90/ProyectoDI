@@ -302,7 +302,8 @@ namespace AlienCompadre.ViewModel
                     _mazmorra.Tablero.ElementAt(actualPosition).LightImage = "/Assets/chestOpen.png";
                     break;
             }
-            moveAlien();//Movemos al alien
+            //moveAlien();//Movemos al alien
+            moveAlienIA();
         }
         #endregion
 
@@ -397,6 +398,71 @@ namespace AlienCompadre.ViewModel
                     else
                     {
                         //Inserta sonido muerte personaje
+                        //playSounds(2);
+                        var frame = (Frame)Window.Current.Content;
+                        frame.Navigate(typeof(PantallaFinal));
+                    }
+                }
+            }
+        }
+
+        public void moveAlienIA()
+        {
+            Random random = new Random();
+            bool moved = false;
+            _mazmorra.Tablero.ElementAt(8 * (_alien.Position.Y) + (_alien.Position.X)).CharacterImage = "";
+            do
+            {
+                switch (random.Next(1, 3))
+                {
+                    case 1:
+                        if (_player.Position.X != _alien.Position.X)
+                        {
+                            if (_player.Position.X > _alien.Position.X)
+                            {
+                                _alien.Position.X++;
+                            }
+                            else
+                            {
+                                _alien.Position.X--;
+                            }
+                            handlerAlien();
+                        }
+                        break;
+                    case 2:
+                        if (_player.Position.Y != _alien.Position.Y)
+                        {
+                            if (_player.Position.Y > _alien.Position.Y)
+                            {
+                                _alien.Position.Y++;
+                            }
+                            else
+                            {
+                                _alien.Position.Y--;
+                            }
+                            handlerAlien();
+                        }
+                        break;
+                }
+            } while (!moved);
+
+            void handlerAlien()
+            {
+                int postPosition = 8 * (_alien.Position.Y) + (_alien.Position.X);
+                if (_mazmorra.Tablero.ElementAt(postPosition).DarkImage.Equals(""))//Si el alien se encuentra en un foco del personaje
+                    _mazmorra.Tablero.ElementAt(postPosition).CharacterImage = _alien.SrcImage;
+                moved = true;
+
+                if (_alien.Position.Equals(_player.Position))
+                {
+                    if (_player.Ammo > 0)
+                    {
+                        _player.Ammo--;
+                        alienEscape();//El alien escapa
+                        //playSounds(1);
+                    }
+                    else
+                    {
                         //playSounds(2);
                         var frame = (Frame)Window.Current.Content;
                         frame.Navigate(typeof(PantallaFinal));
