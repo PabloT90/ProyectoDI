@@ -246,18 +246,23 @@ namespace AlienCompadre.ViewModel
                     }
                     break;
                 case 3:
-                    switch (_mazmorra.Tablero.ElementAt(actualPosition).Chest.ChestReward)
+                    if (!_mazmorra.Tablero.ElementAt(actualPosition).Chest.Open)
                     {
-                        case 1://Contiene una llave
-                            this._keyFound = true;
-                            break;
-                        case 2://Contiene munición
-                            this._player.Ammo++;
-                            break;
-                        case 3://Contiene cristales
-                               //Mover al alien cerca
-                            break;
+                        switch (_mazmorra.Tablero.ElementAt(actualPosition).Chest.ChestReward)
+                        {
+                            case 1://Contiene una llave
+                                this._keyFound = true;
+                                break;
+                            case 2://Contiene munición
+                                this._player.Ammo++;
+                                break;
+                            case 3://Contiene cristales
+                                   //Mover al alien cerca
+                                ambush();
+                                break;
+                        }
                     }
+                    _mazmorra.Tablero.ElementAt(actualPosition).Chest.Open = true;
                     _mazmorra.Tablero.ElementAt(actualPosition).LightImage = "/Assets/chestOpen.png";
                     break;
             }
@@ -371,6 +376,9 @@ namespace AlienCompadre.ViewModel
             }
         }
 
+        /// <summary>
+        /// Comentario: Este método nos permite que el alien escape cuando reciba un tiro.
+        /// </summary>
         public void alienEscape()
         {
             if (_mazmorra.Tablero.ElementAt(63).CharacterImage.Equals(""))
@@ -381,6 +389,81 @@ namespace AlienCompadre.ViewModel
             {
                 _alien.Position = new ClsPunto(0, 0);
             }
+        }
+
+        /// <summary>
+        /// Comentario: Este método nos permite acercar al alien hacia el personaje.
+        /// </summary>
+        public void ambush()
+        {
+            Random random = new Random();
+            bool moved = false;
+
+            _mazmorra.Tablero.ElementAt(8 * (_alien.Position.Y) + (_alien.Position.X)).CharacterImage = "";
+            do
+            {
+                switch (random.Next(1, 9))
+                {
+                    case 1://El alien se intenta posicionar arriba del personaje
+                        if (_player.Position.Y > 0)
+                        {
+                            _alien.Position = new ClsPunto(_player.Position.X, _player.Position.Y - 1);
+                            moved = true;
+                        }
+                        break;
+                    case 2://El alien se intenta posicionar abajo del personaje
+                        if (_player.Position.Y < 7)
+                        {
+                            _alien.Position = new ClsPunto(_player.Position.X, _player.Position.Y + 1);
+                            moved = true;
+                        }
+                        break;
+                    case 3://El alien se intenta posicionar a la izquierda del personaje
+                        if (_player.Position.X > 0)
+                        {
+                            _alien.Position = new ClsPunto(_player.Position.X -1, _player.Position.Y);
+                            moved = true;
+                        }
+                        break;
+                    case 4://El alien se intenta posicionar a la derecha del personaje
+                        if (_player.Position.X < 7)
+                        {
+                            _alien.Position = new ClsPunto(_player.Position.X +1, _player.Position.Y);
+                            moved = true;
+                        }
+                        break;
+                    case 5://El alien se intenta posicionar a la derecha superior del personaje
+                        if (_player.Position.X < 7 && _player.Position.Y > 0)
+                        {
+                            _alien.Position = new ClsPunto(_player.Position.X +1, _player.Position.Y - 1);
+                            moved = true;
+                        }
+                        break;
+                    case 6://El alien se intenta posicionar a la izquierda superior del personaje
+                        if (_player.Position.X > 0 && _player.Position.Y > 0)
+                        {
+                            _alien.Position = new ClsPunto(_player.Position.X -1, _player.Position.Y - 1);
+                            moved = true;
+                        }
+                        break;
+                    case 7://El alien se intenta posicionar a la derecha inferior del personaje
+                        if (_player.Position.X < 7 && _player.Position.Y < 7)
+                        {
+                            _alien.Position = new ClsPunto(_player.Position.X +1, _player.Position.Y + 1);
+                            moved = true;
+                        }
+                        break;
+                    case 8://El alien se intenta posicionar a la derecha inferior del personaje
+                        if (_player.Position.X > 0 && _player.Position.Y < 7)
+                        {
+                            _alien.Position = new ClsPunto(_player.Position.X -1, _player.Position.Y + 1);
+                            moved = true;
+                        }
+                        break;
+                }
+
+            } while (!moved);//Mientras no se haya movido
+            _mazmorra.Tablero.ElementAt(8 * (_alien.Position.Y) + (_alien.Position.X)).CharacterImage = _alien.SrcImage;
         }
         #endregion
 
