@@ -2,16 +2,15 @@
 - Plantear el tema del sonido de proximidad e implementarlo.
 - Pasar de mazmorra.
 - Pequeño delay entre movimiento y movimiento.
-- Switch entre modo coña y modo serio.
 - Mejorar el codigo en la medida de lo posible.
 - Pantalla de instrucciones.
-- Texto guia sobre lo que tiene que hacer el jugador.
-- Las imagenes tienen que tener algo de opacidad.
 - Documentacion del juego. Algo sencillo, pero que al menos haya algo xD.
 - Quitar todo el codigo inservible (lo comentado vaya)
+- Llave
 
 Opcional:
 - Animacion de movimiento del personaje cuando esta quieto.
 - Mejorar IA del personaje.
 - Transicion al pasar de mazmorra.
+- Switch entre modo coña y modo serio.
 

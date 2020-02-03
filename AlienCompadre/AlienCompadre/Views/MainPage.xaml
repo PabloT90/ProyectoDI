@@ -19,20 +19,25 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
             <!--<Image x:Name="playerImage" Grid.Column="0" Margin="10" Source="{Binding Player.SrcImage, Mode=OneWay}" Width="50" Height="50"></Image>-->
             <StackPanel Grid.Column="0" Orientation="Horizontal" Height="Auto">
+                <Image Name="llave" Source="{Binding SrcKeyImage}" Height="90" Width="90"></Image>
+            </StackPanel>
+            
+            <StackPanel Grid.Column="1" Orientation="Horizontal" Height="Auto">
                 <TextBlock Text="Ammo: " Margin="10" FontSize="70" Style="{StaticResource letra}" Foreground="Red"/>
                 <TextBlock Name="ammo" FontSize="30" Margin="0, 25, 10, 0" Text="{Binding Player.Ammo}" Style="{StaticResource letra}" Foreground="Red"/>
             </StackPanel>
 
-            <StackPanel Grid.Column="1" Orientation="Horizontal" Height="Auto">
+            <StackPanel Grid.Column="2" Orientation="Horizontal" Height="Auto">
                 <TextBlock Style="{StaticResource letra}" Foreground="Red" Text="Dungeons completed: " Margin="10" FontSize="70"/>
                 <TextBlock Name="dungeonsCompleted" FontSize="30" Margin="0, 25, 10, 0" Text="{Binding CompletedDungeons}" Style="{StaticResource letra}" Foreground="Red"/>
             </StackPanel>
 
-            <StackPanel Grid.Column="2" Orientation="Horizontal" Height="Auto">
+            <StackPanel Grid.Column="3" Orientation="Horizontal" Height="Auto">
                 <TextBlock Text="Sound: " Margin="10" FontSize="70" Style="{StaticResource letra}" Foreground="Red"/>
                 <ProgressBar Margin="10,10,0,13" Name="ListView1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" Height="30" Value="80" Foreground="Red"/>
             </StackPanel>
