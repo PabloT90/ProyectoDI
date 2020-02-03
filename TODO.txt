@@ -1,12 +1,8 @@
-- Plantear el tema de los cofres e implementarlo.
 - Plantear el tema del sonido de proximidad e implementarlo.
-- Pasar de mazmorra.
 - Pequeño delay entre movimiento y movimiento.
 - Mejorar el codigo en la medida de lo posible.
-- Pantalla de instrucciones.
 - Documentacion del juego. Algo sencillo, pero que al menos haya algo xD.
 - Quitar todo el codigo inservible (lo comentado vaya)
-- Llave
 
 Opcional:
 - Animacion de movimiento del personaje cuando esta quieto.

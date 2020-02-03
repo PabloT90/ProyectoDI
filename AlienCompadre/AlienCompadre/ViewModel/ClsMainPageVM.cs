@@ -206,7 +206,8 @@ namespace AlienCompadre.ViewModel
         {
             _mazmorra = new ClsTablero();
             NotifyPropertyChanged("Mazmorra");
-            _player = new ClsPlayer();
+            //_player = new ClsPlayer(_player.Ammo);
+            _player.Position = new ClsPunto(0, 0);
             _alien = new ClsAlien();
             _keyFound = false;
             _srcKeyImage = "/Assets/black_key.png";
