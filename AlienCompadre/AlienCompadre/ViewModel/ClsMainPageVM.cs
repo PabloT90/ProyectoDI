@@ -198,6 +198,18 @@ namespace AlienCompadre.ViewModel
             }
             
         }
+
+        /// <summary>
+        /// Comentario: Este método nos permite reiniciar la mazmorra.
+        /// </summary>
+        public void newDungeon()
+        {
+            _mazmorra = new ClsTablero();
+            _player = new ClsPlayer();
+            _alien = new ClsAlien();
+            _keyFound = false;
+            _srcKeyImage = "/Assets/black_key.png";
+        }
         #endregion
 
         #region Métodos Personaje
@@ -258,6 +270,9 @@ namespace AlienCompadre.ViewModel
                     if (_keyFound)//Si la casilla es la trampilla y el personaje tiene la llave
                     {
                         //Ganas la partida
+                        _completedDungeons++;
+                        NotifyPropertyChanged("CompletedDungeons");
+                        newDungeon();
                     }
                     break;
                 case 3:
