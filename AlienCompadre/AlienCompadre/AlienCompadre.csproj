@@ -141,6 +141,8 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="Assets\black_key.png" />
+    <Content Include="Assets\golden_key.png" />
     <Content Include="Sounds\4gun1.wav" />
     <Content Include="Sounds\7door.wav" />
     <Content Include="Sounds\gritobicho.mp3" />
