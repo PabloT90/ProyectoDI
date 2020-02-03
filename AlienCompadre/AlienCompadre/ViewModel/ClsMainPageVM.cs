@@ -205,10 +205,12 @@ namespace AlienCompadre.ViewModel
         public void newDungeon()
         {
             _mazmorra = new ClsTablero();
+            NotifyPropertyChanged("Mazmorra");
             _player = new ClsPlayer();
             _alien = new ClsAlien();
             _keyFound = false;
             _srcKeyImage = "/Assets/black_key.png";
+            NotifyPropertyChanged("SrcKeyImage");
         }
         #endregion
 
@@ -287,6 +289,7 @@ namespace AlienCompadre.ViewModel
                                 break;
                             case 2://Contiene munición
                                 this._player.Ammo++;
+                                NotifyPropertyChanged("Player");
                                 break;
                             case 3://Contiene cristales
                                    //Mover al alien cerca

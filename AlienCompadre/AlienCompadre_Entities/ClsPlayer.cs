@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AlienCompadre.Models
 {
-    public class ClsPlayer : INotifyPropertyChanged
+    public class ClsPlayer
     {
         private String _srcImage;
         private int _ammo;
@@ -34,7 +34,6 @@ namespace AlienCompadre.Models
             set
             {
                 _srcImage = value;
-                NotifyPropertyChanged("SrcImage");
             }
         }
 
@@ -47,7 +46,6 @@ namespace AlienCompadre.Models
             set
             {
                 _ammo = value;
-                NotifyPropertyChanged("Ammo");
             }
         }
 
@@ -60,16 +58,7 @@ namespace AlienCompadre.Models
             set
             {
                 _position = value;
-                NotifyPropertyChanged("Position");
             }
-        }
-        #endregion
-
-        #region PropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
     }

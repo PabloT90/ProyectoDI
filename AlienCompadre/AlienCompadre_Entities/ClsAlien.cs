@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AlienCompadre_Entities
 {
-    public class ClsAlien : INotifyPropertyChanged
+    public class ClsAlien
     {
         private String _srcImage;
         private ClsPunto _position;
@@ -31,7 +31,6 @@ namespace AlienCompadre_Entities
             set
             {
                 _srcImage = value;
-                NotifyPropertyChanged("SrcImage");
             }
         }
 
@@ -44,16 +43,7 @@ namespace AlienCompadre_Entities
             set
             {
                 _position = value;
-                NotifyPropertyChanged("Position");
             }
-        }
-        #endregion
-
-        #region PropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
     }

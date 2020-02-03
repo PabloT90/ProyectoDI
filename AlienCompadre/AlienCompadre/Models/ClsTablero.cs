@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace AlienCompadre_Entities 
 {
-    public class ClsTablero
-    {
+    public class ClsTablero {
         private const int _numbersOfChest = 3;
         private const int _numbersOfDoors = 1;
         private List<ClsCasilla> _tablero;

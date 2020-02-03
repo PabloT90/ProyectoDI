@@ -24,7 +24,7 @@
 
             <!--<Image x:Name="playerImage" Grid.Column="0" Margin="10" Source="{Binding Player.SrcImage, Mode=OneWay}" Width="50" Height="50"></Image>-->
             <StackPanel Grid.Column="0" Orientation="Horizontal" Height="Auto">
-                <Image Name="llave" Source="{Binding SrcKeyImage}" Height="90" Width="90"></Image>
+                <Image Name="llave" Source="{Binding SrcKeyImage, Mode=TwoWay}" Height="90" Width="90"></Image>
             </StackPanel>
             
             <StackPanel Grid.Column="1" Orientation="Horizontal" Height="Auto">
@@ -43,7 +43,7 @@
             </StackPanel>
 
         </Grid>
-        <GridView x:Name="gridView01" ItemsSource="{Binding Mazmorra.Tablero}">
+        <GridView x:Name="gridView01" ItemsSource="{Binding Mazmorra.Tablero, Mode=TwoWay}">
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <Canvas Width="70" Height="70">
