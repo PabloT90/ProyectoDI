@@ -258,6 +258,7 @@ namespace AlienCompadre.ViewModel
                                //Mover al alien cerca
                             break;
                     }
+                    _mazmorra.Tablero.ElementAt(actualPosition).LightImage = "/Assets/chestOpen.png";
                     break;
             }
             moveAlien();//Movemos al alien

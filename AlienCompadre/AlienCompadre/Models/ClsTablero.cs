@@ -45,11 +45,12 @@ namespace AlienCompadre_Entities
             }
 
             //for (int i = 0; i < _numbersOfChest; i++)//Agregamos los cofres
-            _tablero.Add(new ClsCasilla("/Assets/chestclosed.png" ,"","", 3, new ClsCofre(1, false)));//Contiene la llave
-            _tablero.Add(new ClsCasilla("/Assets/chestclosed.png", "", "", 3, new ClsCofre(2, false)));//Contiene munición
-            _tablero.Add(new ClsCasilla("/Assets/chestclosed.png", "", "", 3, new ClsCofre(3, false)));//Contiene cristales de los que le gusta a Pablo
+            for (int i = 1; i <= 3; i++) {
+                numRandom = random.Next(1, 16);
+                _tablero.Add(new ClsCasilla("/Assets/chestclosed.png", "/Assets/floor" + numRandom + "dark.png", "", 3, new ClsCofre(i, false)));//Contiene la llave
+            }
 
-            _tablero.Add(new ClsCasilla("/Assets/trapdoor.png", "", "", 2));//2 significa que la casilla contiene una puerta
+            _tablero.Add(new ClsCasilla("/Assets/trapdoor.png", "/Assets/floor1dark.png", "", 2));//2 significa que la casilla contiene una puerta
 
             ListUtility.ShuffleList(ref _tablero);//Nos permite mezclar las casillas del tablero
 
