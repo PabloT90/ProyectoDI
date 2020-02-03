@@ -236,25 +236,29 @@ namespace AlienCompadre.ViewModel
             focoPersonaje();//Mostramos el foco del personaje
             int actualPosition = 8 * (_player.Position.Y) + (_player.Position.X);
             _mazmorra.Tablero.ElementAt(actualPosition).DarkImage = "/Assets/player.png";//Mostramos al personaje
-            if (_mazmorra.Tablero.ElementAt(actualPosition).RowObject == 3)   //Comprobamos si el personaje se ha parado en un cofre
-            {
-                switch(_mazmorra.Tablero.ElementAt(actualPosition).ChestReward)
-                {
-                    case 1://Contiene una llave
-                        this._keyFound = true;
-                        break;
-                    case 2://Contiene munición
-                        this._player.Ammo++;
-                        break;
-                    case 3://Contiene cristales
-                        //Mover al alien cerca
-                        break;
-                }
-            }
 
-            if (_mazmorra.Tablero.ElementAt(actualPosition).RowObject == 2 && _keyFound)//Si la casilla es la trampilla y el personaje tiene la llave
+            switch (_mazmorra.Tablero.ElementAt(actualPosition).RowObject)
             {
-                //Ganas la partida
+                case 2:
+                    if (_keyFound)//Si la casilla es la trampilla y el personaje tiene la llave
+                    {
+                        //Ganas la partida
+                    }
+                    break;
+                case 3:
+                    switch (_mazmorra.Tablero.ElementAt(actualPosition).Chest.ChestReward)
+                    {
+                        case 1://Contiene una llave
+                            this._keyFound = true;
+                            break;
+                        case 2://Contiene munición
+                            this._player.Ammo++;
+                            break;
+                        case 3://Contiene cristales
+                               //Mover al alien cerca
+                            break;
+                    }
+                    break;
             }
             moveAlien();//Movemos al alien
         }
