@@ -23,6 +23,7 @@ namespace AlienCompadre.ViewModel
         private List<ClsStats> _stats;
         private ClsListadosStatsBL list = new ClsListadosStatsBL();
         private bool _keyFound;
+        private String _srcKeyImage;
 
         #region Constructores
         public ClsMainPageVM()
@@ -33,6 +34,7 @@ namespace AlienCompadre.ViewModel
             _stats = new List<ClsStats>();
             _stats = new List<ClsStats>(list.listadoStats());
             _keyFound = false;
+            _srcKeyImage = "/Assets/black_key.png";
         }
         #endregion
 
@@ -99,6 +101,19 @@ namespace AlienCompadre.ViewModel
             {
                 _stats = value;
                 NotifyPropertyChanged("Stats");
+            }
+        }
+
+        public String SrcKeyImage
+        {
+            get
+            {
+                return _srcKeyImage;
+            }
+            set
+            {
+                _srcKeyImage = value;
+                NotifyPropertyChanged("SrcKeyImage");
             }
         }
         #endregion
@@ -252,6 +267,8 @@ namespace AlienCompadre.ViewModel
                         {
                             case 1://Contiene una llave
                                 this._keyFound = true;
+                                _srcKeyImage = "/Assets/golden_key.png";
+                                NotifyPropertyChanged("SrcKeyImage");
                                 break;
                             case 2://Contiene munición
                                 this._player.Ammo++;
@@ -276,6 +293,7 @@ namespace AlienCompadre.ViewModel
             Random random = new Random();
             int actualPosition = 8 * (_alien.Position.Y) + (_alien.Position.X);
             bool moved = false;
+            _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
             do
             {
                 switch (random.Next(1, 9))
@@ -283,72 +301,64 @@ namespace AlienCompadre.ViewModel
                     case 1://El alien se intenta mover hacia arriba
                         if (_alien.Position.Y > 0)
                         {
-                            _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
                             _alien.Position.Y--;
-                            hadlerAlien();
+                            handlerAlien();
                         }
                         break;
                     case 2://El alien se intenta mover hacia abajo
                         if (_alien.Position.Y < 7)
                         {
-                            _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
                             _alien.Position.Y++;
-                            hadlerAlien();
+                            handlerAlien();
                         }
                         break;
                     case 3://El alien se intenta mover a la izquierda
                         if (_alien.Position.X > 0)
                         {
-                            _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
                             _alien.Position.X--;
-                            hadlerAlien();
+                            handlerAlien();
                         }
                         break;
                     case 4://El alien se intenta mover a la derecha
                         if (_alien.Position.X < 7)
                         {
-                            _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
                             _alien.Position.X++;
-                            hadlerAlien();
+                            handlerAlien();
                         }
                         break;
                     case 5://El alien se intenta mover a la derecha superior
                         if (_alien.Position.X < 7 && _alien.Position.Y > 0)
                         {
-                            _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
                             _alien.Position = new ClsPunto(++_alien.Position.X, --_alien.Position.Y);
-                            hadlerAlien();
+                            handlerAlien();
                         }
                         break;
                     case 6://El alien se intenta mover a la izquierda superior
                         if (_alien.Position.X > 0 && _alien.Position.Y > 0)
                         {
-                            _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
                             _alien.Position = new ClsPunto(--_alien.Position.X, --_alien.Position.Y);
-                            hadlerAlien();
+                            handlerAlien();
                         }
                         break;
                     case 7://El alien se intenta mover a la derecha inferior
                         if (_alien.Position.X < 7 && _alien.Position.Y < 7)
                         {
-                            _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
                             _alien.Position = new ClsPunto(++_alien.Position.X, ++_alien.Position.Y);
-                            hadlerAlien();
+                            handlerAlien();
                         }
                         break;
                     case 8://El alien se intenta mover a la derecha inferior
                         if (_alien.Position.X > 0 && _alien.Position.Y < 7)
                         {
-                            _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
                             _alien.Position = new ClsPunto(--_alien.Position.X, ++_alien.Position.Y);
-                            hadlerAlien();
+                            handlerAlien();
                         }
                         break;
                 }
 
             } while (!moved);//Mientras no se haya movido
 
-            void hadlerAlien()
+            void handlerAlien()
             {
                 int postPosition = 8 * (_alien.Position.Y) + (_alien.Position.X);
                 if (_mazmorra.Tablero.ElementAt(postPosition).DarkImage.Equals(""))//Si el alien se encuentra en un foco del personaje
