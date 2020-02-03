@@ -20,9 +20,9 @@ namespace AlienCompadre.Views
     /// <summary>
     /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class Estadisticas : Page
+    public sealed partial class Informacion : Page
     {
-        public Estadisticas()
+        public Informacion()
         {
             this.InitializeComponent();
         }

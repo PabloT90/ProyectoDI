@@ -26,5 +26,20 @@ namespace AlienCompadre.Views
         {
             this.InitializeComponent();
         }
+
+        private void Jugar_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
+        }
+
+        private void Estadisticas_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Estadisticas));
+        }
+
+        private void Info_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Informacion));
+        }
     }
 }

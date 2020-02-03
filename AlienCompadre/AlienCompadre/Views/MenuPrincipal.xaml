@@ -12,9 +12,9 @@
         <Image Name="imagen" Stretch="Fill" Source="ms-appx:///Assets/fondo.jpg"/>
 
         <TextBlock Foreground="Red" Name="menuPrincipal" Style="{StaticResource letra}" FontSize="150" Margin="5">MENU PRINCIPAL</TextBlock>
-        <TextBlock Foreground="Red" RelativePanel.Above="estadisticas" Name="jugar" RelativePanel.AlignBottomWith="" Style="{StaticResource letra}" FontSize="100" Margin="10, 5, 5, 0">JUGAR</TextBlock>
-        <TextBlock Foreground="Red" Name="estadisticas" RelativePanel.Above="info" Style="{StaticResource letra}" FontSize="100" Margin="10, 5, 5, 0">ESTADISTICAS</TextBlock>
-        <TextBlock Foreground="Red" Name="info" RelativePanel.Above="broma" Style="{StaticResource letra}" FontSize="100" Margin="10, 5, 5, 0">INFO</TextBlock>
+        <TextBlock Foreground="Red" RelativePanel.Above="estadisticas" Name="jugar" RelativePanel.AlignBottomWith="" Style="{StaticResource letra}" FontSize="100" Margin="10, 5, 5, 0" Tapped="Jugar_Tapped">JUGAR</TextBlock>
+        <TextBlock Foreground="Red" Name="estadisticas" RelativePanel.Above="info" Style="{StaticResource letra}" FontSize="100" Margin="10, 5, 5, 0" Tapped="Estadisticas_Tapped">ESTADISTICAS</TextBlock>
+        <TextBlock Foreground="Red" Name="info" RelativePanel.Above="broma" Style="{StaticResource letra}" FontSize="100" Margin="10, 5, 5, 0" Tapped="Info_Tapped">INFO</TextBlock>
         <TextBlock Foreground="Red" Name="broma" RelativePanel.AlignBottomWithPanel="True" Style="{StaticResource letra}" FontSize="100" Margin="10, 5, 5, 0">MODO BROMA:</TextBlock>
         <TextBlock Foreground="Red" Name="sino" RelativePanel.AlignBottomWithPanel="True" RelativePanel.RightOf="broma" Style="{StaticResource letra}" FontSize="100" Margin="10, 5, 5, 0">SI</TextBlock>
 

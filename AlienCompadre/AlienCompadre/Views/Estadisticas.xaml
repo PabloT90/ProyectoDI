@@ -27,5 +27,6 @@
             </ListView.ItemTemplate>
         </ListView>
 
+        <Image Width="100" Height="100" Source="/Assets/next.png" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="true" Tapped="Image_Tapped" Margin="0,0,20,0"></Image>
     </RelativePanel>
 </Page>
