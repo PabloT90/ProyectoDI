@@ -444,9 +444,9 @@ namespace AlienCompadre.ViewModel
                 if (random.Next(1, 10) == 1)
                 {
                     do
-                    {
+                    { 
                         _alien.Position = new ClsPunto(random.Next(0, 8), random.Next(0, 8));
-                        _mazmorra.Tablero.ElementAt(8 * (_alien.Position.Y) + (_alien.Position.X)).CharacterImage = _alien.SrcImage;
+                        handlerAlien();
                     } while (_player.Position.Equals(_alien.Position));//Si se teletransporta a la posición del jugador
                 }
                 else
