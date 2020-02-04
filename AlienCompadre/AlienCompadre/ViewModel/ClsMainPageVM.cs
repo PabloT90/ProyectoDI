@@ -309,104 +309,104 @@ namespace AlienCompadre.ViewModel
         #endregion
 
         #region Métodos Alien
-        public void moveAlien()//Arreglar
-        {
-            Random random = new Random();
-            int actualPosition = 8 * (_alien.Position.Y) + (_alien.Position.X);
-            bool moved = false;
-            _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
-            do
-            {
-                switch (random.Next(1, 9))
-                {
-                    case 1://El alien se intenta mover hacia arriba
-                        if (_alien.Position.Y > 0)
-                        {
-                            _alien.Position.Y--;
-                            handlerAlien();
-                        }
-                        break;
-                    case 2://El alien se intenta mover hacia abajo
-                        if (_alien.Position.Y < 7)
-                        {
-                            _alien.Position.Y++;
-                            handlerAlien();
-                        }
-                        break;
-                    case 3://El alien se intenta mover a la izquierda
-                        if (_alien.Position.X > 0)
-                        {
-                            _alien.Position.X--;
-                            handlerAlien();
-                        }
-                        break;
-                    case 4://El alien se intenta mover a la derecha
-                        if (_alien.Position.X < 7)
-                        {
-                            _alien.Position.X++;
-                            handlerAlien();
-                        }
-                        break;
-                    case 5://El alien se intenta mover a la derecha superior
-                        if (_alien.Position.X < 7 && _alien.Position.Y > 0)
-                        {
-                            _alien.Position = new ClsPunto(++_alien.Position.X, --_alien.Position.Y);
-                            handlerAlien();
-                        }
-                        break;
-                    case 6://El alien se intenta mover a la izquierda superior
-                        if (_alien.Position.X > 0 && _alien.Position.Y > 0)
-                        {
-                            _alien.Position = new ClsPunto(--_alien.Position.X, --_alien.Position.Y);
-                            handlerAlien();
-                        }
-                        break;
-                    case 7://El alien se intenta mover a la derecha inferior
-                        if (_alien.Position.X < 7 && _alien.Position.Y < 7)
-                        {
-                            _alien.Position = new ClsPunto(++_alien.Position.X, ++_alien.Position.Y);
-                            handlerAlien();
-                        }
-                        break;
-                    case 8://El alien se intenta mover a la derecha inferior
-                        if (_alien.Position.X > 0 && _alien.Position.Y < 7)
-                        {
-                            _alien.Position = new ClsPunto(--_alien.Position.X, ++_alien.Position.Y);
-                            handlerAlien();
-                        }
-                        break;
-                }
+        //public void moveAlien()//Fuera
+        //{
+        //    Random random = new Random();
+        //    int actualPosition = 8 * (_alien.Position.Y) + (_alien.Position.X);
+        //    bool moved = false;
+        //    _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
+        //    do
+        //    {
+        //        switch (random.Next(1, 9))
+        //        {
+        //            case 1://El alien se intenta mover hacia arriba
+        //                if (_alien.Position.Y > 0)
+        //                {
+        //                    _alien.Position.Y--;
+        //                    handlerAlien();
+        //                }
+        //                break;
+        //            case 2://El alien se intenta mover hacia abajo
+        //                if (_alien.Position.Y < 7)
+        //                {
+        //                    _alien.Position.Y++;
+        //                    handlerAlien();
+        //                }
+        //                break;
+        //            case 3://El alien se intenta mover a la izquierda
+        //                if (_alien.Position.X > 0)
+        //                {
+        //                    _alien.Position.X--;
+        //                    handlerAlien();
+        //                }
+        //                break;
+        //            case 4://El alien se intenta mover a la derecha
+        //                if (_alien.Position.X < 7)
+        //                {
+        //                    _alien.Position.X++;
+        //                    handlerAlien();
+        //                }
+        //                break;
+        //            case 5://El alien se intenta mover a la derecha superior
+        //                if (_alien.Position.X < 7 && _alien.Position.Y > 0)
+        //                {
+        //                    _alien.Position = new ClsPunto(++_alien.Position.X, --_alien.Position.Y);
+        //                    handlerAlien();
+        //                }
+        //                break;
+        //            case 6://El alien se intenta mover a la izquierda superior
+        //                if (_alien.Position.X > 0 && _alien.Position.Y > 0)
+        //                {
+        //                    _alien.Position = new ClsPunto(--_alien.Position.X, --_alien.Position.Y);
+        //                    handlerAlien();
+        //                }
+        //                break;
+        //            case 7://El alien se intenta mover a la derecha inferior
+        //                if (_alien.Position.X < 7 && _alien.Position.Y < 7)
+        //                {
+        //                    _alien.Position = new ClsPunto(++_alien.Position.X, ++_alien.Position.Y);
+        //                    handlerAlien();
+        //                }
+        //                break;
+        //            case 8://El alien se intenta mover a la derecha inferior
+        //                if (_alien.Position.X > 0 && _alien.Position.Y < 7)
+        //                {
+        //                    _alien.Position = new ClsPunto(--_alien.Position.X, ++_alien.Position.Y);
+        //                    handlerAlien();
+        //                }
+        //                break;
+        //        }
 
-            } while (!moved);//Mientras no se haya movido
+        //    } while (!moved);//Mientras no se haya movido
 
-            void handlerAlien()
-            {
-                int postPosition = 8 * (_alien.Position.Y) + (_alien.Position.X);
-                if (_mazmorra.Tablero.ElementAt(postPosition).DarkImage.Equals(""))//Si el alien se encuentra en un foco del personaje
-                    _mazmorra.Tablero.ElementAt(postPosition).CharacterImage = _alien.SrcImage;
-                moved = true;
+        //    void handlerAlien()
+        //    {
+        //        int postPosition = 8 * (_alien.Position.Y) + (_alien.Position.X);
+        //        if (_mazmorra.Tablero.ElementAt(postPosition).DarkImage.Equals(""))//Si el alien se encuentra en un foco del personaje
+        //            _mazmorra.Tablero.ElementAt(postPosition).CharacterImage = _alien.SrcImage;
+        //        moved = true;
 
-                //if (_alien.Position.X == _player.Position.X && _alien.Position.Y == _player.Position.Y)//Sería un equals en el futuro
-                /*if (_alien.Position.Equals(_player.Position))
-                {
-                    if (_player.Ammo > 0)
-                    {
-                        _player.Ammo--;
-                        alienEscape();//El alien escapa
-                        //Inserta sonido disparo
-                        //playSounds(1);
-                    }
-                    else
-                    {
-                        //Inserta sonido muerte personaje
-                        //playSounds(2);
-                        var frame = (Frame)Window.Current.Content;
-                        frame.Navigate(typeof(PantallaFinal));
-                    }
-                }*/
-                encuentro();
-            }
-        }
+        //        //if (_alien.Position.X == _player.Position.X && _alien.Position.Y == _player.Position.Y)//Sería un equals en el futuro
+        //        /*if (_alien.Position.Equals(_player.Position))
+        //        {
+        //            if (_player.Ammo > 0)
+        //            {
+        //                _player.Ammo--;
+        //                alienEscape();//El alien escapa
+        //                //Inserta sonido disparo
+        //                //playSounds(1);
+        //            }
+        //            else
+        //            {
+        //                //Inserta sonido muerte personaje
+        //                //playSounds(2);
+        //                var frame = (Frame)Window.Current.Content;
+        //                frame.Navigate(typeof(PantallaFinal));
+        //            }
+        //        }*/
+        //        encuentro();
+        //    }
+        //}
 
         public void encuentro()
         {
@@ -446,7 +446,6 @@ namespace AlienCompadre.ViewModel
                     do
                     { 
                         _alien.Position = new ClsPunto(random.Next(0, 8), random.Next(0, 8));
-                        handlerAlien();
                     } while (_player.Position.Equals(_alien.Position));//Si se teletransporta a la posición del jugador
                 }
                 else
@@ -464,7 +463,7 @@ namespace AlienCompadre.ViewModel
                                 {
                                     _alien.Position.X--;
                                 }
-                                handlerAlien();
+                                moved = true;
 
                                 break;
                             case 2:
@@ -476,34 +475,34 @@ namespace AlienCompadre.ViewModel
                                 {
                                     _alien.Position.Y--;
                                 }
-                                handlerAlien();
+                                moved = true;
                                 break;
                             case 3:
                                 if (_player.Position.X > _alien.Position.X && _player.Position.Y > _alien.Position.Y)
                                 {
                                     _alien.Position = new ClsPunto(_alien.Position.X + 1, _alien.Position.Y + 1);
-                                    handlerAlien();
+                                    moved = true;
                                 }
                                 else
                                 {
                                     if (_player.Position.X < _alien.Position.X && _player.Position.Y < _alien.Position.Y)
                                     {
                                         _alien.Position = new ClsPunto(_alien.Position.X - 1, _alien.Position.Y - 1);
-                                        handlerAlien();
+                                        moved = true;
                                     }
                                     else
                                     {
                                         if (_player.Position.X > _alien.Position.X && _player.Position.Y < _alien.Position.Y)
                                         {
                                             _alien.Position = new ClsPunto(_alien.Position.X + 1, _alien.Position.Y - 1);
-                                            handlerAlien();
+                                            moved = true;
                                         }
                                         else
                                         {
                                             if (_player.Position.X < _alien.Position.X && _player.Position.Y > _alien.Position.Y)
                                             {
                                                 _alien.Position = new ClsPunto(_alien.Position.X - 1, _alien.Position.Y + 1);
-                                                handlerAlien();
+                                                moved = true;
                                             }
                                         }
                                     }
@@ -511,8 +510,9 @@ namespace AlienCompadre.ViewModel
                                 break;
                         }
                     } while (!moved);
+
                 }
-                
+                handlerAlien();
             }
 
             void handlerAlien()
@@ -520,7 +520,6 @@ namespace AlienCompadre.ViewModel
                 int postPosition = 8 * (_alien.Position.Y) + (_alien.Position.X);
                 if (_mazmorra.Tablero.ElementAt(postPosition).DarkImage.Equals(""))//Si el alien se encuentra en un foco del personaje
                     _mazmorra.Tablero.ElementAt(postPosition).CharacterImage = _alien.SrcImage;
-                moved = true;
 
                 if (_alien.Position.Equals(_player.Position))
                 {
