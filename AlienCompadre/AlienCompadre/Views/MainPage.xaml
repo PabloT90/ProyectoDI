@@ -51,7 +51,7 @@
                         <Image Source="{Binding DarkImage, Mode=TwoWay}" Width="70" Height="70"/>
                         <Image Source="{Binding CharacterImage, Mode=TwoWay}" Width="70" Height="70"/>
                     </Canvas>
-                    
+
                 </DataTemplate>
             </GridView.ItemTemplate>
             <GridView.ItemsPanel>
@@ -60,5 +60,6 @@
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
         </GridView>
+
     </StackPanel>
 </Page>

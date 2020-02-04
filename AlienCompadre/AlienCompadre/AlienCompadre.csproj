@@ -146,6 +146,7 @@
     </AppxManifest>
     <Content Include="Assets\black_key.png" />
     <Content Include="Assets\cancel.png" />
+    <Content Include="Assets\cofreInfo.png" />
     <Content Include="Assets\golden_key.png" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-125.png" />
@@ -184,6 +185,7 @@
     <Content Include="Assets\StoreLogo.scale-150.png" />
     <Content Include="Assets\StoreLogo.scale-200.png" />
     <Content Include="Assets\StoreLogo.scale-400.png" />
+    <Content Include="Assets\trampilla.png" />
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-125.png" />
     <Content Include="Assets\Wide310x150Logo.scale-150.png" />
