@@ -514,6 +514,7 @@ namespace AlienCompadre.ViewModel
 
                 }
                 handlerAlien();
+                alertaProximidad(); //Provisional, solo para probar
             }
 
             void handlerAlien()
@@ -634,23 +635,15 @@ namespace AlienCompadre.ViewModel
         #endregion
 
         #region Para el sonido
-        private async void playSounds(int numero)
+        private async void playSounds(string sonido, float volumen)
         {
             MediaElement mysong = new MediaElement();
             Windows.Storage.StorageFolder folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Sounds");
-            String archivoMusica = "";
-            switch (numero)
-            {
-                case 1:
-                    archivoMusica = "4gun1.wav";
-                    break;
-                case 2:
-                    archivoMusica = "grito.mp3";
-                    break;
-            }
+            String archivoMusica = sonido;
             Windows.Storage.StorageFile file = await folder.GetFileAsync(archivoMusica);
             var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
             mysong.SetSource(stream, file.ContentType);
+            mysong.Volume = volumen;
             //return mysong;
             mysong.Play();
         }
@@ -666,10 +659,12 @@ namespace AlienCompadre.ViewModel
             if (((playerPosX - enemyPosX) >= -1) && ((playerPosX - enemyPosX) <= 1)) {
                 if (((playerPosY - enemyPosY) >= -1) && ((playerPosY - enemyPosY) >= 1)) {
                     //Sonido fuerte
+                    playSounds("latido.mp3", 1.0f);
                 }
             }else if (((playerPosX - enemyPosX) >= -2) && ((playerPosX - enemyPosX) <= 2)) {
                 if (((playerPosY - enemyPosY) >= -2) && ((playerPosY - enemyPosY) <= 2)) {
                     //Sonido medio
+                    playSounds("latido.mp3", 0.5f);
                 }
             }
         }
