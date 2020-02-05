@@ -673,6 +673,8 @@ namespace AlienCompadre.ViewModel
                 }
             }
         }
+
+        
         #endregion
     }
 }
