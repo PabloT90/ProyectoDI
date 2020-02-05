@@ -654,6 +654,25 @@ namespace AlienCompadre.ViewModel
             //return mysong;
             mysong.Play();
         }
+
+        private void alertaProximidad() {
+            //Cogemos las coordenadas del jugador y del enemigo
+            int playerPosX = _player.Position.X;
+            int playerPosY = _player.Position.Y;
+            int enemyPosX = _alien.Position.X;
+            int enemyPosY = _alien.Position.Y;
+
+            //si esta en la misma linea
+            if (((playerPosX - enemyPosX) <= -1) || ((playerPosX - enemyPosX) >= 1)) {
+                if (((playerPosY - enemyPosY) <= -1) || ((playerPosY - enemyPosY) >= 1)) {
+                    //Sonido fuerte
+                }
+            }else if (((playerPosX - enemyPosX) <= -2) || ((playerPosX - enemyPosX) >= 2)) {
+                if (((playerPosY - enemyPosY) <= -2) || ((playerPosY - enemyPosY) >= 2)) {
+                    //Sonido medio
+                }
+            }
+        }
         #endregion
     }
 }
