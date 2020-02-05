@@ -14,14 +14,14 @@
     </Page.DataContext>
 
     <RelativePanel>
-        <Image Name="imagen" Stretch="Fill" Source="ms-appx:///Assets/estadisticas.jpg"/>
-        <TextBlock x:Name="mejoresJugadores" Foreground="Red" Style="{StaticResource letra}" FontSize="100" Margin="20, 5, 5, 0">MEJORES JUGADORES:</TextBlock>
+        <Image Name="imagen" Stretch="Fill" Source="ms-appx:///Assets/mortalidad.jpg"/>
+        <TextBlock x:Name="mejoresJugadores" Foreground="Brown" Style="{StaticResource letra}" FontSize="50" Margin="20, 5, 5, 0">MEJORES JUGADORES:</TextBlock>
         <ListView RelativePanel.Below="mejoresJugadores" ItemsSource="{Binding Stats, Mode=TwoWay}" Name="listView">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="10" Orientation="Horizontal" Height="60">
-                        <TextBlock FontSize="75"  Foreground="Red" Style="{StaticResource letra}" Text="{Binding Path=Name}"></TextBlock>
-                        <TextBlock Margin="20,15,0,0" FontSize="30" Foreground="Red" Style="{StaticResource letra}" Text="{Binding Path=Score}"></TextBlock>
+                        <TextBlock FontSize="30"  Foreground="Brown" Style="{StaticResource letra}" Text="{Binding Path=Name}"></TextBlock>
+                        <TextBlock Margin="20,0,0,0" FontSize="30" Foreground="Brown" Style="{StaticResource letra}" Text="{Binding Path=Score}"></TextBlock>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

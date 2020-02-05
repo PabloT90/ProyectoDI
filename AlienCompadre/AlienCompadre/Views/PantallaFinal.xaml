@@ -9,13 +9,13 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <RelativePanel>
-        <Image Name="imagen" Stretch="Fill" Source="ms-appx:///Assets/muerto.jpg"/>
+        <Image Name="imagen" Stretch="Fill" Source="ms-appx:///Assets/final.jpg"/>
 
-        <TextBlock HorizontalAlignment="Center" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Foreground="Red" Name="muerte" Style="{StaticResource letra}" FontSize="350" Margin="50">HAS MUERTO</TextBlock>
-        <TextBlock Margin="300,0,0,0" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWithPanel="True" Foreground="Red" Name="nickname" Style="{StaticResource letra}" FontSize="150">ALIAS</TextBlock>
-        <TextBox Margin="5,-10,0,0" Foreground="Red" Name="tbNickname" RelativePanel.RightOf="nickname" RelativePanel.AlignTopWith="nickname" FontSize="150" Style="{StaticResource letraTextBox}" Width="500"></TextBox>
-        <BitmapIcon Name="save" Margin="50,0,0,0" Width="75" Height="75" UriSource="/Assets/save.png" RelativePanel.RightOf="tbNickname" RelativePanel.AlignTopWith="tbNickname" Foreground="Red"></BitmapIcon>
-        <BitmapIcon Margin="20,0,0,0" Width="75" Height="75" UriSource="/Assets/cancel.png" RelativePanel.RightOf="save" RelativePanel.AlignTopWith="tbNickname" Foreground="Red"></BitmapIcon>
+        <TextBlock HorizontalAlignment="Center" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Foreground="Brown" Name="muerte" Style="{StaticResource letra}" FontSize="100" Margin="50">HAS MUERTO</TextBlock>
+        <TextBlock Margin="300,0,20,50" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWithPanel="True" Foreground="Brown" Name="nickname" Style="{StaticResource letra}" FontSize="50">ALIAS</TextBlock>
+        <TextBox Margin="5,-10,0,0" Foreground="Brown" Name="tbNickname" RelativePanel.RightOf="nickname" RelativePanel.AlignTopWith="nickname" FontSize="50" Style="{StaticResource letraTextBox}" Width="500"></TextBox>
+        <BitmapIcon Name="save" Margin="50,-5,0,0" Width="60" Height="60" UriSource="/Assets/save.png" RelativePanel.RightOf="tbNickname" RelativePanel.AlignTopWith="tbNickname" Foreground="Brown"></BitmapIcon>
+        <BitmapIcon Margin="20,-5,0,0" Width="60" Height="60" UriSource="/Assets/cancel.png" RelativePanel.RightOf="save" RelativePanel.AlignTopWith="tbNickname" Foreground="Brown"></BitmapIcon>
 
 
     </RelativePanel>

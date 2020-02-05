@@ -147,13 +147,17 @@
     <Content Include="Assets\black_key.png" />
     <Content Include="Assets\cancel.png" />
     <Content Include="Assets\cofreInfo.png" />
+    <Content Include="Assets\final.jpg" />
     <Content Include="Assets\golden_key.png" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-125.png" />
     <Content Include="Assets\LargeTile.scale-150.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
     <Content Include="Assets\LargeTile.scale-400.png" />
+    <Content Include="Assets\mortalidad.jpg" />
+    <Content Include="Assets\next.png" />
     <Content Include="Assets\save.png" />
+    <Content Include="Assets\skulls.jpg" />
     <Content Include="Assets\SmallTile.scale-100.png" />
     <Content Include="Assets\SmallTile.scale-125.png" />
     <Content Include="Assets\SmallTile.scale-150.png" />
@@ -196,6 +200,8 @@
     <Content Include="Sounds\grito.mp3" />
     <None Include="AlienCompadre_TemporaryKey.pfx" />
     <Content Include="Assets\Mars Attacks.ttf" />
+    <Content Include="Assets\Jfrockoutcrop-z9Ma.ttf" />
+    <Content Include="Assets\Jfrocksolid-5avL.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\alien1.png" />

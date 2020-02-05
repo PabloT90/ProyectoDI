@@ -4,11 +4,11 @@
     xmlns:local="using:MenuPrincipalAlienCompadre">
 
     <Style x:Key="letra" TargetType="TextBlock">
-        <Setter Property="FontFamily" Value="/Assets/Mars Attacks.ttf#Mars Attacks"/>
+        <Setter Property="FontFamily" Value="/Assets/Jfrocksolid-5avL.ttf#JFRockSolid"/>
     </Style>
 
     <Style x:Key="letraTextBox" TargetType="TextBox">
-        <Setter Property="FontFamily" Value="/Assets/Mars Attacks.ttf#Mars Attacks"/>
+        <Setter Property="FontFamily" Value="/Assets/Jfrocksolid-5avL.ttf#JFRockSolid"/>
     </Style>
 
 </ResourceDictionary>
