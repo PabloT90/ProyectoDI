@@ -167,25 +167,25 @@ namespace AlienCompadre.ViewModel
                 _mazmorra.Tablero.ElementAt(8 * (y ) + (x - 1)).DarkImage = "";
             }
 
-            //if (x + 1 <= 7 && y - 1 >= 0)//Foco derecha superior del personaje 
-            //{
-            //    _mazmorra.Tablero.ElementAt(8 * (y - 1) + (x + 1)).DarkImage = "";
-            //}
+            if (x + 1 <= 7 && y - 1 >= 0)//Foco derecha superior del personaje 
+            {
+                _mazmorra.Tablero.ElementAt(8 * (y - 1) + (x + 1)).DarkImage = "";
+            }
 
-            //if (x - 1 >= 0 && y - 1 >= 0)//Foco izquierda superior del personaje
-            //{
-            //    _mazmorra.Tablero.ElementAt(8 * (y - 1) + (x - 1)).DarkImage = "";
-            //}
+            if (x - 1 >= 0 && y - 1 >= 0)//Foco izquierda superior del personaje
+            {
+                _mazmorra.Tablero.ElementAt(8 * (y - 1) + (x - 1)).DarkImage = "";
+            }
 
-            //if (x + 1 <= 7 && y + 1 <= 7)//Foco derecha inferior del personaje 
-            //{
-            //    _mazmorra.Tablero.ElementAt(8 * (y + 1) + (x + 1)).DarkImage = "";
-            //}
+            if (x + 1 <= 7 && y + 1 <= 7)//Foco derecha inferior del personaje 
+            {
+                _mazmorra.Tablero.ElementAt(8 * (y + 1) + (x + 1)).DarkImage = "";
+            }
 
-            //if (x - 1 >= 0 && y + 1 <= 7)//Foco izquierda inferior del personaje
-            //{
-            //    _mazmorra.Tablero.ElementAt(8 * (y + 1) + (x - 1)).DarkImage = "";
-            //}
+            if (x - 1 >= 0 && y + 1 <= 7)//Foco izquierda inferior del personaje
+            {
+                _mazmorra.Tablero.ElementAt(8 * (y + 1) + (x - 1)).DarkImage = "";
+            }
         }
         
         public void ChangeImageToDark() {
@@ -263,7 +263,7 @@ namespace AlienCompadre.ViewModel
 
         }
         private void handlerPlayer() {
-            ChangeImageToDark();//Oscurecemos el tableor
+            ChangeImageToDark();//Oscurecemos el tablero
             focoPersonaje();//Mostramos el foco del personaje
             int actualPosition = 8 * (_player.Position.Y) + (_player.Position.X);
             _mazmorra.Tablero.ElementAt(actualPosition).DarkImage = "/Assets/personaje.gif";//Mostramos al personaje
@@ -310,104 +310,6 @@ namespace AlienCompadre.ViewModel
         #endregion
 
         #region Métodos Alien
-        //public void moveAlien()//Fuera
-        //{
-        //    Random random = new Random();
-        //    int actualPosition = 8 * (_alien.Position.Y) + (_alien.Position.X);
-        //    bool moved = false;
-        //    _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
-        //    do
-        //    {
-        //        switch (random.Next(1, 9))
-        //        {
-        //            case 1://El alien se intenta mover hacia arriba
-        //                if (_alien.Position.Y > 0)
-        //                {
-        //                    _alien.Position.Y--;
-        //                    handlerAlien();
-        //                }
-        //                break;
-        //            case 2://El alien se intenta mover hacia abajo
-        //                if (_alien.Position.Y < 7)
-        //                {
-        //                    _alien.Position.Y++;
-        //                    handlerAlien();
-        //                }
-        //                break;
-        //            case 3://El alien se intenta mover a la izquierda
-        //                if (_alien.Position.X > 0)
-        //                {
-        //                    _alien.Position.X--;
-        //                    handlerAlien();
-        //                }
-        //                break;
-        //            case 4://El alien se intenta mover a la derecha
-        //                if (_alien.Position.X < 7)
-        //                {
-        //                    _alien.Position.X++;
-        //                    handlerAlien();
-        //                }
-        //                break;
-        //            case 5://El alien se intenta mover a la derecha superior
-        //                if (_alien.Position.X < 7 && _alien.Position.Y > 0)
-        //                {
-        //                    _alien.Position = new ClsPunto(++_alien.Position.X, --_alien.Position.Y);
-        //                    handlerAlien();
-        //                }
-        //                break;
-        //            case 6://El alien se intenta mover a la izquierda superior
-        //                if (_alien.Position.X > 0 && _alien.Position.Y > 0)
-        //                {
-        //                    _alien.Position = new ClsPunto(--_alien.Position.X, --_alien.Position.Y);
-        //                    handlerAlien();
-        //                }
-        //                break;
-        //            case 7://El alien se intenta mover a la derecha inferior
-        //                if (_alien.Position.X < 7 && _alien.Position.Y < 7)
-        //                {
-        //                    _alien.Position = new ClsPunto(++_alien.Position.X, ++_alien.Position.Y);
-        //                    handlerAlien();
-        //                }
-        //                break;
-        //            case 8://El alien se intenta mover a la derecha inferior
-        //                if (_alien.Position.X > 0 && _alien.Position.Y < 7)
-        //                {
-        //                    _alien.Position = new ClsPunto(--_alien.Position.X, ++_alien.Position.Y);
-        //                    handlerAlien();
-        //                }
-        //                break;
-        //        }
-
-        //    } while (!moved);//Mientras no se haya movido
-
-        //    void handlerAlien()
-        //    {
-        //        int postPosition = 8 * (_alien.Position.Y) + (_alien.Position.X);
-        //        if (_mazmorra.Tablero.ElementAt(postPosition).DarkImage.Equals(""))//Si el alien se encuentra en un foco del personaje
-        //            _mazmorra.Tablero.ElementAt(postPosition).CharacterImage = _alien.SrcImage;
-        //        moved = true;
-
-        //        //if (_alien.Position.X == _player.Position.X && _alien.Position.Y == _player.Position.Y)//Sería un equals en el futuro
-        //        /*if (_alien.Position.Equals(_player.Position))
-        //        {
-        //            if (_player.Ammo > 0)
-        //            {
-        //                _player.Ammo--;
-        //                alienEscape();//El alien escapa
-        //                //Inserta sonido disparo
-        //                //playSounds(1);
-        //            }
-        //            else
-        //            {
-        //                //Inserta sonido muerte personaje
-        //                //playSounds(2);
-        //                var frame = (Frame)Window.Current.Content;
-        //                frame.Navigate(typeof(PantallaFinal));
-        //            }
-        //        }*/
-        //        encuentro();
-        //    }
-        //}
 
         public void encuentro()
         {
@@ -524,22 +426,6 @@ namespace AlienCompadre.ViewModel
                     _mazmorra.Tablero.ElementAt(postPosition).CharacterImage = _alien.SrcImage;
 
                 encuentro();
-                //TODO Borrar cuando funcione correctamente
-                //if (_alien.Position.Equals(_player.Position))
-                //{
-                //    if (_player.Ammo > 0)
-                //    {
-                //        _player.Ammo--;
-                //        alienEscape();//El alien escapa
-                //        //playSounds(1);
-                //    }
-                //    else
-                //    {
-                //        //playSounds(2);
-                //        var frame = (Frame)Window.Current.Content;
-                //        frame.Navigate(typeof(PantallaFinal));
-                //    }
-                //}
             }
         }
 
@@ -631,6 +517,7 @@ namespace AlienCompadre.ViewModel
 
             } while (!moved);//Mientras no se haya movido
             _mazmorra.Tablero.ElementAt(8 * (_alien.Position.Y) + (_alien.Position.X)).CharacterImage = _alien.SrcImage;
+            alertaProximidad();
         }
         #endregion
 
@@ -655,21 +542,36 @@ namespace AlienCompadre.ViewModel
             int enemyPosX = _alien.Position.X;
             int enemyPosY = _alien.Position.Y;
 
-            //si esta en la misma linea
-            if (((playerPosX - enemyPosX) >= -1) && ((playerPosX - enemyPosX) <= 1)) {
-                if (((playerPosY - enemyPosY) >= -1) && ((playerPosY - enemyPosY) >= 1)) {
+            int distanciaX = playerPosX - enemyPosX;
+            int distanciaY = playerPosY - enemyPosY;
+
+            if ((Math.Abs(distanciaX) == 1) || (Math.Abs(distanciaX) == 0)) {
+                if ((Math.Abs(distanciaY) == 1) || (Math.Abs(distanciaY) == 0)) {
                     //Sonido fuerte
-                    playSounds("latido.mp3", 1.0f);
+                    playSounds("latido.mp3", 0.1f);
                 }
-            }else if (((playerPosX - enemyPosX) >= -2) && ((playerPosX - enemyPosX) <= 2)) {
-                if (((playerPosY - enemyPosY) >= -2) && ((playerPosY - enemyPosY) <= 2)) {
+            } else if (Math.Abs(distanciaX) == 2) {
+                if ((Math.Abs(distanciaY) <= 2) && (Math.Abs(distanciaY) >= 0)) {
                     //Sonido medio
-                    playSounds("latido.mp3", 0.5f);
+                    playSounds("4gun1.wav", 0.1f);
                 }
             }
+
+
+            //if (((playerPosX - enemyPosX) >= -1) && ((playerPosX - enemyPosX) <= 1)) {
+            //    if (((playerPosY - enemyPosY) >= -1) && ((playerPosY - enemyPosY) >= 1)) {
+            //        //Sonido fuerte
+            //        playSounds("latido.mp3", 1.0f);
+            //    }
+            //}else if (((playerPosX - enemyPosX) >= -2) && ((playerPosX - enemyPosX) <= 2)) {
+            //    if (((playerPosY - enemyPosY) >= -2) && ((playerPosY - enemyPosY) <= 2)) {
+            //        //Sonido medio
+            //        playSounds("latido.mp3", 0.25f);
+            //    }
+            //}
         }
 
-        
+
         #endregion
     }
 }
