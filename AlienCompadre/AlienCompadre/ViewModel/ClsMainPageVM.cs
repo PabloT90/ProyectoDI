@@ -24,6 +24,7 @@ namespace AlienCompadre.ViewModel
         private ClsListadosStatsBL list = new ClsListadosStatsBL();
         private bool _keyFound;
         private String _srcKeyImage;
+        //private MediaElement mysong = new MediaElement(); //Solamente para el sonido
 
         #region Constructores
         public ClsMainPageVM()
@@ -417,7 +418,7 @@ namespace AlienCompadre.ViewModel
                     _player.Ammo--;
                     alienEscape();//El alien escapa
                                   //Inserta sonido disparo
-                                  //playSounds(1);
+                    //playSounds(1);
                 }
                 else
                 {
@@ -521,21 +522,23 @@ namespace AlienCompadre.ViewModel
                 if (_mazmorra.Tablero.ElementAt(postPosition).DarkImage.Equals(""))//Si el alien se encuentra en un foco del personaje
                     _mazmorra.Tablero.ElementAt(postPosition).CharacterImage = _alien.SrcImage;
 
-                if (_alien.Position.Equals(_player.Position))
-                {
-                    if (_player.Ammo > 0)
-                    {
-                        _player.Ammo--;
-                        alienEscape();//El alien escapa
-                        //playSounds(1);
-                    }
-                    else
-                    {
-                        //playSounds(2);
-                        var frame = (Frame)Window.Current.Content;
-                        frame.Navigate(typeof(PantallaFinal));
-                    }
-                }
+                encuentro();
+                //TODO Borrar cuando funcione correctamente
+                //if (_alien.Position.Equals(_player.Position))
+                //{
+                //    if (_player.Ammo > 0)
+                //    {
+                //        _player.Ammo--;
+                //        alienEscape();//El alien escapa
+                //        //playSounds(1);
+                //    }
+                //    else
+                //    {
+                //        //playSounds(2);
+                //        var frame = (Frame)Window.Current.Content;
+                //        frame.Navigate(typeof(PantallaFinal));
+                //    }
+                //}
             }
         }
 
@@ -648,6 +651,7 @@ namespace AlienCompadre.ViewModel
             Windows.Storage.StorageFile file = await folder.GetFileAsync(archivoMusica);
             var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
             mysong.SetSource(stream, file.ContentType);
+            //return mysong;
             mysong.Play();
         }
         #endregion
