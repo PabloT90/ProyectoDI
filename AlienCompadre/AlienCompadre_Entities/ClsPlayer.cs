@@ -17,13 +17,13 @@ namespace AlienCompadre.Models
         #region Constructores
         public ClsPlayer()
         {
-            _srcImage = "/Assets/player.png";
+            _srcImage = "/Assets/personaje.gif";
             _ammo = 1;
             _position = new ClsPunto();
         }
 
         public ClsPlayer(int ammo) {
-            _srcImage = "/Assets/player.png";
+            _srcImage = "/Assets/personaje.gif";
             _ammo = ammo;
             _position = new ClsPunto();
         }

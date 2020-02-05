@@ -53,8 +53,8 @@ namespace AlienCompadre_Entities
 
             ListUtility.ShuffleList(ref _tablero);//Nos permite mezclar las casillas del tablero
 
-            _tablero.Insert(0, new ClsCasilla("/Assets/floor1.png", "/Assets/floor1dark.png", "/Assets/player.png", 1));//1 significa que la casilla contiene un personaje
-            _tablero.Add(new ClsCasilla("/Assets/floor1.png", "/Assets/floor1dark.png", "/Assets/alien1.png", 4));//4 significa que la casilla contiene un alien 
+            _tablero.Insert(0, new ClsCasilla("/Assets/floor1.png", "/Assets/floor1dark.png", "/Assets/personaje.gif", 1));//1 significa que la casilla contiene un personaje
+            _tablero.Add(new ClsCasilla("/Assets/floor1.png", "/Assets/floor1dark.png", "/Assets/canina.gif", 4));//4 significa que la casilla contiene un alien 
             //TODO solo se vera cuando entre en el foco del personaje.
         }
         #endregion

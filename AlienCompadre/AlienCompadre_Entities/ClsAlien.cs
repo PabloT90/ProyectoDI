@@ -16,7 +16,7 @@ namespace AlienCompadre_Entities
         #region Constructores
         public ClsAlien()
         {
-            _srcImage = "/Assets/alien1.png";
+            _srcImage = "/Assets/canina.gif";
             _position = new ClsPunto(7, 7);
         }
         #endregion
