@@ -167,25 +167,25 @@ namespace AlienCompadre.ViewModel
                 _mazmorra.Tablero.ElementAt(8 * (y ) + (x - 1)).DarkImage = "";
             }
 
-            if (x + 1 <= 7 && y - 1 >= 0)//Foco derecha superior del personaje 
-            {
-                _mazmorra.Tablero.ElementAt(8 * (y-1) + (x + 1)).DarkImage = "";
-            }
+            //if (x + 1 <= 7 && y - 1 >= 0)//Foco derecha superior del personaje 
+            //{
+            //    _mazmorra.Tablero.ElementAt(8 * (y - 1) + (x + 1)).DarkImage = "";
+            //}
 
-            if (x - 1 >= 0 && y - 1 >= 0)//Foco izquierda superior del personaje
-            {
-                _mazmorra.Tablero.ElementAt(8 * (y-1) + (x - 1)).DarkImage = "";
-            }
+            //if (x - 1 >= 0 && y - 1 >= 0)//Foco izquierda superior del personaje
+            //{
+            //    _mazmorra.Tablero.ElementAt(8 * (y - 1) + (x - 1)).DarkImage = "";
+            //}
 
-            if (x + 1 <= 7 && y + 1 <= 7)//Foco derecha inferior del personaje 
-            {
-                _mazmorra.Tablero.ElementAt(8 * (y + 1) + (x + 1)).DarkImage = "";
-            }
+            //if (x + 1 <= 7 && y + 1 <= 7)//Foco derecha inferior del personaje 
+            //{
+            //    _mazmorra.Tablero.ElementAt(8 * (y + 1) + (x + 1)).DarkImage = "";
+            //}
 
-            if (x - 1 >= 0 && y + 1 <= 7)//Foco izquierda inferior del personaje
-            {
-                _mazmorra.Tablero.ElementAt(8 * (y + 1) + (x - 1)).DarkImage = "";
-            }
+            //if (x - 1 >= 0 && y + 1 <= 7)//Foco izquierda inferior del personaje
+            //{
+            //    _mazmorra.Tablero.ElementAt(8 * (y + 1) + (x - 1)).DarkImage = "";
+            //}
         }
         
         public void ChangeImageToDark() {
@@ -266,7 +266,7 @@ namespace AlienCompadre.ViewModel
             ChangeImageToDark();//Oscurecemos el tableor
             focoPersonaje();//Mostramos el foco del personaje
             int actualPosition = 8 * (_player.Position.Y) + (_player.Position.X);
-            _mazmorra.Tablero.ElementAt(actualPosition).DarkImage = "/Assets/player.png";//Mostramos al personaje
+            _mazmorra.Tablero.ElementAt(actualPosition).DarkImage = "/Assets/personaje.gif";//Mostramos al personaje
 
             switch (_mazmorra.Tablero.ElementAt(actualPosition).RowObject)
             {
