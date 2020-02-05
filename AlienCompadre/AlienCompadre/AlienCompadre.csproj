@@ -146,6 +146,7 @@
     </AppxManifest>
     <Content Include="Assets\black_key.png" />
     <Content Include="Assets\cancel.png" />
+    <Content Include="Assets\canina.gif" />
     <Content Include="Assets\cofreInfo.png" />
     <Content Include="Assets\final.jpg" />
     <Content Include="Assets\golden_key.png" />
@@ -156,6 +157,7 @@
     <Content Include="Assets\LargeTile.scale-400.png" />
     <Content Include="Assets\mortalidad.jpg" />
     <Content Include="Assets\next.png" />
+    <Content Include="Assets\personaje.gif" />
     <Content Include="Assets\save.png" />
     <Content Include="Assets\skulls.jpg" />
     <Content Include="Assets\SmallTile.scale-100.png" />
@@ -204,11 +206,9 @@
     <Content Include="Assets\Jfrocksolid-5avL.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\alien1.png" />
     <Content Include="Assets\boton.png" />
     <Content Include="Assets\chestclosed.PNG" />
     <Content Include="Assets\chestOpen.PNG" />
-    <Content Include="Assets\estadisticas.jpg" />
     <Content Include="Assets\floor1.png" />
     <Content Include="Assets\floor10.png" />
     <Content Include="Assets\floor10dark.png" />
@@ -241,9 +241,6 @@
     <Content Include="Assets\floor8dark.png" />
     <Content Include="Assets\floor9.png" />
     <Content Include="Assets\floor9dark.png" />
-    <Content Include="Assets\fondo.jpg" />
-    <Content Include="Assets\muerto.jpg" />
-    <Content Include="Assets\player.png" />
     <Content Include="Assets\trapdoor.png" />
     <Content Include="estadisticas.jpg" />
     <Content Include="Properties\Default.rd.xml" />

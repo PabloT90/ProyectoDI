@@ -12,10 +12,10 @@
         <RelativePanel Background="Black">
             <TextBlock Margin="10" RelativePanel.AlignLeftWithPanel="True" FontSize="25" Foreground="Brown" Name="letraTablero" Style="{StaticResource letra}">Tu mision. Encuentra la llave que abre la trampilla y escapa. <LineBreak/> Aunque no todo sera tan facil. <LineBreak/> Intenta encontrar los cofres y la trampilla <LineBreak/> Mucha suerte, dale recuerdos a tu invitado</TextBlock>
 
-            <Image Margin="10" Width="100" Height="100" Source="/Assets/player.png" Name="imagenPersonaje" RelativePanel.Below="letraTablero"></Image>
+            <Image Margin="10" Width="100" Height="100" Source="/Assets/personaje.gif" Name="imagenPersonaje" RelativePanel.Below="letraTablero"></Image>
             <TextBlock Margin="20" RelativePanel.AlignRightWithPanel="True" FontSize="20" Foreground="Brown" Name="letraPersnaje" RelativePanel.AlignTopWith="imagenPersonaje" RelativePanel.RightOf="imagenPersonaje" Style="{StaticResource letra}">Este eres tu</TextBlock>
 
-            <Image  Margin="10" Width="100" Height="100" Source="/Assets/alien1.png" Name="imagenAlien" RelativePanel.Below="imagenPersonaje"></Image>
+            <Image  Margin="10" Width="100" Height="100" Source="/Assets/canina.gif" Name="imagenAlien" RelativePanel.Below="imagenPersonaje"></Image>
             <TextBlock Margin="20"  RelativePanel.AlignRightWithPanel="True" FontSize="20" Foreground="Brown" Name="letraAlien" RelativePanel.AlignTopWith="imagenAlien" RelativePanel.RightOf="imagenAlien" Style="{StaticResource letra}">Tu enemigo, no dudara en matarte</TextBlock>
 
             <Image Margin="10" Width="100" Height="100" Source="/Assets/cofreInfo.png" Name="imagenCofre" RelativePanel.Below="imagenAlien"></Image>
