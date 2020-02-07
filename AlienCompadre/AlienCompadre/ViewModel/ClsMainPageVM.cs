@@ -24,6 +24,15 @@ namespace AlienCompadre.ViewModel
         private ClsListadosStatsBL list = new ClsListadosStatsBL();
         private bool _keyFound;
         private String _srcKeyImage;
+
+        //Propiedades para controlar los sonidos
+        private Boolean modoBroma = false; //TODO Este lo debe recibir de la otra actividad
+        private string sonidoArma;
+        private String sonidoPartidaTerminada;
+        private String sonidoProximidadCerca;
+        private String sonidoPuerta;
+        private String sonidoProximidadLejos;
+
         //private MediaElement mysong = new MediaElement(); //Solamente para el sonido
 
         #region Constructores
@@ -36,6 +45,7 @@ namespace AlienCompadre.ViewModel
             _stats = new List<ClsStats>(list.listadoStats());
             _keyFound = false;
             _srcKeyImage = "/Assets/black_key.png";
+            asignarSonidos();
         }
         #endregion
 
@@ -145,26 +155,22 @@ namespace AlienCompadre.ViewModel
 
             if (y+1 <= 7)//Foco debajo del personaje
             {
-                //_mazmorra.Tablero.ElementAt(8 * (y+2) + (x)).LightImage = _mazmorra.Tablero.ElementAt(8 * (y+2) + (x)).DarkImage;
                 _mazmorra.Tablero.ElementAt(8 * (y + 1) + (x)).DarkImage = "";
             }
 
             if (y-1 >= 0)//Foco arriba del personaje
             {
-                //_mazmorra.Tablero.ElementAt(8 * (y) + (x)).LightImage = _mazmorra.Tablero.ElementAt(8 * (y) + (x)).DarkImage;
-                _mazmorra.Tablero.ElementAt(8 * (y-1) + (x)).DarkImage = "";
+               _mazmorra.Tablero.ElementAt(8 * (y-1) + (x)).DarkImage = "";
             }
 
             if (x + 1 <= 7)//Foco derecha del personaje 
             {
-                //_mazmorra.Tablero.ElementAt(8 * (y + 1) + (x+1)).LightImage = _mazmorra.Tablero.ElementAt(8 * (y + 1) + (x+1)).DarkImage;
-                _mazmorra.Tablero.ElementAt(8 * (y ) + (x + 1)).DarkImage = "";
+               _mazmorra.Tablero.ElementAt(8 * (y ) + (x + 1)).DarkImage = "";
             }
 
             if (x - 1 >= 0)//Foco izquierda del personaje
             {
-                //_mazmorra.Tablero.ElementAt(8 * (y + 1) + (x-1)).LightImage = _mazmorra.Tablero.ElementAt(8 * (y + 1) + (x - 1)).DarkImage;
-                _mazmorra.Tablero.ElementAt(8 * (y ) + (x - 1)).DarkImage = "";
+               _mazmorra.Tablero.ElementAt(8 * (y ) + (x - 1)).DarkImage = "";
             }
 
             if (x + 1 <= 7 && y - 1 >= 0)//Foco derecha superior del personaje 
@@ -188,6 +194,9 @@ namespace AlienCompadre.ViewModel
             }
         }
         
+        /// <summary>
+        /// Cambia las imagenes claras a oscuras.
+        /// </summary>
         public void ChangeImageToDark() {
             for (int i = 0; i < _mazmorra.Tablero.Count; i++) {
                 if (_mazmorra.Tablero.ElementAt(i).DarkImage == "") {
@@ -207,7 +216,6 @@ namespace AlienCompadre.ViewModel
         {
             _mazmorra = new ClsTablero();
             NotifyPropertyChanged("Mazmorra");
-            //_player = new ClsPlayer(_player.Ammo);
             _player.Position = new ClsPunto(0, 0);
             _alien = new ClsAlien();
             _keyFound = false;
@@ -522,6 +530,25 @@ namespace AlienCompadre.ViewModel
         #endregion
 
         #region Para el sonido
+        /// <summary>
+        /// Asigna los sonidos que seran reproducidos en la partida, segun el modo elegido.
+        /// </summary>
+        private void asignarSonidos() {
+            if (modoBroma) { //Si el modo broma esta activado.
+                sonidoArma = "";
+                sonidoPartidaTerminada = "";
+                sonidoProximidadCerca = "";
+                sonidoPuerta = "";
+                sonidoProximidadLejos = "";
+            } else {
+                sonidoArma = "4gun1.wav";
+                sonidoPartidaTerminada = "grito.mp3";
+                sonidoProximidadCerca = "latido.mp3";
+                sonidoPuerta = "7door.wav";
+                sonidoProximidadLejos = "gritobicho.mp3";
+            }
+        }
+
         private async void playSounds(string sonido, float volumen)
         {
             MediaElement mysong = new MediaElement();
@@ -548,30 +575,15 @@ namespace AlienCompadre.ViewModel
             if ((Math.Abs(distanciaX) == 1) || (Math.Abs(distanciaX) == 0)) {
                 if ((Math.Abs(distanciaY) == 1) || (Math.Abs(distanciaY) == 0)) {
                     //Sonido fuerte
-                    playSounds("latido.mp3", 0.1f);
+                    playSounds(sonidoProximidadCerca, 0.1f);
                 }
             } else if (Math.Abs(distanciaX) == 2) {
                 if ((Math.Abs(distanciaY) <= 2) && (Math.Abs(distanciaY) >= 0)) {
                     //Sonido medio
-                    playSounds("4gun1.wav", 0.1f);
+                    playSounds(sonidoProximidadLejos, 0.1f);
                 }
             }
-
-
-            //if (((playerPosX - enemyPosX) >= -1) && ((playerPosX - enemyPosX) <= 1)) {
-            //    if (((playerPosY - enemyPosY) >= -1) && ((playerPosY - enemyPosY) >= 1)) {
-            //        //Sonido fuerte
-            //        playSounds("latido.mp3", 1.0f);
-            //    }
-            //}else if (((playerPosX - enemyPosX) >= -2) && ((playerPosX - enemyPosX) <= 2)) {
-            //    if (((playerPosY - enemyPosY) >= -2) && ((playerPosY - enemyPosY) <= 2)) {
-            //        //Sonido medio
-            //        playSounds("latido.mp3", 0.25f);
-            //    }
-            //}
         }
-
-
         #endregion
     }
 }
