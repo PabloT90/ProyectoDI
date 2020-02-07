@@ -26,7 +26,7 @@ namespace AlienCompadre.Views
         public MenuPrincipal()
         {
             this.InitializeComponent();
-            terror = false;
+            terror = true;
         }
 
         private void Jugar_Tapped(object sender, TappedRoutedEventArgs e)

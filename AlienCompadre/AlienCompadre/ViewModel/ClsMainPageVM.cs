@@ -26,7 +26,7 @@ namespace AlienCompadre.ViewModel
         private String _srcKeyImage;
 
         //Propiedades para controlar los sonidos
-        private Boolean modoBroma = false; //TODO Este lo debe recibir de la otra actividad
+        public Boolean ModoBroma { get; set; } //TODO Este lo debe recibir de la otra actividad
         private string sonidoArma;
         private String sonidoPartidaTerminada;
         private String sonidoProximidadCerca;
@@ -271,7 +271,7 @@ namespace AlienCompadre.ViewModel
 
         }
         private void handlerPlayer() {
-            ChangeImageToDark();//Oscurecemos el tablero
+            //ChangeImageToDark();//Oscurecemos el tablero
             focoPersonaje();//Mostramos el foco del personaje
             int actualPosition = 8 * (_player.Position.Y) + (_player.Position.X);
             _mazmorra.Tablero.ElementAt(actualPosition).DarkImage = "/Assets/personaje.gif";//Mostramos al personaje
@@ -327,13 +327,13 @@ namespace AlienCompadre.ViewModel
                 {
                     _player.Ammo--;
                     alienEscape();//El alien escapa
-                                  //Inserta sonido disparo
-                    //playSounds(1);
+                    //Inserta sonido disparo
+                    playSounds(sonidoArma, 1.0);
                 }
                 else
                 {
                     //Inserta sonido muerte personaje
-                    //playSounds(2);
+                    playSounds(sonidoPartidaTerminada, 0.3);
                     var frame = (Frame)Window.Current.Content;
                     frame.Navigate(typeof(PantallaFinal));
                     frame.BackStack.Clear();
@@ -534,7 +534,7 @@ namespace AlienCompadre.ViewModel
         /// Asigna los sonidos que seran reproducidos en la partida, segun el modo elegido.
         /// </summary>
         private void asignarSonidos() {
-            if (modoBroma) { //Si el modo broma esta activado.
+            if (ModoBroma) { //Si el modo broma esta activado.
                 sonidoArma = "";
                 sonidoPartidaTerminada = "";
                 sonidoProximidadCerca = "";
@@ -545,43 +545,37 @@ namespace AlienCompadre.ViewModel
                 sonidoPartidaTerminada = "grito.mp3";
                 sonidoProximidadCerca = "latido.mp3";
                 sonidoPuerta = "7door.wav";
-                sonidoProximidadLejos = "gritobicho.mp3";
+                sonidoProximidadLejos = "4gun1.wav";
             }
         }
 
-        private async void playSounds(string sonido, float volumen)
+        private async void playSounds(string sonido, double volumen)
         {
             MediaElement mysong = new MediaElement();
+            mysong.Volume = volumen;
             Windows.Storage.StorageFolder folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Sounds");
             String archivoMusica = sonido;
             Windows.Storage.StorageFile file = await folder.GetFileAsync(archivoMusica);
             var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
             mysong.SetSource(stream, file.ContentType);
-            mysong.Volume = volumen;
+            
             //return mysong;
             mysong.Play();
         }
 
         private void alertaProximidad() {
             //Cogemos las coordenadas del jugador y del enemigo
-            int playerPosX = _player.Position.X;
-            int playerPosY = _player.Position.Y;
-            int enemyPosX = _alien.Position.X;
-            int enemyPosY = _alien.Position.Y;
+            int distanciaX = Math.Abs(_player.Position.X - _alien.Position.X);
+            int distanciaY = Math.Abs(_player.Position.Y - _alien.Position.Y);
 
-            int distanciaX = playerPosX - enemyPosX;
-            int distanciaY = playerPosY - enemyPosY;
-
-            if ((Math.Abs(distanciaX) == 1) || (Math.Abs(distanciaX) == 0)) {
-                if ((Math.Abs(distanciaY) == 1) || (Math.Abs(distanciaY) == 0)) {
-                    //Sonido fuerte
-                    playSounds(sonidoProximidadCerca, 0.1f);
-                }
-            } else if (Math.Abs(distanciaX) == 2) {
-                if ((Math.Abs(distanciaY) <= 2) && (Math.Abs(distanciaY) >= 0)) {
+            if (distanciaX <= 1 && distanciaY <= 1) {
+                //Sonido fuerte
+                playSounds(sonidoProximidadCerca, 1);
+            } else if (distanciaX <= 2 && distanciaY <= 2) {
                     //Sonido medio
-                    playSounds(sonidoProximidadLejos, 0.1f);
-                }
+                    playSounds(sonidoProximidadLejos, 0.1);
+            }else if (distanciaX == 0 && distanciaY == 0) {
+                playSounds(sonidoProximidadLejos, 0.1);
             }
         }
         #endregion

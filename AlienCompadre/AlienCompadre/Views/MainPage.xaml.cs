@@ -26,11 +26,16 @@ namespace AlienCompadre
     public sealed partial class MainPage : Page
     {
         ClsMainPageVM viewModel { get; set; }
-    public MainPage()
-        {
+        public MainPage(){
             this.InitializeComponent();
             viewModel = (ClsMainPageVM)this.DataContext;
-           Window.Current.CoreWindow.CharacterReceived += CoreWindow_CharacterReceived;
+            Window.Current.CoreWindow.CharacterReceived += CoreWindow_CharacterReceived;
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e) {
+            base.OnNavigatedTo(e);
+            bool broma = (Boolean)e.Parameter;
+            viewModel.ModoBroma = broma;
         }
 
         private void CoreWindow_CharacterReceived(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.CharacterReceivedEventArgs args) {
