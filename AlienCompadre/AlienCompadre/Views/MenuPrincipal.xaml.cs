@@ -22,14 +22,16 @@ namespace AlienCompadre.Views
     /// </summary>
     public sealed partial class MenuPrincipal : Page
     {
+        private bool terror;
         public MenuPrincipal()
         {
             this.InitializeComponent();
+            terror = false;
         }
 
         private void Jugar_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MainPage));
+            this.Frame.Navigate(typeof(MainPage), terror);
         }
 
         private void Estadisticas_Tapped(object sender, TappedRoutedEventArgs e)
@@ -40,6 +42,20 @@ namespace AlienCompadre.Views
         private void Info_Tapped(object sender, TappedRoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(Informacion));
+        }
+
+        private void Modos_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if(modos.Text == "MODO TERROR")
+            {
+                modos.Text = "MODO BROMA";
+                terror = false;
+            }
+            else
+            {
+                modos.Text = "MODO TERROR";
+                terror = true;
+            }
         }
     }
 }

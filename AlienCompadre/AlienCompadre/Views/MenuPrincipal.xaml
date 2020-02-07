@@ -14,7 +14,8 @@
         <TextBlock Foreground="Brown" Name="menuPrincipal" Style="{StaticResource letra}" FontSize="80" Margin="5">MENU PRINCIPAL</TextBlock>
         <TextBlock Foreground="Brown" RelativePanel.Above="estadisticas" Name="jugar" RelativePanel.AlignBottomWith="" Style="{StaticResource letra}" FontSize="70" Margin="10, 5, 5, 0" Tapped="Jugar_Tapped">JUGAR</TextBlock>
         <TextBlock Foreground="Brown" Name="estadisticas" RelativePanel.Above="info" Style="{StaticResource letra}" FontSize="50" Margin="10, 5, 5, 0" Tapped="Estadisticas_Tapped">ESTADISTICAS</TextBlock>
-        <TextBlock Foreground="Brown" Name="info" RelativePanel.AlignBottomWithPanel="True" Style="{StaticResource letra}" FontSize="50" Margin="10, 5, 5, 0" Tapped="Info_Tapped">INFO</TextBlock>
+        <TextBlock Foreground="Brown" Name="info" RelativePanel.Above="modos" Style="{StaticResource letra}" FontSize="50" Margin="10, 5, 5, 0" Tapped="Info_Tapped">INFO</TextBlock>
+        <TextBlock Foreground="Brown" Name="modos" Style="{StaticResource letra}" RelativePanel.AlignBottomWithPanel="True" FontSize="50" Margin="10, 5, 5, 0" Tapped="Modos_Tapped">MODO TERROR</TextBlock>
 
     </RelativePanel>
 </Page>
