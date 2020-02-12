@@ -24,6 +24,7 @@ namespace AlienCompadre.ViewModel
         private ClsListadosStatsBL list = new ClsListadosStatsBL();
         private bool _keyFound;
         private String _srcKeyImage;
+        private bool _repeat;
 
         //Propiedades para controlar los sonidos
         public Boolean ModoBroma { get; set; } //TODO Este lo debe recibir de la otra actividad
@@ -45,6 +46,7 @@ namespace AlienCompadre.ViewModel
             _stats = new List<ClsStats>(list.listadoStats());
             _keyFound = false;
             _srcKeyImage = "/Assets/black_key.png";
+            _repeat = false;
             asignarSonidos();
         }
         #endregion
@@ -125,6 +127,19 @@ namespace AlienCompadre.ViewModel
             {
                 _srcKeyImage = value;
                 NotifyPropertyChanged("SrcKeyImage");
+            }
+        }
+
+        public bool Repeat
+        {
+            get
+            {
+                return _repeat;
+            }
+            set
+            {
+                _repeat = value;
+                NotifyPropertyChanged("Repeat");
             }
         }
         #endregion
@@ -333,6 +348,7 @@ namespace AlienCompadre.ViewModel
                 else
                 {
                     //Inserta sonido muerte personaje
+                    Repeat = true;
                     playSounds(sonidoPartidaTerminada, 0.3);
                     var frame = (Frame)Window.Current.Content;
                     frame.Navigate(typeof(PantallaFinal));

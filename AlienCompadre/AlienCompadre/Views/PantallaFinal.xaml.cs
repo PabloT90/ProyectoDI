@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AlienCompadre.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +23,16 @@ namespace AlienCompadre.Views
     /// </summary>
     public sealed partial class PantallaFinal : Page
     {
+        ClsMainPageVM mainPageVM { get; set; }
         public PantallaFinal()
         {
             this.InitializeComponent();
+            
+        }
+
+        private void BitmapIcon_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MenuPrincipal));
         }
     }
 }

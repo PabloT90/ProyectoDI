@@ -28,18 +28,48 @@ namespace AlienCompadre
         ClsMainPageVM viewModel { get; set; }
         public MainPage(){
             this.InitializeComponent();
+            //this.DataContext = new ClsMainPageVM();
             viewModel = (ClsMainPageVM)this.DataContext;
+            /*
+            if (viewModel.Repeat)
+            {
+                this.DataContext = new ClsMainPageVM();
+                viewModel = (ClsMainPageVM)this.DataContext;
+                viewModel.Repeat = false;
+            }
+            */
             Window.Current.CoreWindow.CharacterReceived += CoreWindow_CharacterReceived;
+
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
             base.OnNavigatedTo(e);
             bool broma = (Boolean)e.Parameter;
+            /*
+            Frame frame = (Frame)Window.Current.Content;
+            frame.DataContext = new ClsMainPageVM();
+            frame.Navigate(typeof(MainPage));
+            frame.BackStack.Clear();
+            */
+            //this.Content = null;
+            /*
+            if(viewModel.Repeat)
+            {
+                this.DataContext = new ClsMainPageVM();
+                viewModel = (ClsMainPageVM)this.DataContext;
+                viewModel.Repeat = false;
+            }*/
             viewModel.ModoBroma = broma;
         }
 
         private void CoreWindow_CharacterReceived(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.CharacterReceivedEventArgs args) {
-            
+            if (viewModel.Repeat)
+            {
+                this.DataContext = new ClsMainPageVM();
+                viewModel = (ClsMainPageVM)this.DataContext;
+                viewModel.Repeat = false;
+            }
+
             if (args.KeyCode == 119) //Arriba
             {
                 viewModel.tryMoveCharacter('u');

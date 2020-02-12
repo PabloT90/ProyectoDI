@@ -27,6 +27,7 @@ namespace AlienCompadre.Views
         {
             this.InitializeComponent();
             terror = true;
+            //this.Frame.BackStack.Clear();
         }
 
         private void Jugar_Tapped(object sender, TappedRoutedEventArgs e)
