@@ -366,51 +366,60 @@ namespace AlienCompadre.ViewModel
                         switch (random.Next(1, 4))
                         {
                             case 1:
-                                if (_player.Position.X > _alien.Position.X)
+                                if (_player.Position.X > _alien.Position.X && _alien.Position.X < 7)
                                 {
                                     _alien.Position.X++;
+                                    moved = true;
                                 }
                                 else
                                 {
-                                    _alien.Position.X--;
+                                    if (_player.Position.X < _alien.Position.X && _alien.Position.X > 0)
+                                    {
+                                        _alien.Position.X--;
+                                    }
                                 }
                                 moved = true;
 
                                 break;
                             case 2:
-                                if (_player.Position.Y > _alien.Position.Y)
+                                if (_player.Position.Y > _alien.Position.Y && _alien.Position.Y < 7)
                                 {
                                     _alien.Position.Y++;
+                                    moved = true;
                                 }
                                 else
                                 {
-                                    _alien.Position.Y--;
+                                    if (_player.Position.Y < _alien.Position.Y && _alien.Position.Y > 0)
+                                    {
+                                        _alien.Position.Y--;
+                                        moved = true;
+                                    }
                                 }
-                                moved = true;
+                                
                                 break;
                             case 3:
-                                if (_player.Position.X > _alien.Position.X && _player.Position.Y > _alien.Position.Y)
+                                if (_player.Position.X > _alien.Position.X && _player.Position.Y > _alien.Position.Y && _alien.Position.X < 7 && _alien.Position.Y < 7)
                                 {
                                     _alien.Position = new ClsPunto(_alien.Position.X + 1, _alien.Position.Y + 1);
                                     moved = true;
                                 }
                                 else
                                 {
-                                    if (_player.Position.X < _alien.Position.X && _player.Position.Y < _alien.Position.Y)
+                                    if (_player.Position.X < _alien.Position.X && _player.Position.Y < _alien.Position.Y && _alien.Position.X > 0 && _alien.Position.Y > 0)
                                     {
                                         _alien.Position = new ClsPunto(_alien.Position.X - 1, _alien.Position.Y - 1);
                                         moved = true;
                                     }
                                     else
                                     {
-                                        if (_player.Position.X > _alien.Position.X && _player.Position.Y < _alien.Position.Y)
+                                        if (_player.Position.X > _alien.Position.X && _player.Position.Y < _alien.Position.Y && _alien.Position.X < 7 && _alien.Position.Y > 0)
                                         {
                                             _alien.Position = new ClsPunto(_alien.Position.X + 1, _alien.Position.Y - 1);
                                             moved = true;
                                         }
                                         else
                                         {
-                                            if (_player.Position.X < _alien.Position.X && _player.Position.Y > _alien.Position.Y)
+                                            if (_player.Position.X < _alien.Position.X && _player.Position.Y > _alien.Position.Y && _alien.Position.X > 0 && _alien.Position.Y < 7)
                                             {
                                                 _alien.Position = new ClsPunto(_alien.Position.X - 1, _alien.Position.Y + 1);
                                                 moved = true;
