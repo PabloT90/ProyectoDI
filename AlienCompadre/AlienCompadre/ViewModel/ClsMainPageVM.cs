@@ -31,6 +31,18 @@ namespace AlienCompadre.ViewModel
         private string sonidoArma;
         private String sonidoPartidaTerminada;
         private String sonidoProximidadCerca;
+
+        internal void ReiniciarJuego() {
+            Mazmorra = new ClsTablero();
+            Player = new ClsPlayer();
+            Alien =  new ClsAlien();
+            Stats = new List<ClsStats>(list.listadoStats());
+            _keyFound = false;
+            SrcKeyImage = "/Assets/black_key.png";
+            Repeat = false;
+            asignarSonidos();
+        }
+
         private String sonidoPuerta;
         private String sonidoProximidadLejos;
 
@@ -247,7 +259,7 @@ namespace AlienCompadre.ViewModel
         /// <param name="movement"></param>
         public void tryMoveCharacter(char movement)
         {
-            int actualPosition = 8 * (_player.Position.Y) + (_player.Position.X); ;
+            int actualPosition = 8 * (_player.Position.Y) + (_player.Position.X);
             switch (movement)
             {
                 case 'u'://Up
@@ -285,8 +297,8 @@ namespace AlienCompadre.ViewModel
             }
 
         }
-        private void handlerPlayer() {
-            //ChangeImageToDark();//Oscurecemos el tablero
+        private async void handlerPlayer() {
+            ChangeImageToDark();//Oscurecemos el tablero
             focoPersonaje();//Mostramos el foco del personaje
             int actualPosition = 8 * (_player.Position.Y) + (_player.Position.X);
             _mazmorra.Tablero.ElementAt(actualPosition).DarkImage = "/Assets/personaje.gif";//Mostramos al personaje
@@ -348,11 +360,10 @@ namespace AlienCompadre.ViewModel
                 else
                 {
                     //Inserta sonido muerte personaje
-                    Repeat = true;
                     playSounds(sonidoPartidaTerminada, 0.3);
                     var frame = (Frame)Window.Current.Content;
                     frame.Navigate(typeof(PantallaFinal));
-                    frame.BackStack.Clear();
+                    ReiniciarJuego();
                 }
             }
         }
@@ -560,11 +571,11 @@ namespace AlienCompadre.ViewModel
         /// </summary>
         private void asignarSonidos() {
             if (ModoBroma) { //Si el modo broma esta activado.
-                sonidoArma = "";
-                sonidoPartidaTerminada = "";
-                sonidoProximidadCerca = "";
-                sonidoPuerta = "";
-                sonidoProximidadLejos = "";
+                sonidoArma = "4gun1.wav";
+                sonidoPartidaTerminada = "grito.mp3";
+                sonidoProximidadCerca = "latido.mp3";
+                sonidoPuerta = "7door.wav";
+                sonidoProximidadLejos = "4gun1.wav";
             } else {
                 sonidoArma = "4gun1.wav";
                 sonidoPartidaTerminada = "grito.mp3";

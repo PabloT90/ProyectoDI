@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -23,16 +24,16 @@ namespace AlienCompadre.Views
     /// </summary>
     public sealed partial class PantallaFinal : Page
     {
-        ClsMainPageVM mainPageVM { get; set; }
         public PantallaFinal()
         {
             this.InitializeComponent();
-            
         }
 
         private void BitmapIcon_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MenuPrincipal));
+            if (this.Frame.CanGoBack) {
+                this.Frame.GoBack();
+            }
         }
     }
 }
