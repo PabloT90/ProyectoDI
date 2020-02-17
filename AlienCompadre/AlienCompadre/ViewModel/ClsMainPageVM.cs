@@ -341,6 +341,8 @@ namespace AlienCompadre.ViewModel
             //moveAlien();//Movemos al alien
             encuentro();
             moveAlienIA();
+            
+
         }
         #endregion
 

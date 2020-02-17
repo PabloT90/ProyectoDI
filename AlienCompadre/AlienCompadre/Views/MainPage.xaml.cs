@@ -41,7 +41,7 @@ namespace AlienCompadre
             viewModel.ModoBroma = broma;
         }
 
-        private async void CoreWindow_CharacterReceived(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.CharacterReceivedEventArgs args) {
+        private void CoreWindow_CharacterReceived(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.CharacterReceivedEventArgs args) {
             if (viewModel.Repeat) {
                 if (args.KeyCode == 119){ //Arriba
                     viewModel.tryMoveCharacter('u');
@@ -52,9 +52,7 @@ namespace AlienCompadre
                 } else if (args.KeyCode == 100) { //Derecha
                     viewModel.tryMoveCharacter('r');
                 }
-                for (int i =0; i< 100000000; i++) {
-
-                }
+                //System.Threading.Tasks;
             }
         }
     }
