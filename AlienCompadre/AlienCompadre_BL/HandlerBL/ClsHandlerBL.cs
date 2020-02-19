@@ -18,7 +18,7 @@ namespace AlienCompadre_BL.HandlerBL {
             int filas;
             ClsHandlerDAL manejadora = new ClsHandlerDAL();
 
-           filas = manejadora.insertarStats_DAL(stats);
+            filas = manejadora.insertarStats_DAL(stats);
 
             return filas;
         }

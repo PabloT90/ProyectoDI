@@ -155,6 +155,8 @@
     <Content Include="Assets\LargeTile.scale-150.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
     <Content Include="Assets\LargeTile.scale-400.png" />
+    <Content Include="Assets\sangre.gif" />
+    <Content Include="Assets\sangremejor.png" />
     <Content Include="Sounds\latido.mp3" />
     <Content Include="Assets\mortalidad.jpg" />
     <Content Include="Assets\next.png" />
@@ -207,7 +209,6 @@
     <Content Include="Assets\Jfrocksolid-5avL.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\boton.png" />
     <Content Include="Assets\chestclosed.PNG" />
     <Content Include="Assets\chestOpen.PNG" />
     <Content Include="Assets\floor1.png" />
