@@ -25,6 +25,7 @@ namespace AlienCompadre.ViewModel
         private bool _keyFound;
         private String _srcKeyImage;
         private bool _repeat;
+        private string _imageBlood;
 
         //Propiedades para controlar los sonidos
         public Boolean ModoBroma { get; set; } //TODO Este lo debe recibir de la otra actividad
@@ -59,6 +60,7 @@ namespace AlienCompadre.ViewModel
             _keyFound = false;
             _srcKeyImage = "/Assets/black_key.png";
             _repeat = false;
+            _imageBlood = "";
             asignarSonidos();
         }
         #endregion
@@ -152,6 +154,19 @@ namespace AlienCompadre.ViewModel
             {
                 _repeat = value;
                 NotifyPropertyChanged("Repeat");
+            }
+        }
+
+        public String ImageBlood
+        {
+            get
+            {
+                return _imageBlood;
+            }
+            set
+            {
+                _imageBlood = value;
+                NotifyPropertyChanged("ImageBlood");
             }
         }
         #endregion
@@ -259,6 +274,7 @@ namespace AlienCompadre.ViewModel
         /// <param name="movement"></param>
         public void tryMoveCharacter(char movement)
         {
+            ImageBlood = "";
             int actualPosition = 8 * (_player.Position.Y) + (_player.Position.X);
             switch (movement)
             {
@@ -354,6 +370,7 @@ namespace AlienCompadre.ViewModel
             {
                 if (_player.Ammo > 0)
                 {
+                    ImageBlood = "/Assets/bloodSplash.gif";
                     _player.Ammo--;
                     alienEscape();//El alien escapa
                     //Inserta sonido disparo
