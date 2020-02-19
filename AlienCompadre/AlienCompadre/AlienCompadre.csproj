@@ -155,7 +155,6 @@
     <Content Include="Assets\LargeTile.scale-150.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
     <Content Include="Assets\LargeTile.scale-400.png" />
-    <Content Include="Assets\sangre.gif" />
     <Content Include="Assets\sangremejor.png" />
     <Content Include="Sounds\latido.mp3" />
     <Content Include="Assets\mortalidad.jpg" />
