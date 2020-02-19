@@ -145,6 +145,7 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <Content Include="Assets\black_key.png" />
+    <Content Include="Assets\bloodSplash.gif" />
     <Content Include="Assets\cancel.png" />
     <Content Include="Assets\canina.gif" />
     <Content Include="Assets\cofreInfo.png" />
