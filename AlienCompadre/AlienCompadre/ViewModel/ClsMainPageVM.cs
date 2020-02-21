@@ -364,6 +364,9 @@ namespace AlienCompadre.ViewModel
 
         #region Métodos Alien
 
+        /// <summary>
+        /// Comentario: Este método nos permite comprobar si el personaje se ha encontrado con el alien, realizando el combate.
+        /// </summary>
         public void encuentro()
         {
             if (_alien.Position.Equals(_player.Position))
@@ -373,13 +376,11 @@ namespace AlienCompadre.ViewModel
                     ImageBlood = "/Assets/bloodSplash.gif";
                     _player.Ammo--;
                     alienEscape();//El alien escapa
-                    //Inserta sonido disparo
-                    playSounds(sonidoArma, 1.0);
+                    playSounds(sonidoArma, 1.0);//Inserta sonido disparo
                 }
                 else
                 {
-                    //Inserta sonido muerte personaje
-                    playSounds(sonidoPartidaTerminada, 0.3);
+                    playSounds(sonidoPartidaTerminada, 0.3);//Inserta sonido muerte personaje
                     var frame = (Frame)Window.Current.Content;
                     frame.Navigate(typeof(PantallaFinal));
                     ReiniciarJuego();
@@ -387,31 +388,34 @@ namespace AlienCompadre.ViewModel
             }
         }
 
+        /// <summary>
+        /// Comentario: Este método nos permite mover al alien por el tablero, además tiene en cuenta los posibles encuentros con el jugador.
+        /// </summary>
         public void moveAlienIA()
         {
             Random random = new Random();
             bool moved = false;
-            _mazmorra.Tablero.ElementAt(8 * (_alien.Position.Y) + (_alien.Position.X)).CharacterImage = "";
-            if (_player.Position.Equals(_alien.Position))
+            _mazmorra.Tablero.ElementAt(8 * (_alien.Position.Y) + (_alien.Position.X)).CharacterImage = "";//Eliminamos la imagen del alien antes de cambiarle de posición
+            if (_player.Position.Equals(_alien.Position))//Si el jugador se ha acerdado al alien
             {
                 encuentro();
             }
             else
             {
-                if (random.Next(1, 10) == 1)
+                if (random.Next(1, 10) == 1)//Teletransportamos al alien a una posición aleatoria
                 {
                     do
                     { 
                         _alien.Position = new ClsPunto(random.Next(0, 8), random.Next(0, 8));
                     } while (_player.Position.Equals(_alien.Position));//Si se teletransporta a la posición del jugador
                 }
-                else
+                else//El alien se acerca al jugador
                 {
                     do
                     {
                         switch (random.Next(1, 4))
                         {
-                            case 1:
+                            case 1://Intentamos mover el alien en horizontal hacia el jugador
                                 if (_player.Position.X > _alien.Position.X && _alien.Position.X < 7)
                                 {
                                     _alien.Position.X++;
@@ -427,7 +431,7 @@ namespace AlienCompadre.ViewModel
                                 moved = true;
 
                                 break;
-                            case 2:
+                            case 2://Intentamos mover el alien en vertical hacia el jugador
                                 if (_player.Position.Y > _alien.Position.Y && _alien.Position.Y < 7)
                                 {
                                     _alien.Position.Y++;
@@ -443,7 +447,7 @@ namespace AlienCompadre.ViewModel
                                 }
                                 
                                 break;
-                            case 3:
+                            case 3://Intentamos mover el alien en diagonal hacia el jugador
                                 if (_player.Position.X > _alien.Position.X && _player.Position.Y > _alien.Position.Y && _alien.Position.X < 7 && _alien.Position.Y < 7)
                                 {
                                     _alien.Position = new ClsPunto(_alien.Position.X + 1, _alien.Position.Y + 1);
@@ -479,17 +483,21 @@ namespace AlienCompadre.ViewModel
 
                 }
                 handlerAlien();
-                alertaProximidad(); //Provisional, solo para probar
+                alertaProximidad(); //Ejecutamos los posibles sonidos
             }
+        }
 
-            void handlerAlien()
-            {
-                int postPosition = 8 * (_alien.Position.Y) + (_alien.Position.X);
-                if (_mazmorra.Tablero.ElementAt(postPosition).DarkImage.Equals(""))//Si el alien se encuentra en un foco del personaje
-                    _mazmorra.Tablero.ElementAt(postPosition).CharacterImage = _alien.SrcImage;
+        /// <summary>
+        /// Comentario: Este método nos permite mostrar la imagen del alien si se encuentra en una posición con el foco del personaje
+        /// y realizar los posibles encuentros entre estos dos.
+        /// </summary>
+        private void handlerAlien()
+        {
+            int postPosition = 8 * (_alien.Position.Y) + (_alien.Position.X);
+            if (_mazmorra.Tablero.ElementAt(postPosition).DarkImage.Equals(""))//Si el alien se encuentra en un foco del personaje
+                _mazmorra.Tablero.ElementAt(postPosition).CharacterImage = _alien.SrcImage;
 
-                encuentro();
-            }
+            encuentro();
         }
 
         /// <summary>
