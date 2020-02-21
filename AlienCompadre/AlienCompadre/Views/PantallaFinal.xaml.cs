@@ -1,4 +1,5 @@
 ﻿using AlienCompadre.ViewModel;
+using AlienCompadre_Entities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -37,7 +38,11 @@ namespace AlienCompadre.Views{
         protected override void OnNavigatedTo(NavigationEventArgs e) {
             base.OnNavigatedTo(e);
             int puntuacion = (int)e.Parameter;
-            vm.Estadicticas.Score = puntuacion;
+            vm.Estadisticas.Score = puntuacion;
+        }
+
+        private void Save_Tapped(object sender, TappedRoutedEventArgs e) {
+            vm.subirDatosPartida();
         }
     }
 }

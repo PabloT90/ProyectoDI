@@ -313,7 +313,7 @@ namespace AlienCompadre.ViewModel
             }
 
         }
-        private async void handlerPlayer() {
+        private void handlerPlayer() {
             ChangeImageToDark();//Oscurecemos el tablero
             focoPersonaje();//Mostramos el foco del personaje
             int actualPosition = 8 * (_player.Position.Y) + (_player.Position.X);
@@ -382,7 +382,7 @@ namespace AlienCompadre.ViewModel
                 {
                     playSounds(sonidoPartidaTerminada, 0.3);//Inserta sonido muerte personaje
                     var frame = (Frame)Window.Current.Content;
-                    frame.Navigate(typeof(PantallaFinal));
+                    frame.Navigate(typeof(PantallaFinal), CompletedDungeons);
                     ReiniciarJuego();
                 }
             }
