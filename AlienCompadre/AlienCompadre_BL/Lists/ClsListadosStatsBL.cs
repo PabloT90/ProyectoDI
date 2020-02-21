@@ -11,13 +11,14 @@ namespace AlienCompadre_BL.Lists
     public class ClsListadosStatsBL
     {
         /// <summary>
-        /// Es el intermedario entre la UI y la capa DAL
+        /// Obtiene un listado de un tamaño concreto de las estadisticas de los jugadores
         /// </summary>
-        /// <returns>El listado de Stats</returns>
-        public List<ClsStats> listadoStats()
+        /// <param name="numJugadores">Numero de jugadores que componen la lista</param>
+        /// <returns>Listado de estadisticas</returns>
+        public List<ClsStats> listadoStats(int numJugadores)
         {
             ClsListadoStats list = new ClsListadoStats();
-            return list.listadoStats();
+            return list.listadoStats(numJugadores);
         }
     }
 }

@@ -10,13 +10,20 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     
     <Page.DataContext>
-        <vm:ClsMainPageVM></vm:ClsMainPageVM>
+        <vm:ClsEstadisticasVM></vm:ClsEstadisticasVM>
     </Page.DataContext>
 
     <RelativePanel>
         <Image Name="imagen" Stretch="Fill" Source="ms-appx:///Assets/mortalidad.jpg"/>
         <TextBlock x:Name="mejoresJugadores" Foreground="Brown" Style="{StaticResource letra}" FontSize="50" Margin="20, 5, 5, 0">MEJORES JUGADORES:</TextBlock>
-        <ListView RelativePanel.Below="mejoresJugadores" ItemsSource="{Binding Stats, Mode=TwoWay}" Name="listView">
+        <!-- Filtrado -->
+        <ComboBox RelativePanel.Below="mejoresJugadores" Name="filtradoNumJugadores" SelectedValue="{Binding NumeroJugadores, Mode=TwoWay}" PlaceholderText="Mostrar solo:" Width="250" FontSize="30">
+            <x:String>100</x:String>
+            <x:String>50</x:String>
+            <x:String>10</x:String>
+        </ComboBox>
+        <!-- Lista -->
+        <ListView RelativePanel.Below="filtradoNumJugadores" ItemsSource="{Binding Estadisticas, Mode=TwoWay}" Name="listView">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="10" Orientation="Horizontal" Height="60">

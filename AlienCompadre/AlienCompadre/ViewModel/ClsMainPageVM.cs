@@ -20,8 +20,6 @@ namespace AlienCompadre.ViewModel
         private ClsPlayer _player;
         private ClsAlien _alien;
         private int _completedDungeons;
-        private List<ClsStats> _stats;
-        private ClsListadosStatsBL list = new ClsListadosStatsBL();
         private bool _keyFound;
         private String _srcKeyImage;
         private bool _repeat;
@@ -32,20 +30,18 @@ namespace AlienCompadre.ViewModel
         private string sonidoArma;
         private String sonidoPartidaTerminada;
         private String sonidoProximidadCerca;
+        private String sonidoPuerta;
+        private String sonidoProximidadLejos;
 
         internal void ReiniciarJuego() {
             Mazmorra = new ClsTablero();
             Player = new ClsPlayer();
             Alien =  new ClsAlien();
-            Stats = new List<ClsStats>(list.listadoStats());
             _keyFound = false;
             SrcKeyImage = "/Assets/black_key.png";
             Repeat = false;
             asignarSonidos();
         }
-
-        private String sonidoPuerta;
-        private String sonidoProximidadLejos;
 
         //private MediaElement mysong = new MediaElement(); //Solamente para el sonido
 
@@ -55,8 +51,6 @@ namespace AlienCompadre.ViewModel
             _mazmorra = new ClsTablero();
             _player = new ClsPlayer();
             _alien = new ClsAlien();
-            _stats = new List<ClsStats>();
-            _stats = new List<ClsStats>(list.listadoStats());
             _keyFound = false;
             _srcKeyImage = "/Assets/black_key.png";
             _repeat = false;
@@ -115,19 +109,6 @@ namespace AlienCompadre.ViewModel
             {
                 _completedDungeons = value;
                 NotifyPropertyChanged("CompletedDungeons");
-            }
-        }
-
-        public List<ClsStats> Stats
-        {
-            get
-            {
-                return _stats;
-            }
-            set
-            {
-                _stats = value;
-                NotifyPropertyChanged("Stats");
             }
         }
 
