@@ -24,11 +24,18 @@ namespace AlienCompadre.Views{
     /// </summary>
     public sealed partial class PantallaFinal : Page{
         ClsPantallaFinalVM vm { get; set; }
+        private bool canSave; //Asi controlamos que no pueda subir sus datos mas de una vez por partida. Hecho asi porque isTapped = false no funcionaba.
         public PantallaFinal(){
             this.InitializeComponent();
             vm = (ClsPantallaFinalVM)this.DataContext;
+            canSave = true;
         }
 
+        /// <summary>
+        /// Evento asociado al click de la imagen. Vuelve atras en la navegacion si es posible.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BitmapIcon_Tapped(object sender, TappedRoutedEventArgs e){
             if (this.Frame.CanGoBack) {
                 this.Frame.GoBack();
@@ -41,8 +48,25 @@ namespace AlienCompadre.Views{
             vm.Estadisticas.Score = puntuacion;
         }
 
+        /// <summary>
+        /// Evento asociado al click de la imagen, sube los datos de la partida al servidor.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Save_Tapped(object sender, TappedRoutedEventArgs e) {
-            vm.subirDatosPartida();
+            if (canSave) {
+                canSave = false;
+                vm.subirDatosPartida();
+            }
+        }
+
+        /// <summary>
+        /// Evento asociado al click, navega hacia la pagina de menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BitmapIcon_Tapped_1(object sender, TappedRoutedEventArgs e) {
+            this.Frame.Navigate(typeof(MenuPrincipal));
         }
     }
 }

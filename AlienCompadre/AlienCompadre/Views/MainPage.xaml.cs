@@ -41,6 +41,11 @@ namespace AlienCompadre
             viewModel.ModoBroma = broma;
         }
 
+        /// <summary>
+        /// Evento asociado a la entrada de teclado. Se activa cuando se pulsa sobre alguna tecla.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         private void CoreWindow_CharacterReceived(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.CharacterReceivedEventArgs args) {
             if (viewModel.Repeat) {
                 if (args.KeyCode == 119){ //Arriba

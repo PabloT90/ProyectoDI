@@ -30,21 +30,43 @@ namespace AlienCompadre.Views
             //this.Frame.BackStack.Clear();
         }
 
+        //TODO: unir estos metodos en uno solo.
+
+        /// <summary>
+        /// Evento asociado al click sobre Jugar. Navega hacia la pagina principal de juego.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Jugar_Tapped(object sender, TappedRoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MainPage), terror);
         }
 
+        /// <summary>
+        /// Evento asociado al click sobre estadisticas. Navega hacia la pagina de estadisticas
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Estadisticas_Tapped(object sender, TappedRoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(Estadisticas));
         }
 
+        /// <summary>
+        /// Evento asociado al click sobre Informacion. Navega a la pagina de informacion.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Info_Tapped(object sender, TappedRoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(Informacion));
         }
 
+        /// <summary>
+        /// Evento asociado al hacer click sobre el modo broma. Cambia de modo entre broma y original.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Modos_Tapped(object sender, TappedRoutedEventArgs e)
         {
             if(modos.Text == "MODO TERROR")

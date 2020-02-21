@@ -153,6 +153,7 @@
     <Content Include="Assets\cofreInfo.png" />
     <Content Include="Assets\final.jpg" />
     <Content Include="Assets\golden_key.png" />
+    <Content Include="Assets\home.png" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-125.png" />
     <Content Include="Assets\LargeTile.scale-150.png" />

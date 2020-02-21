@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml;
 
+//TODO: tenemos 2 reiniciar juego? -.-
+
 namespace AlienCompadre.ViewModel
 {
     public class ClsMainPageVM : INotifyPropertyChanged
@@ -33,6 +35,9 @@ namespace AlienCompadre.ViewModel
         private String sonidoPuerta;
         private String sonidoProximidadLejos;
 
+        /// <summary>
+        /// Reinicia el juego una vez haya terminado.
+        /// </summary>
         internal void ReiniciarJuego() {
             Mazmorra = new ClsTablero();
             Player = new ClsPlayer();
@@ -46,8 +51,7 @@ namespace AlienCompadre.ViewModel
         //private MediaElement mysong = new MediaElement(); //Solamente para el sonido
 
         #region Constructores
-        public ClsMainPageVM()
-        {
+        public ClsMainPageVM(){
             _mazmorra = new ClsTablero();
             _player = new ClsPlayer();
             _alien = new ClsAlien();
@@ -294,6 +298,7 @@ namespace AlienCompadre.ViewModel
             }
 
         }
+
         private void handlerPlayer() {
             ChangeImageToDark();//Oscurecemos el tablero
             focoPersonaje();//Mostramos el foco del personaje
@@ -400,7 +405,6 @@ namespace AlienCompadre.ViewModel
                                 if (_player.Position.X > _alien.Position.X && _alien.Position.X < 7)
                                 {
                                     _alien.Position.X++;
-                                    moved = true;
                                 }
                                 else
                                 {
@@ -593,6 +597,11 @@ namespace AlienCompadre.ViewModel
             }
         }
 
+        /// <summary>
+        /// Se encarga de reproducir una pista de sonido.
+        /// </summary>
+        /// <param name="sonido">Nombre del archivo a reproducir dentro de la carpeta Sounds.</param>
+        /// <param name="volumen">Volumen de la reproduccion.</param>
         private async void playSounds(string sonido, double volumen)
         {
             MediaElement mysong = new MediaElement();
@@ -603,10 +612,12 @@ namespace AlienCompadre.ViewModel
             var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
             mysong.SetSource(stream, file.ContentType);
             
-            //return mysong;
             mysong.Play();
         }
 
+        /// <summary>
+        /// Avisa al jugador sobre la posicion del enemigo segun la distancia de este ultimo.
+        /// </summary>
         private void alertaProximidad() {
             //Cogemos las coordenadas del jugador y del enemigo
             int distanciaX = Math.Abs(_player.Position.X - _alien.Position.X);
