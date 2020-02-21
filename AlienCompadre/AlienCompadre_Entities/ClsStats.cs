@@ -18,7 +18,7 @@ namespace AlienCompadre_Entities
         #region Constructores
         public ClsStats()
         {
-            this._name = "Vacio";
+            this._name = "";
             this._score = 0;
         }
 

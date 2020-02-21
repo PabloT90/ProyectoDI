@@ -65,6 +65,6 @@
 
     </StackPanel>
 
-        <Image Name="sangre" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" Resources="{Binding ImageBlood, Mode=TwoWay}" Width="850" Height="850" Margin="0,50,0,0"></Image>
+        <Image Name="sangre" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" Source="{Binding ImageBlood, Mode=TwoWay}" Width="850" Height="850" Margin="0,50,0,0"></Image>
     </RelativePanel>
 </Page>

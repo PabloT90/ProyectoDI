@@ -6,14 +6,19 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:vm="using:AlienCompadre.ViewModel"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <vm:ClsPantallaFinalVM></vm:ClsPantallaFinalVM>
+    </Page.DataContext>
 
     <RelativePanel>
         <Image Name="imagen" Stretch="Fill" Source="ms-appx:///Assets/final.jpg"/>
 
         <TextBlock HorizontalAlignment="Center" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Foreground="Brown" Name="muerte" Style="{StaticResource letra}" FontSize="100" Margin="50">HAS MUERTO</TextBlock>
         <TextBlock Margin="300,0,20,50" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWithPanel="True" Foreground="Brown" Name="nickname" Style="{StaticResource letra}" FontSize="50">ALIAS</TextBlock>
-        <TextBox Margin="5,-10,0,0" Foreground="Black" Name="tbNickname" RelativePanel.RightOf="nickname" RelativePanel.AlignTopWith="nickname" FontSize="50" Style="{StaticResource letraTextBox}" Width="500"></TextBox>
+        <TextBox Margin="5,-10,0,0" Text="{Binding Estadicticas.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="Black" Name="tbNickname" RelativePanel.RightOf="nickname" RelativePanel.AlignTopWith="nickname" FontSize="50" Style="{StaticResource letraTextBox}" Width="500"></TextBox>
         <BitmapIcon Name="save" Margin="50,-5,0,0" Width="60" Height="60" UriSource="/Assets/save.png" RelativePanel.RightOf="tbNickname" RelativePanel.AlignTopWith="tbNickname" Foreground="Brown"></BitmapIcon>
         <BitmapIcon Margin="20,-5,0,0" Width="60" Height="60" UriSource="/Assets/cancel.png" RelativePanel.RightOf="save" RelativePanel.AlignTopWith="tbNickname" Foreground="Brown" Tapped="BitmapIcon_Tapped"></BitmapIcon>
 
