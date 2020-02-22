@@ -39,7 +39,7 @@ namespace AlienCompadre.Views{
         private void BitmapIcon_Tapped(object sender, TappedRoutedEventArgs e){
             if (this.Frame.CanGoBack) {
                 //this.Frame.GoBack();
-                this.Frame.Navigate(typeof(MainPage));
+                this.Frame.Navigate(typeof(MainPage)); //Podiamos usar la linea de arriba pero daba problemas al volver atras porque no cambia los sonidos.
             }
         }
 

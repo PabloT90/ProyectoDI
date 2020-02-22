@@ -45,7 +45,6 @@ namespace AlienCompadre.ViewModel
             _srcKeyImage = "/Assets/black_key.png";
             _repeat = false;
             _imageBlood = "";
-            //asignarSonidos();
         }
         #endregion
 
@@ -331,9 +330,12 @@ namespace AlienCompadre.ViewModel
                 case 2:
                     if (_keyFound)//Si la casilla es la trampilla y el personaje tiene la llave
                     {
+                        //Reproducimos el sonido de una puerta abriendose
+                        playSounds(sonidoPuerta, 1);
                         //Ganas la partida
                         _completedDungeons++;
                         NotifyPropertyChanged("CompletedDungeons");
+                        //Generamos una nueva mazmorra. 
                         newDungeon();
                     }
                     break;
@@ -597,7 +599,7 @@ namespace AlienCompadre.ViewModel
                 sonidoProximidadLejos = "4gun1.wav";
             } else {
                 sonidoArma = "disparo.wav";
-                sonidoPartidaTerminada = "grito.mp3";
+                sonidoPartidaTerminada = "gritoHombre.wav";
                 sonidoProximidadCerca = "cerca.wav";
                 sonidoPuerta = "puertaAbierta.wav";
                 sonidoProximidadLejos = "media.mp3";

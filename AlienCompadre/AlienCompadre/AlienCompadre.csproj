@@ -162,6 +162,7 @@
     <Content Include="Assets\sangremejor.png" />
     <Content Include="Sounds\cerca.wav" />
     <Content Include="Sounds\disparo.wav" />
+    <Content Include="Sounds\gritoHombre.wav" />
     <Content Include="Sounds\latido.mp3" />
     <Content Include="Assets\mortalidad.jpg" />
     <Content Include="Assets\next.png" />
