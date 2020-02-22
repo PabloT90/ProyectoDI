@@ -58,7 +58,7 @@ namespace AlienCompadre.ViewModel {
                 ClsListadosStatsBL listados = new ClsListadosStatsBL();
                 Estadisticas = listados.listadoStats(numeroJugadores);
             } catch (Exception e) {
-
+                throw e;
             }
         }
         #endregion

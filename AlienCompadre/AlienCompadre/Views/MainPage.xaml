@@ -8,7 +8,7 @@
     xmlns:vm="using:AlienCompadre.ViewModel"
     mc:Ignorable="d"
     Name="yerro"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="Black">
 
     <Page.DataContext>
         <vm:ClsMainPageVM></vm:ClsMainPageVM>

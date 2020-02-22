@@ -55,8 +55,8 @@ namespace AlienCompadre.Views{
         /// <param name="e"></param>
         private void Save_Tapped(object sender, TappedRoutedEventArgs e) {
             if (canSave) {
-                canSave = false;
-                vm.subirDatosPartida();
+                if(vm.subirDatosPartida() == 1) //Asi en caso de haber error, podemos subir los datos luego porque no se bloquea.
+                    canSave = false;
             }
         }
 

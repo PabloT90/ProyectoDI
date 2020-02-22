@@ -12,6 +12,7 @@ namespace AlienCompadre.ViewModel {
     public class ClsPantallaFinalVM : INotifyPropertyChanged {
         #region Propiedades privadas
         private ClsStats estadisticas;
+        private String mensaje;
         #endregion
 
         #region constructor por defecto
@@ -30,6 +31,15 @@ namespace AlienCompadre.ViewModel {
                 NotifyPropertyChanged("Estadisticas");
             }
         }
+
+        public String Mensaje {
+            get {
+                return mensaje;
+            }set {
+                mensaje = value;
+                NotifyPropertyChanged("Mensaje");
+            }
+        }
         #endregion
 
         #region Metodos añadidos
@@ -44,10 +54,23 @@ namespace AlienCompadre.ViewModel {
             try {
                 filas = handler.insertarStats_BL(Estadisticas);
             } catch (Exception e) {
-
+                throw e;
             }
+
+            notificarSubida(filas);
             
             return filas;
+        }
+
+        /// <summary>
+        /// Notifica si se ha podido insertar o no las estadisticas
+        /// </summary>
+        private void notificarSubida(int filasAfectadas) {
+            if (filasAfectadas == 1) {
+                Mensaje = "Datos almacenados con exito.";
+            } else {
+                Mensaje = "No se han podido almacenar los datos.";
+            }
         }
         #endregion
 
