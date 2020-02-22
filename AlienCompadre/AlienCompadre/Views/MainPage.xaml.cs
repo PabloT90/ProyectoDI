@@ -56,8 +56,9 @@ namespace AlienCompadre
                     viewModel.tryMoveCharacter('l');
                 } else if (args.KeyCode == 100) { //Derecha
                     viewModel.tryMoveCharacter('r');
+                }else if (args.KeyCode == 27) { //Si pulsa escape
+                    this.Frame.Navigate(typeof(MenuPrincipal));
                 }
-                //System.Threading.Tasks;
             }
         }
     }

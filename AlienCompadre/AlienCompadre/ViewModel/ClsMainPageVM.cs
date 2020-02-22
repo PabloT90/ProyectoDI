@@ -35,21 +35,6 @@ namespace AlienCompadre.ViewModel
         private String sonidoPuerta;
         private String sonidoProximidadLejos;
 
-        /// <summary>
-        /// Reinicia el juego una vez haya terminado.
-        /// </summary>
-        internal void ReiniciarJuego() {
-            Mazmorra = new ClsTablero();
-            Player = new ClsPlayer();
-            Alien =  new ClsAlien();
-            _keyFound = false;
-            SrcKeyImage = "/Assets/black_key.png";
-            Repeat = false;
-            asignarSonidos();
-        }
-
-        //private MediaElement mysong = new MediaElement(); //Solamente para el sonido
-
         #region Constructores
         public ClsMainPageVM(){
             _mazmorra = new ClsTablero();
@@ -249,6 +234,19 @@ namespace AlienCompadre.ViewModel
             _srcKeyImage = "/Assets/black_key.png";
             NotifyPropertyChanged("SrcKeyImage");
         }
+
+        /// <summary>
+        /// Reinicia el juego una vez haya terminado.
+        /// </summary>
+        private void ReiniciarJuego() {
+            Mazmorra = new ClsTablero();
+            Player = new ClsPlayer();
+            Alien = new ClsAlien();
+            _keyFound = false;
+            SrcKeyImage = "/Assets/black_key.png";
+            Repeat = false;
+            asignarSonidos();
+        }
         #endregion
 
         #region Métodos Personaje
@@ -353,19 +351,14 @@ namespace AlienCompadre.ViewModel
         /// <summary>
         /// Comentario: Este método nos permite comprobar si el personaje se ha encontrado con el alien, realizando el combate.
         /// </summary>
-        public void encuentro()
-        {
-            if (_alien.Position.Equals(_player.Position))
-            {
-                if (_player.Ammo > 0)
-                {
+        public void encuentro(){
+            if (_alien.Position.Equals(_player.Position)){
+                if (_player.Ammo > 0){
                     ImageBlood = "/Assets/bloodSplash.gif";
                     _player.Ammo--;
                     alienEscape();//El alien escapa
                     playSounds(sonidoArma, 1.0);//Inserta sonido disparo
-                }
-                else
-                {
+                }else{
                     playSounds(sonidoPartidaTerminada, 0.3);//Inserta sonido muerte personaje
                     var frame = (Frame)Window.Current.Content;
                     frame.Navigate(typeof(PantallaFinal), CompletedDungeons);
@@ -377,39 +370,29 @@ namespace AlienCompadre.ViewModel
         /// <summary>
         /// Comentario: Este método nos permite mover al alien por el tablero, además tiene en cuenta los posibles encuentros con el jugador.
         /// </summary>
-        public void moveAlienIA()
-        {
+        public void moveAlienIA(){
             Random random = new Random();
             bool moved = false;
             _mazmorra.Tablero.ElementAt(8 * (_alien.Position.Y) + (_alien.Position.X)).CharacterImage = "";//Eliminamos la imagen del alien antes de cambiarle de posición
             if (_player.Position.Equals(_alien.Position))//Si el jugador se ha acerdado al alien
             {
                 encuentro();
-            }
-            else
-            {
+            }else{
                 if (random.Next(1, 10) == 1)//Teletransportamos al alien a una posición aleatoria
                 {
-                    do
-                    { 
+                    do{ 
                         _alien.Position = new ClsPunto(random.Next(0, 8), random.Next(0, 8));
                     } while (_player.Position.Equals(_alien.Position));//Si se teletransporta a la posición del jugador
-                }
-                else//El alien se acerca al jugador
+                }else//El alien se acerca al jugador
                 {
-                    do
-                    {
-                        switch (random.Next(1, 4))
-                        {
+                    do{
+                        switch (random.Next(1, 4)){
                             case 1://Intentamos mover el alien en horizontal hacia el jugador
                                 if (_player.Position.X > _alien.Position.X && _alien.Position.X < 7)
                                 {
                                     _alien.Position.X++;
-                                }
-                                else
-                                {
-                                    if (_player.Position.X < _alien.Position.X && _alien.Position.X > 0)
-                                    {
+                                }else{
+                                    if (_player.Position.X < _alien.Position.X && _alien.Position.X > 0){
                                         _alien.Position.X--;
                                     }
                                 }
