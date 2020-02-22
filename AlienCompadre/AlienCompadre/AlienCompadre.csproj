@@ -160,6 +160,8 @@
     <Content Include="Assets\LargeTile.scale-200.png" />
     <Content Include="Assets\LargeTile.scale-400.png" />
     <Content Include="Assets\sangremejor.png" />
+    <Content Include="Sounds\cerca.wav" />
+    <Content Include="Sounds\disparo.wav" />
     <Content Include="Sounds\latido.mp3" />
     <Content Include="Assets\mortalidad.jpg" />
     <Content Include="Assets\next.png" />
@@ -206,6 +208,8 @@
     <Content Include="Sounds\7door.wav" />
     <Content Include="Sounds\gritobicho.mp3" />
     <Content Include="Sounds\grito.mp3" />
+    <Content Include="Sounds\media.mp3" />
+    <Content Include="Sounds\puertaAbierta.wav" />
     <None Include="AlienCompadre_TemporaryKey.pfx" />
     <Content Include="Assets\Mars Attacks.ttf" />
     <Content Include="Assets\Jfrockoutcrop-z9Ma.ttf" />

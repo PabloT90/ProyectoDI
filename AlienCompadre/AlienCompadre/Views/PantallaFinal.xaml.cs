@@ -38,7 +38,8 @@ namespace AlienCompadre.Views{
         /// <param name="e"></param>
         private void BitmapIcon_Tapped(object sender, TappedRoutedEventArgs e){
             if (this.Frame.CanGoBack) {
-                this.Frame.GoBack();
+                //this.Frame.GoBack();
+                this.Frame.Navigate(typeof(MainPage));
             }
         }
 

@@ -36,9 +36,11 @@ namespace AlienCompadre
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
             base.OnNavigatedTo(e);
-            bool broma = (Boolean)e.Parameter;
+            if (e.Parameter != null) { //Necesario porque si estamos en la pantalla final y queremos volver aqui nos pondria el modo broma aunque no queramos.
+                bool broma = (Boolean)e.Parameter;
+                viewModel.ModoBroma = broma;
+            }
             viewModel.Repeat = true;
-            viewModel.ModoBroma = broma;
         }
 
         /// <summary>

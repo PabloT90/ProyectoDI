@@ -26,9 +26,10 @@ namespace AlienCompadre.ViewModel
         private String _srcKeyImage;
         private bool _repeat;
         private string _imageBlood;
+        private int proximidad;
+        private Boolean modoBroma;
 
         //Propiedades para controlar los sonidos
-        public Boolean ModoBroma { get; set; } //TODO Este lo debe recibir de la otra actividad
         private string sonidoArma;
         private String sonidoPartidaTerminada;
         private String sonidoProximidadCerca;
@@ -44,7 +45,7 @@ namespace AlienCompadre.ViewModel
             _srcKeyImage = "/Assets/black_key.png";
             _repeat = false;
             _imageBlood = "";
-            asignarSonidos();
+            //asignarSonidos();
         }
         #endregion
 
@@ -139,12 +140,32 @@ namespace AlienCompadre.ViewModel
                 NotifyPropertyChanged("ImageBlood");
             }
         }
+
+        public int Proximidad {
+            get {
+                return proximidad;
+            }
+            set {
+                proximidad = value;
+                NotifyPropertyChanged("Proximidad");
+            }
+        }
+
+        public Boolean ModoBroma {
+            get {
+                return modoBroma;
+            }
+            set {
+                modoBroma = value;
+                asignarSonidos();
+                NotifyPropertyChanged("ModoBroma");
+            }
+        }
         #endregion
 
         #region PropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-        {
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = ""){
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
@@ -226,6 +247,7 @@ namespace AlienCompadre.ViewModel
         /// </summary>
         public void newDungeon()
         {
+            Proximidad = 0;
             _mazmorra = new ClsTablero();
             NotifyPropertyChanged("Mazmorra");
             _player.Position = new ClsPunto(0, 0);
@@ -239,6 +261,7 @@ namespace AlienCompadre.ViewModel
         /// Reinicia el juego una vez haya terminado.
         /// </summary>
         private void ReiniciarJuego() {
+            Proximidad = 0;
             Mazmorra = new ClsTablero();
             Player = new ClsPlayer();
             Alien = new ClsAlien();
@@ -356,6 +379,7 @@ namespace AlienCompadre.ViewModel
                 if (_player.Ammo > 0){
                     ImageBlood = "/Assets/bloodSplash.gif";
                     _player.Ammo--;
+                    Proximidad = 100;
                     alienEscape();//El alien escapa
                     playSounds(sonidoArma, 1.0);//Inserta sonido disparo
                 }else{
@@ -565,18 +589,18 @@ namespace AlienCompadre.ViewModel
         /// Asigna los sonidos que seran reproducidos en la partida, segun el modo elegido.
         /// </summary>
         private void asignarSonidos() {
-            if (ModoBroma) { //Si el modo broma esta activado.
+            if (!ModoBroma) { //Si el modo broma esta activado.
                 sonidoArma = "4gun1.wav";
                 sonidoPartidaTerminada = "grito.mp3";
                 sonidoProximidadCerca = "latido.mp3";
                 sonidoPuerta = "7door.wav";
                 sonidoProximidadLejos = "4gun1.wav";
             } else {
-                sonidoArma = "4gun1.wav";
+                sonidoArma = "disparo.wav";
                 sonidoPartidaTerminada = "grito.mp3";
-                sonidoProximidadCerca = "latido.mp3";
-                sonidoPuerta = "7door.wav";
-                sonidoProximidadLejos = "4gun1.wav";
+                sonidoProximidadCerca = "cerca.wav";
+                sonidoPuerta = "puertaAbierta.wav";
+                sonidoProximidadLejos = "media.mp3";
             }
         }
 
@@ -608,12 +632,18 @@ namespace AlienCompadre.ViewModel
 
             if (distanciaX <= 1 && distanciaY <= 1) {
                 //Sonido fuerte
-                playSounds(sonidoProximidadCerca, 1);
+                playSounds(sonidoProximidadCerca, 0.3);
+                Proximidad = 90;
             } else if (distanciaX <= 2 && distanciaY <= 2) {
-                    //Sonido medio
-                    playSounds(sonidoProximidadLejos, 0.1);
+                //Sonido medio
+                playSounds(sonidoProximidadLejos, 0.1);
+                Proximidad = 70;
             }else if (distanciaX == 0 && distanciaY == 0) {
                 playSounds(sonidoProximidadLejos, 0.1);
+                Proximidad = 95;
+            } else {
+                Random random = new Random();
+                Proximidad = random.Next(10, 60);
             }
         }
         #endregion
