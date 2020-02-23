@@ -592,11 +592,11 @@ namespace AlienCompadre.ViewModel
         /// </summary>
         private void asignarSonidos() {
             if (!ModoBroma) { //Si el modo broma esta activado.
-                sonidoArma = "4gun1.wav";
-                sonidoPartidaTerminada = "grito.mp3";
-                sonidoProximidadCerca = "latido.mp3";
-                sonidoPuerta = "7door.wav";
-                sonidoProximidadLejos = "4gun1.wav";
+                sonidoArma = "comor.mp3";
+                sonidoPartidaTerminada = "chiquitomuerte.mp3";
+                sonidoProximidadCerca = "cercachiquito.mp3";
+                sonidoPuerta = "condenao.mp3";
+                sonidoProximidadLejos = "cobarde.mp3";
             } else {
                 sonidoArma = "disparo.wav";
                 sonidoPartidaTerminada = "gritoHombre.wav";

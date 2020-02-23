@@ -161,6 +161,11 @@
     <Content Include="Assets\LargeTile.scale-400.png" />
     <Content Include="Assets\sangremejor.png" />
     <Content Include="Sounds\cerca.wav" />
+    <Content Include="Sounds\cercachiquito.mp3" />
+    <Content Include="Sounds\chiquitomuerte.mp3" />
+    <Content Include="Sounds\cobarde.mp3" />
+    <Content Include="Sounds\comor.mp3" />
+    <Content Include="Sounds\condenao.mp3" />
     <Content Include="Sounds\disparo.wav" />
     <Content Include="Sounds\gritoHombre.wav" />
     <Content Include="Sounds\latido.mp3" />
