@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -69,16 +70,24 @@ namespace AlienCompadre.Views
         /// <param name="e"></param>
         private void Modos_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            if(modos.Text == "MODO TERROR")
+            if(mod.Text == "MODO TERROR")
             {
-                modos.Text = "MODO BROMA";
+                mod.Text = "MODO BROMA";
                 terror = false;
             }
             else
             {
-                modos.Text = "MODO TERROR";
+                mod.Text = "MODO TERROR";
                 terror = true;
             }
+        }
+
+        private void StackPanel_PointerEntered(object sender, PointerRoutedEventArgs e) {
+            (sender as StackPanel).Background = new SolidColorBrush(Colors.Gray);
+        }
+
+        private void StackPanel_PointerExited(object sender, PointerRoutedEventArgs e) {
+            (sender as StackPanel).Background = new SolidColorBrush(Colors.Transparent);
         }
     }
 }
