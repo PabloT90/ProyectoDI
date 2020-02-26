@@ -11,7 +11,7 @@
     <AssemblyName>AlienCompadre</AssemblyName>
     <DefaultLanguage>es-ES</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.18362.0</TargetPlatformVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.17763.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.17134.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -168,6 +168,7 @@
     <Content Include="Sounds\condenao.mp3" />
     <Content Include="Sounds\disparo.wav" />
     <Content Include="Sounds\gritoHombre.wav" />
+    <Content Include="Sounds\keysound.mp3" />
     <Content Include="Sounds\latido.mp3" />
     <Content Include="Assets\mortalidad.jpg" />
     <Content Include="Assets\next.png" />
@@ -216,6 +217,8 @@
     <Content Include="Sounds\grito.mp3" />
     <Content Include="Sounds\media.mp3" />
     <Content Include="Sounds\puertaAbierta.wav" />
+    <Content Include="Sounds\reload.mp3" />
+    <Content Include="Sounds\risa.wav" />
     <None Include="AlienCompadre_TemporaryKey.pfx" />
     <Content Include="Assets\Mars Attacks.ttf" />
     <Content Include="Assets\Jfrockoutcrop-z9Ma.ttf" />

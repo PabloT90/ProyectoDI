@@ -35,6 +35,9 @@ namespace AlienCompadre.ViewModel
         private String sonidoProximidadCerca;
         private String sonidoPuerta;
         private String sonidoProximidadLejos;
+        private String sonidoLlave;
+        private String sonidoTrampa;
+        private String sonidoRecarga;
 
         #region Constructores
         public ClsMainPageVM(){
@@ -264,6 +267,7 @@ namespace AlienCompadre.ViewModel
             Mazmorra = new ClsTablero();
             Player = new ClsPlayer();
             Alien = new ClsAlien();
+            CompletedDungeons = 0;
             _keyFound = false;
             SrcKeyImage = "/Assets/black_key.png";
             Repeat = false;
@@ -345,16 +349,19 @@ namespace AlienCompadre.ViewModel
                         switch (_mazmorra.Tablero.ElementAt(actualPosition).Chest.ChestReward)
                         {
                             case 1://Contiene una llave
+                                playSounds(sonidoLlave, 1.0);
                                 this._keyFound = true;
                                 _srcKeyImage = "/Assets/golden_key.png";
                                 NotifyPropertyChanged("SrcKeyImage");
                                 break;
                             case 2://Contiene munición
                                 this._player.Ammo++;
+                                playSounds(sonidoRecarga, 1.0);
                                 NotifyPropertyChanged("Player");
                                 break;
                             case 3://Contiene cristales
-                                   //Mover al alien cerca
+                                playSounds(sonidoTrampa, 1.0);
+                                //Mover al alien cerca
                                 ambush();
                                 break;
                         }
@@ -378,6 +385,8 @@ namespace AlienCompadre.ViewModel
         /// </summary>
         public void encuentro(){
             if (_alien.Position.Equals(_player.Position)){
+                int actualPosition = 8 * (_player.Position.Y) + (_player.Position.X);
+                _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "personaje.gif";
                 if (_player.Ammo > 0){
                     ImageBlood = "/Assets/bloodSplash.gif";
                     _player.Ammo--;
@@ -385,7 +394,9 @@ namespace AlienCompadre.ViewModel
                     alienEscape();//El alien escapa
                     playSounds(sonidoArma, 1.0);//Inserta sonido disparo
                 }else{
-                    playSounds(sonidoPartidaTerminada, 0.3);//Inserta sonido muerte personaje
+                    _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "canina.gif";
+                    aplaySounds(sonidoPartidaTerminada, 1.0);//Inserta sonido muerte personaje
+                    System.Threading.Thread.Sleep(1000);
                     var frame = (Frame)Window.Current.Content;
                     frame.Navigate(typeof(PantallaFinal), CompletedDungeons);
                     ReiniciarJuego();
@@ -591,6 +602,9 @@ namespace AlienCompadre.ViewModel
         /// Asigna los sonidos que seran reproducidos en la partida, segun el modo elegido.
         /// </summary>
         private void asignarSonidos() {
+            sonidoLlave = "keysound.mp3";
+            sonidoTrampa = "risa.wav";
+            sonidoRecarga = "reload.mp3";
             if (!ModoBroma) { //Si el modo broma esta activado.
                 sonidoArma = "comor.mp3";
                 sonidoPartidaTerminada = "chiquitomuerte.mp3";
