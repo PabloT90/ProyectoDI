@@ -386,7 +386,8 @@ namespace AlienCompadre.ViewModel
         public void encuentro(){
             if (_alien.Position.Equals(_player.Position)){
                 int actualPosition = 8 * (_player.Position.Y) + (_player.Position.X);
-                _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "personaje.gif";
+                _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "";
+                //_mazmorra.Tablero.ElementAt(actualPosition).DarkImage = "personaje.gif";
                 if (_player.Ammo > 0){
                     ImageBlood = "/Assets/bloodSplash.gif";
                     _player.Ammo--;
@@ -394,9 +395,7 @@ namespace AlienCompadre.ViewModel
                     alienEscape();//El alien escapa
                     playSounds(sonidoArma, 1.0);//Inserta sonido disparo
                 }else{
-                    _mazmorra.Tablero.ElementAt(actualPosition).CharacterImage = "canina.gif";
-                    aplaySounds(sonidoPartidaTerminada, 1.0);//Inserta sonido muerte personaje
-                    System.Threading.Thread.Sleep(1000);
+                    playSounds(sonidoPartidaTerminada, 1.0);//Inserta sonido muerte personaje
                     var frame = (Frame)Window.Current.Content;
                     frame.Navigate(typeof(PantallaFinal), CompletedDungeons);
                     ReiniciarJuego();

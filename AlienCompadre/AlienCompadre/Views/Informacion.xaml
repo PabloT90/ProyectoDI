@@ -10,7 +10,7 @@
 
     <ScrollViewer VerticalScrollMode="Auto" HorizontalScrollMode="Auto">
         <RelativePanel Background="Black">
-            <TextBlock Margin="10" RelativePanel.AlignLeftWithPanel="True" FontSize="25" Foreground="Brown" Name="letraTablero" Style="{StaticResource letra}">Tu mision. Encuentra la llave que abre la trampilla y escapa. <LineBreak/> Aunque no todo sera tan facil. <LineBreak/> Intenta encontrar los cofres y la trampilla <LineBreak/> Mucha suerte, dale recuerdos a tu invitado</TextBlock>
+            <TextBlock Margin="10" RelativePanel.AlignLeftWithPanel="True" FontSize="25" Foreground="Brown" Name="letraTablero" Style="{StaticResource letra}">Tu mision: Encuentra la llave que abre la trampilla y escapa. <LineBreak/> Aunque no todo sera tan facil. <LineBreak/> Intenta encontrar los cofres y la trampilla <LineBreak/> Mucha suerte, dale recuerdos a tu invitado</TextBlock>
 
             <Image Margin="10" Width="100" Height="100" Source="/Assets/personaje.gif" Name="imagenPersonaje" RelativePanel.Below="letraTablero"></Image>
             <TextBlock Margin="20" RelativePanel.AlignRightWithPanel="True" FontSize="20" Foreground="Brown" Name="letraPersnaje" RelativePanel.AlignTopWith="imagenPersonaje" RelativePanel.RightOf="imagenPersonaje" Style="{StaticResource letra}">Este eres tu</TextBlock>
@@ -19,7 +19,7 @@
             <TextBlock Margin="20"  RelativePanel.AlignRightWithPanel="True" FontSize="20" Foreground="Brown" Name="letraAlien" RelativePanel.AlignTopWith="imagenAlien" RelativePanel.RightOf="imagenAlien" Style="{StaticResource letra}">Tu enemigo, no dudara en matarte</TextBlock>
 
             <Image Margin="10" Width="100" Height="100" Source="/Assets/cofreInfo.png" Name="imagenCofre" RelativePanel.Below="imagenAlien"></Image>
-            <TextBlock Margin="10"  RelativePanel.AlignRightWithPanel="True" FontSize="19" Foreground="Brown" Name="letraCofre" RelativePanel.AlignTopWith="imagenCofre" RelativePanel.RightOf="imagenCofre" Style="{StaticResource letra}">Hay tres repartidos por todo el mapa. Encuentralos y reza por que sea la llave o municion <LineBreak/> sino, te recomiendo empezar a llorar porque el alien estara cerca tuya</TextBlock>
+            <TextBlock Margin="10"  RelativePanel.AlignRightWithPanel="True" FontSize="19" Foreground="Brown" Name="letraCofre" RelativePanel.AlignTopWith="imagenCofre" RelativePanel.RightOf="imagenCofre" Style="{StaticResource letra}">Hay tres repartidos por todo el mapa. Encuentralos y reza por que sea la llave o municion <LineBreak/> si no, te recomiendo empezar a llorar porque el esqueleto estara cerca tuya</TextBlock>
 
             <Image Margin="10, 30, 10, 10" Width="100" Height="100" Source="/Assets/trampilla.png" Name="imagenTrampilla" RelativePanel.Below="imagenCofre"></Image>
             <TextBlock Margin="20,50,20,20" RelativePanel.AlignRightWithPanel="True" FontSize="20" Foreground="Brown" Name="letraTrampilla" RelativePanel.AlignTopWith="imagenTrampilla" RelativePanel.RightOf="imagenTrampilla" Style="{StaticResource letra}">Tu via de escape.  Suerte</TextBlock>
