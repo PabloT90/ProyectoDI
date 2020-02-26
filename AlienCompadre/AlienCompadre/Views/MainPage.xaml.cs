@@ -50,13 +50,13 @@ namespace AlienCompadre
         /// <param name="args"></param>
         private void CoreWindow_CharacterReceived(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.CharacterReceivedEventArgs args) {
             if (viewModel.Repeat) {
-                if (args.KeyCode == 119){ //Arriba
+                if (args.KeyCode == 119 || args.KeyCode == 38){ //Arriba
                     viewModel.tryMoveCharacter('u');
-                } else if (args.KeyCode == 115) { //Abajo
+                } else if (args.KeyCode == 115 || args.KeyCode == 40) { //Abajo
                     viewModel.tryMoveCharacter('d');
-                } else if (args.KeyCode == 97) { //Izquierda
+                } else if (args.KeyCode == 97 || args.KeyCode == 37) { //Izquierda
                     viewModel.tryMoveCharacter('l');
-                } else if (args.KeyCode == 100) { //Derecha
+                } else if (args.KeyCode == 100 || args.KeyCode == 39) { //Derecha
                     viewModel.tryMoveCharacter('r');
                 }else if (args.KeyCode == 27) { //Si pulsa escape
                     this.Frame.Navigate(typeof(MenuPrincipal));
