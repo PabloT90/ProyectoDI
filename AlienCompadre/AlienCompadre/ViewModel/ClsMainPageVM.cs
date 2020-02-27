@@ -647,14 +647,14 @@ namespace AlienCompadre.ViewModel
 
             if (distanciaX <= 1 && distanciaY <= 1) {
                 //Sonido fuerte
-                playSounds(sonidoProximidadCerca, 0.3);
+                playSounds(sonidoProximidadCerca, 1.0);
                 Proximidad = 90;
             } else if (distanciaX <= 2 && distanciaY <= 2) {
                 //Sonido medio
-                playSounds(sonidoProximidadLejos, 0.1);
+                playSounds(sonidoProximidadLejos, 1.0);
                 Proximidad = 70;
             }else if (distanciaX == 0 && distanciaY == 0) {
-                playSounds(sonidoProximidadLejos, 0.1);
+                playSounds(sonidoProximidadLejos, 1.0);
                 Proximidad = 95;
             } else {
                 Random random = new Random();
