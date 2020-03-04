@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml;
+using System.Threading;
 
 //TODO: tenemos 2 reiniciar juego? -.-
 
@@ -398,7 +399,7 @@ namespace AlienCompadre.ViewModel
                     playSounds(sonidoPartidaTerminada, 1.0);//Inserta sonido muerte personaje
                     var frame = (Frame)Window.Current.Content;
                     frame.Navigate(typeof(PantallaFinal), CompletedDungeons);
-                    ReiniciarJuego();
+                    ReiniciarJuego(); 
                 }
             }
         }
