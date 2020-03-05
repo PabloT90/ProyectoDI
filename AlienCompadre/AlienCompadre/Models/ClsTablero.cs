@@ -37,14 +37,13 @@ namespace AlienCompadre_Entities
         {
             Random random = new Random();
             int numeroCasillasVacias = 62 - (_numbersOfChest + _numbersOfDoors);
-            int numRandom = 0;
+            int numRandom;
             for (int i = 0; i < numeroCasillasVacias; i++) {//Generamos las casillas vacías del tablero
                 numRandom = random.Next(1, 16);
                 _tablero.Add(new ClsCasilla("/Assets/floor" + numRandom + ".png", "/Assets/floor" + numRandom + "dark.png", "", 0));//0 significa que la casilla esta vacía
                 //_tablero.Add(new ClsCasilla("/Assets/floor" + numRandom + ".png", "", "", 0));//0 significa que la casilla esta vacía
             }
 
-            //for (int i = 0; i < _numbersOfChest; i++)//Agregamos los cofres
             for (int i = 1; i <= 3; i++) {
                 numRandom = random.Next(1, 16);
                 _tablero.Add(new ClsCasilla("/Assets/chestclosed.png", "/Assets/floor" + numRandom + "dark.png", "", 3, new ClsCofre(i, false)));//Contiene la llave
@@ -56,7 +55,6 @@ namespace AlienCompadre_Entities
 
             _tablero.Insert(0, new ClsCasilla("/Assets/floor1.png", "/Assets/floor1dark.png", "/Assets/personaje.gif", 1));//1 significa que la casilla contiene un personaje
             _tablero.Add(new ClsCasilla("/Assets/floor1.png", "/Assets/floor1dark.png", "/Assets/canina.gif", 4));//4 significa que la casilla contiene un alien 
-            //TODO solo se vera cuando entre en el foco del personaje.
         }
         #endregion
     }

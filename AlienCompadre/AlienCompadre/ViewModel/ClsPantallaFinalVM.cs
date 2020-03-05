@@ -48,7 +48,7 @@ namespace AlienCompadre.ViewModel {
         /// </summary>
         /// <returns></returns>
         public int subirDatosPartida() {
-            int filas = 0;
+            int filas;
 
             ClsHandlerBL handler = new ClsHandlerBL();
             try {

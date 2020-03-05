@@ -237,7 +237,7 @@ namespace AlienCompadre.ViewModel
             for (int i = 0; i < _mazmorra.Tablero.Count; i++) {
                 if (_mazmorra.Tablero.ElementAt(i).DarkImage == "") {
                     String ruta = _mazmorra.Tablero.ElementAt(i).LightImage;
-                    ruta = ruta.Substring(0, ruta.Length - 4);
+                    ruta = ruta.Substring(0, ruta.Length - 4); //Le quitamos los ultimos caracteres a la cadena
                     _mazmorra.Tablero.ElementAt(i).DarkImage = ruta + "dark.png";
                 }
                 
@@ -261,9 +261,9 @@ namespace AlienCompadre.ViewModel
         }
 
         /// <summary>
-        /// Reinicia el juego una vez haya terminado.
+        /// Reinicia el juego una vez haya terminado. Es decir, comenzar todo de nuevo.
         /// </summary>
-        private void ReiniciarJuego() {
+        public void ReiniciarJuego() {
             Proximidad = 0;
             Mazmorra = new ClsTablero();
             Player = new ClsPlayer();
@@ -271,6 +271,7 @@ namespace AlienCompadre.ViewModel
             CompletedDungeons = 0;
             _keyFound = false;
             SrcKeyImage = "/Assets/black_key.png";
+            ImageBlood = "";
             Repeat = false;
             asignarSonidos();
         }
@@ -324,6 +325,9 @@ namespace AlienCompadre.ViewModel
 
         }
 
+        /// <summary>
+        /// Se encarga de la gestion del movimiento del personaje jugable.
+        /// </summary>
         private void handlerPlayer() {
             ChangeImageToDark();//Oscurecemos el tablero
             focoPersonaje();//Mostramos el foco del personaje
@@ -375,8 +379,6 @@ namespace AlienCompadre.ViewModel
             encuentro();
             if(_mazmorra.Tablero.ElementAt(actualPosition).Chest == null || (_mazmorra.Tablero.ElementAt(actualPosition).Chest.ChestReward != 3))
                 moveAlienIA();
-            
-
         }
         #endregion
 
@@ -522,7 +524,7 @@ namespace AlienCompadre.ViewModel
         }
 
         /// <summary>
-        /// Comentario: Este método nos permite acercar al alien hacia el personaje.
+        /// Comentario: Este método nos permite acercar al alien hacia el personaje. Se lo coloca a 1 casilla de distancia del personaje.
         /// </summary>
         public void ambush()
         {

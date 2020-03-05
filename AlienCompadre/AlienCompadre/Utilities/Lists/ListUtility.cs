@@ -12,7 +12,7 @@ namespace AlienCompadre.Utilities.Lists
         {
             List<E> randomList = new List<E>();
             Random r = new Random();
-            int randomIndex = 0;
+            int randomIndex;
 
             while (inputList.Count > 0)
             {

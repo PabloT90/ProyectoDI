@@ -15,12 +15,12 @@
 
     <RelativePanel>
         <Image Name="imagen" Stretch="Fill" Source="ms-appx:///Assets/mortalidad.jpg"/>
-        <TextBlock x:Name="mejoresJugadores" Foreground="Brown" Style="{StaticResource letra}" FontSize="50" Margin="20, 5, 5, 0">MEJORES JUGADORES:</TextBlock>
+        <TextBlock x:Name="mejoresJugadores" Foreground="Brown" Style="{StaticResource letra}" FontSize="50" Margin="20, 5, 5, 0">Salon de la Fama:</TextBlock>
         <!-- Filtrado -->
-        <ComboBox RelativePanel.Below="mejoresJugadores" Name="filtradoNumJugadores" SelectedValue="{Binding NumeroJugadores, Mode=TwoWay}" PlaceholderText="Mostrar solo:" Width="250" FontSize="30">
-            <x:String>100</x:String>
-            <x:String>50</x:String>
-            <x:String>10</x:String>
+        <ComboBox RelativePanel.Below="mejoresJugadores" Name="filtradoNumJugadores" SelectedValue="{Binding NumeroJugadores, Mode=TwoWay}" PlaceholderText="Top jugadores:" Width="250" FontSize="30">
+            <x:String>Top 100</x:String>
+            <x:String>Top 50</x:String>
+            <x:String>Top 10</x:String>
         </ComboBox>
         <!-- Lista -->
         <ListView RelativePanel.Below="filtradoNumJugadores" ItemsSource="{Binding Estadisticas, Mode=TwoWay}" Name="listView">

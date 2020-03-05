@@ -24,7 +24,7 @@ namespace AlienCompadre_DAL.Lists{
             ClsStats oStats;
 
             try{
-                miComando.CommandText = "SELECT TOP " + numJugadores +" * FROM stats ORDER BY score DESC";
+                miComando.CommandText = "SELECT TOP " + numJugadores +" * FROM stats ORDER BY score DESC"; //Intenté parametrizar esta consulta pero el TOP daba problemas al hacerlo (no funcionaba a secas)
                 miComando.Connection = conn;
                 miLector = miComando.ExecuteReader();
                 //Si hay lineas en el lector

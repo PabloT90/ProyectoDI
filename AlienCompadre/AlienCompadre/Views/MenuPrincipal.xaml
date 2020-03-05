@@ -17,11 +17,11 @@
         </StackPanel>
 
         <StackPanel PointerEntered="StackPanel_PointerEntered" PointerExited="StackPanel_PointerExited" Name="estadisticas" RelativePanel.Above="info">
-            <TextBlock Foreground="Brown" RelativePanel.Above="info" Style="{StaticResource letra}" FontSize="50" Margin="10, 5, 5, 0" Tapped="Estadisticas_Tapped">ESTADISTICAS</TextBlock>
+            <TextBlock Name="stats" Foreground="Brown" RelativePanel.Above="info" Style="{StaticResource letra}" FontSize="50" Margin="10, 5, 5, 0" Tapped="Estadisticas_Tapped">ESTADISTICAS</TextBlock>
         </StackPanel>
         
         <StackPanel PointerEntered="StackPanel_PointerEntered" PointerExited="StackPanel_PointerExited" Name="info" RelativePanel.Above="modos">
-            <TextBlock Foreground="Brown" Style="{StaticResource letra}" FontSize="50" Margin="10, 5, 5, 0" Tapped="Info_Tapped">INFO</TextBlock>
+            <TextBlock Foreground="Brown" Name="inf" Style="{StaticResource letra}" FontSize="50" Margin="10, 5, 5, 0" Tapped="Info_Tapped">INFO</TextBlock>
         </StackPanel>
 
         <StackPanel PointerEntered="StackPanel_PointerEntered" PointerExited="StackPanel_PointerExited" Name="modos" RelativePanel.AlignBottomWithPanel="True">

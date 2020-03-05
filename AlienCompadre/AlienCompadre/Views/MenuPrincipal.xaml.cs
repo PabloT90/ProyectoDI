@@ -28,10 +28,7 @@ namespace AlienCompadre.Views
         {
             this.InitializeComponent();
             terror = true;
-            //this.Frame.BackStack.Clear();
         }
-
-        //TODO: unir estos metodos en uno solo.
 
         /// <summary>
         /// Evento asociado al click sobre Jugar. Navega hacia la pagina principal de juego.
@@ -42,6 +39,23 @@ namespace AlienCompadre.Views
         {
             this.Frame.Navigate(typeof(MainPage), terror);
         }
+
+        /*private void navigateTo(object sender, TappedRoutedEventArgs e) {
+            string name = ((TextBlock)sender).Name;
+            switch (name) {
+                case "jugar":
+                    this.Frame.Navigate(typeof(MainPage), terror);
+                    break;
+                case "inf":
+                    this.Frame.Navigate(typeof(Informacion));
+                    break;
+                case "stats":
+                    this.Frame.Navigate(typeof(Estadisticas));
+                    break;
+            }
+        }*/
+
+        //Podriamos unir estos 3 metodos en 1 solo (Vease el metodo comentado de arriba) Pero es mas costoso en terminos de rendimiento.
 
         /// <summary>
         /// Evento asociado al click sobre estadisticas. Navega hacia la pagina de estadisticas
@@ -82,6 +96,7 @@ namespace AlienCompadre.Views
             }
         }
 
+        //Estos 2 metodos nos sirven para resaltar y apagar los stackpanel sobre los que se pase el cursor.
         private void StackPanel_PointerEntered(object sender, PointerRoutedEventArgs e) {
             (sender as StackPanel).Background = new SolidColorBrush(Colors.Gray);
         }

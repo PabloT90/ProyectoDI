@@ -58,10 +58,10 @@ namespace AlienCompadre
                     viewModel.tryMoveCharacter('l');
                 } else if (args.KeyCode == 100) { //Derecha
                     viewModel.tryMoveCharacter('r');
-                }
-                /*else if (args.KeyCode == 27) { //Si pulsa escape
+                } else if (args.KeyCode == 27) { //Si pulsa escape
+                    viewModel.ReiniciarJuego();
                     this.Frame.Navigate(typeof(MenuPrincipal));
-                }*/
+                }
             }
         }
     }
