@@ -22,11 +22,11 @@ namespace AlienCompadre_DAL.Connection
 
             //Mi conexion
             //TODO MODIFICAR PARA MI CONEXION
-            this.server = "rafamanzano.database.windows.net";
-            //this.server = "ramanzano.database.windows.net";
-            this.dataBase = "Personas";
-            this.user = "rmanzano";
-            this.pass = "MiTesoro.";
+            //this.server = "rafamanzano.database.windows.net";
+            this.server = "iesnervion.database.windows.net";
+            this.dataBase = "WPFSample";
+            this.user = "prueba";
+            this.pass = "iesnervion123.";
 
 
             /* TODO Fernando aqui tienes preparado la conexion, solo descomentar y probar

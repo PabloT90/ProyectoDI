@@ -373,7 +373,8 @@ namespace AlienCompadre.ViewModel
             }
             //moveAlien();//Movemos al alien
             encuentro();
-            moveAlienIA();
+            if(_mazmorra.Tablero.ElementAt(actualPosition).Chest == null || (_mazmorra.Tablero.ElementAt(actualPosition).Chest.ChestReward != 3))
+                moveAlienIA();
             
 
         }
