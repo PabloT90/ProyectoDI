@@ -13,7 +13,6 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml;
 using System.Threading;
 
-//TODO: tenemos 2 reiniciar juego? -.-
 
 namespace AlienCompadre.ViewModel
 {
