@@ -19,27 +19,11 @@ namespace AlienCompadre_DAL.Connection
 
         public ClsMyConnection()
         {
-
-            //Mi conexion
-            //TODO MODIFICAR PARA MI CONEXION
             //this.server = "rafamanzano.database.windows.net";
             this.server = "iesnervion.database.windows.net";
             this.dataBase = "WPFSample";
             this.user = "prueba";
             this.pass = "iesnervion123.";
-
-
-            /* TODO Fernando aqui tienes preparado la conexion, solo descomentar y probar
-             * this.server = "107-05\\MSSQLSERVER2017";
-               this.dataBase = "Avengers";
-               this.user = "prueba";
-               this.pass = "123";
-             */
-            //Pablo
-            //this.server = "pablot90.database.windows.net";
-            //this.dataBase = "PersonasDB";
-            //this.user = "pablo";
-            //this.pass = "Mitesoro123";
         }
         //Con parámetros por si quisiera cambiar las conexiones
         public ClsMyConnection(String server, String database, String user, String pass)
@@ -78,9 +62,6 @@ namespace AlienCompadre_DAL.Connection
             return connection;
 
         }
-
-
-
 
         /// <summary>
         /// Este metodo cierra una conexión con la Base de datos
