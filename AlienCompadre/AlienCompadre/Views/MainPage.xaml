@@ -15,8 +15,8 @@
     </Page.DataContext>
 
     <RelativePanel>
-    <StackPanel>
-        <Grid Grid.Row="1" Grid.ColumnSpan="2" Background="Bisque">
+        <!--Interfaz-->
+        <Grid Grid.Row="1" Grid.ColumnSpan="2" Background="Bisque" Name="grid01" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -24,10 +24,7 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <!--<Image x:Name="playerImage" Grid.Column="0" Margin="10" Source="{Binding Player.SrcImage, Mode=OneWay}" Width="50" Height="50"></Image>-->
-            <StackPanel Grid.Column="0" Orientation="Horizontal" Height="Auto">
-                <Image Name="llave" Source="{Binding SrcKeyImage, Mode=TwoWay}" Height="90" Width="90"></Image>
-            </StackPanel>
+            <Image Name="llave" Source="{Binding SrcKeyImage, Mode=TwoWay}" Height="90" Width="90"></Image>
 
             <StackPanel Grid.Column="1" Orientation="Horizontal" Height="Auto">
                 <TextBlock Text="Ammo: " Margin="10, 25,0,0" FontSize="30" Style="{StaticResource letra}" Foreground="Brown"/>
@@ -45,28 +42,24 @@
             </StackPanel>
 
         </Grid>
-        <GridView x:Name="gridView01" ItemsSource="{Binding Mazmorra.Tablero, Mode=TwoWay}">
-            <GridView.ItemTemplate>
-                <DataTemplate>
+        <!--Tablero de juego-->
+            <GridView x:Name="gridView01" ItemsSource="{Binding Mazmorra.Tablero, Mode=TwoWay}" RelativePanel.Below="grid01" RelativePanel.AlignHorizontalCenterWithPanel="True">
+                <GridView.ItemTemplate>
+                    <DataTemplate>
                     <Canvas Width="70" Height="70">
                         <Image Source="{Binding LightImage, Mode=TwoWay}" Width="70" Height="70"/>
                         <Image Source="{Binding DarkImage, Mode=TwoWay}" Width="70" Height="70"/>
                         <Image Source="{Binding CharacterImage, Mode=TwoWay}" Width="70" Height="70"/>
                     </Canvas>
-
                 </DataTemplate>
-            </GridView.ItemTemplate>
-            <GridView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <ItemsWrapGrid MaximumRowsOrColumns="8" Orientation="Horizontal"></ItemsWrapGrid>
-                </ItemsPanelTemplate>
-            </GridView.ItemsPanel>
-        </GridView>
+                </GridView.ItemTemplate>
+                <GridView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <ItemsWrapGrid MaximumRowsOrColumns="8" Orientation="Horizontal"></ItemsWrapGrid>
+                    </ItemsPanelTemplate>
+                </GridView.ItemsPanel>
+            </GridView>
 
-    </StackPanel>
-
-
-        <Image Name="sangre" RelativePanel.AlignLeftWithPanel="True"  RelativePanel.AlignTopWithPanel="True" Source="{Binding ImageBlood, Mode=TwoWay}" Width="850" Height="850" Margin="0,50,0,0"></Image>
-        <!--<TextBlock HorizontalAlignment="Center" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Foreground="Brown" Name="muerte" Style="{StaticResource letra}" FontSize="100" Margin="50">HAS MUERTO</TextBlock>-->
+        <Image Name="sangre" RelativePanel.AlignLeftWith="gridView01"  RelativePanel.AlignTopWith="gridView01" Source="{Binding ImageBlood, Mode=TwoWay}"></Image>
     </RelativePanel>
 </Page>
