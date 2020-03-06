@@ -1,10 +1,6 @@
 ﻿using AlienCompadre_DAL.Handler;
 using AlienCompadre_Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AlienCompadre_BL.HandlerBL {
     public class ClsHandlerBL {

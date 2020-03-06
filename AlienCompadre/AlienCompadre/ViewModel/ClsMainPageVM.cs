@@ -1,18 +1,12 @@
 ﻿using AlienCompadre.Models;
 using AlienCompadre.Views;
-using AlienCompadre_BL.Lists;
 using AlienCompadre_Entities;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml;
-using System.Threading;
-
 
 namespace AlienCompadre.ViewModel
 {
