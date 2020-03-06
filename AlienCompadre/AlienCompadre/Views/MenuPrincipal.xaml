@@ -12,6 +12,7 @@
         <Image Name="imagen" Stretch="Fill" Source="ms-appx:///Assets/skulls.jpg"/>
         <TextBlock Foreground="Brown" Name="menuPrincipal" Style="{StaticResource letra}" FontSize="80" Margin="5">MENU PRINCIPAL</TextBlock>
 
+        <!--Usamos stackpanel de esta manera para poder usar sus propiedades de entrada y salida del cursor.-->
         <StackPanel PointerEntered="StackPanel_PointerEntered" PointerExited="StackPanel_PointerExited" Name="Jugar" RelativePanel.Above="estadisticas">
             <TextBlock Foreground="Brown" Name="jugar" Style="{StaticResource letra}" FontSize="70" Margin="10, 5, 5, 0" Tapped="Jugar_Tapped">JUGAR</TextBlock>
         </StackPanel>
